@@ -1,0 +1,222 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: inform
+  examples: |
+    - [delhi](location)
+    - [mumbai](location)
+    - [hyderabad](location)
+    - [chennai](location)
+    - [bangalore](location)
+    - [pune](location)
+    - [shimla](location)
+    - [chandigarh](location)
+    - [nashik](location)
+    - [ahmedabad](location)
+    - [kochi](location)
+    - [jaipur](location)
+    - [mysore](location)
+    - [surat](location)
+
+- intent: search_provider
+  examples: |
+    - I need a [hospital](facility_type)
+    - [hospital](facility_type) near me
+    - find me a nearby [hospital](facility_type)
+    - [hospital](facility_type)
+    - I need an [ambulance](facility_type)
+    - Get me an [ambulance](facility_type)
+    - [medical centre](facility_type) near me
+    - I need [speciality hospital](facility_type)
+    - [speciality hospital](facility_type) near me
+    - I need a [medical laboratory](facility_type)
+    - [medical lab](facility_type) medical lab near me
+    - [pathological lab](facility_type) near me
+    - [diagnostic centres](facility_type) near me
+    - find me a nearby [medical store](facility_type)
+    - [medical store](facility_type) near me
+    - [medicine shop](facility_type) near me
+    - [pharmacy](facility_type) near me
+    - [drugstore](facility_type) near me
+    - [chemist](facility_type) near me
+    - [dispensary](facility_type) near me
+    - [primary health centres](facility_type) near me
+    - I need a [nursing home](facility_type)
+    - [nursing home](facility_type) near me
+    - find me a [nursing home](facility_type)
+    - I need a [covid care hospital](facility_type)
+    - [covid hospital](facility_type) near me
+    - [corona hospital](facility_type) near me
+    - I need a [quarantine centre](facility_type)
+    - Find me a nearby [quarantine centre](facility_type)
+    - [quarantine centre](facility_type) near me
+    - I need a [isolation facility](facility_type)
+    - [isolation centres](facility_type) near me
+    - [surgical clinic](facility_type) near me
+    - [mental health facility](facility_type) near me
+    - [psychiatric hospital](facility_type) near me
+    - [psychiatrist](facility_type) near me
+    - [addiction services clinics](facility_type) near me
+    - [primary care clinics](facility_type) near me
+    - [cardiologist](facility_type) near me
+    - [cardiology clinic](facility_type) near me
+    - I need a [dentist](facility_type)
+    - [dentist](facility_type) near me
+    - [dental clinic](facility_type) near me
+    - [dermatologist](facility_type) near me
+    - [dermatology](facility_type) clinics near me
+    - [ENT clinics](facility_type) near me
+    - [ent clinics](facility_type) near me
+    - [ear, nose, throat clinics](facility_type) near me
+    - [ENT specialist](facility_type) near me
+    - [gastroenterology specialist](facility_type) near me
+    - [gynecology and obstetrics clinic](facility_type) near me
+    - [gynaecologist](facility_type) near me
+    - [gynac](facility_type) near me
+    - [OB/GYN](facility_type) near me
+    - [neurologist](facility_type) near me
+    - [neurophysician](facility_type) near me
+    - [neaurosurgeon](facility_type) near me
+    - [nutritionist](facility_type) near me
+    - [oncologist](facility_type) near me
+    - [oncology doctor](facility_type) near me
+    - [cancer specialist](facility_type) near me
+    - [ophthalmologist](facility_type) near me
+    - [eye doctor](facility_type) near me
+    - [orthodontist](facility_type) near me
+    - [orthopedic doctor](facility_type) near me
+    - [orthopedician](facility_type) near me
+    - [orthopedic surgeon](facility_type) near me
+    - [podiatrist](facility_type) near me
+    - [physical therapy clinics](facility_type) near me
+    - [physiotherapist](facility_type) near me
+    - [physician](facility_type) near me
+    - [general physician](facility_type) near me
+    - [urologist](facility_type) near me
+    - [urology doctor](facility_type) near me
+    - [pediatrician](facility_type) near me
+    - [pediatric specialist](facility_type) near me
+    - [pediatric clinic](facility_type) near me
+    - [postnatal care](facility_type) near me
+    - [naturopathy](facility_type) near me
+    - [therapists](facility_type) near me
+    - [therapy](facility_type) near me
+    - [homeopathy clinic](facility_type) near me
+    - [homeopathy doctors](facility_type) near me
+    - [dialysis clinic](facility_type) near me
+    - [sexual health clinic](facility_type) near me
+    - [covid vaccination centres](facility_type) near me
+    - [vaccination centres](facility_type) near me
+    - [covid vaccine centres](facility_type) near me
+    - I need a [covid vaccine](facility_type)
+    - [covid shots](facility_type) near me
+    - [allergist](facility_type) near me
+    - [anaesthesiologist](facility_type) near me
+    - [dietitian](facility_type) near me
+    - [dietician](facility_type) near me
+    - [emergency room doctor](facility_type) near me
+    - [er doctor](facility_type) near me
+    - [endocrinologist](facility_type) near me
+    - [epidemiologist](facility_type) near me
+    - [family medicine physician](facility_type)  near me
+    - [plastic surgeon](facility_type) near me
+    - [pulmonologist](facility_type) near me
+    - [radiologist](facility_type) near me
+    - [sports medicine Specialist](facility_type) near me
+    - [veterinarian](facility_type) near me
+    - [vet](facility_type) near me
+    - [ayurvedic Practitioner](facility_type) near me
+    - [ayurveda](facility_type) near me
+    - [acupuncturist](facility_type) near me
+    - [microbiologist](facility_type) near me
+
