@@ -14,43 +14,51 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 from rasa_sdk.forms import FormAction
 
-class FacilityForm(FormAction):
+# class ActionHelloWorld(Action):
+#
+#     def name(self) -> Text:
+#         return "action_hello_world"
+#
+#     def run(self, dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+#
+#         dispatcher.utter_message(text="Hello World!")
+#
+#         return []
+
+class ActionFacilitySearch(Action):
 
     def name(self) -> Text:
-        # unique identifier of the form
+        return "action_facility_search"
 
-        return "facility_form"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # entities = tracker.latest_message['entities']
+        dispatcher.utter_message(text="Facility Search Action!")
+
+        return []
+
+
+class ActionGetDrivingLicense(FormAction):
+    def name(self) -> Text:
+        return "driving_license_form"
 
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
-        # A list of required slots that the form has to fill
-        return ["facility_type", "location"]
+        """A list of required slots"""
 
-    def slot_mappings(self) -> Dict[Text, Any]:
-        return {"facility_type": self.from_entity(entity="facility_type",
-                                                 intent=["inform", "search_provider"]),
-               "location": self.from_entity(entity="location",
-                                            intent=["inform", "search_provider"])}
+        print("required_slots(tracker: Tracker)")
+        return ["location", "age"]
 
-    def submit(self,
-               dispatcher: CollectingDispatcher,
-               tracker: Tracker,
-               domain: Dict[Text, Any],
-               ) -> List[Dict]:
-        location = tracker.get_slot('location')
-        facility_type = tracker.get_slot('facility_type')
+    def submit(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict]:
 
-        results = _find_facilities(location, facility_type)
-        button_name = _resolve_name(FACILITY_TYPES, facility_type)
-        if len(results) == 0:
-            dispatcher.utter_message(
-                "Sorry we could not find a {} in {}.".format(button_name, location.title()))
+        dispatcher.utter_message(text="Hi")
 
-            return[]
+        if age < 16:
+            dispatcher.utter_message(text="You are not eligible for driving / learner's license :(")
 
-        buttons = []
-        for r in results[:3]:
-            if facility_type == FACILITY_TYPES["hospital"]["resource"]:
-
-
-
+        return []

@@ -5,29 +5,35 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
+  - age_entry
+  - location_entry
   - search_provider
-  - inform
+  - get_driving_license
 
-entities:
-  - facility_type
-  - location
+forms:
+  driving_license_form:
+    required_slots:
+      location:
+        - type: from_entity
+          entity: location
+      age:
+        - type: from_entity
+          entity: age
+
+slots:
+  medical_facility_type:
+    type: text
+  location:
+    type: text
+  age:
+    type: float
+    min_value: 10
+    max_value: 120
 
 responses:
   utter_greet:
   - text: "Hey! How can I help you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
 
   utter_goodbye:
   - text: "Happy to help :)"
@@ -36,10 +42,24 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
   utter_ask_location:
-  - text: "Sure. Where are you based?"
+    - text: "Sure. Where are you based?"
+
+  utter_ask_age:
+    - text: "What is your age?"
+
+  utter_slot_values:
+    - text: "Getting you a driving license in {location} for age {age}"
+
+  utter_submit:
+    - text: "All done"
 
 actions:
-  - facility_search
+  - action_facility_search
+
+entities:
+  - medical_facility_type
+  - location
+  - age
 
 session_config:
   session_expiration_time: 60
