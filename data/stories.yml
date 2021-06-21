@@ -16,16 +16,35 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
 
-- story: get driving license story
+#- story: get driving license story
+#  steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - intent: get_driving_license
+#    - action: driving_license_form
+#    - active_loop: driving_license_form
+#    - slot_was_set:
+#        - location: "delhi"
+#    - slot_was_set:
+#        - age: "18"
+#    - intent: goodbye
+#    - action: utter_goodbye
+
+- story: admission path
   steps:
     - intent: greet
     - action: utter_greet
-    - intent: get_driving_license
-    - action: driving_license_form
-    - active_loop: driving_license_form
+    - intent: admission_enquiry
+    - action: admission_form
+    - active_loop: admission_form
     - slot_was_set:
-        - location: "delhi"
+        - name: "sanika"
     - slot_was_set:
-        - age: "18"
+        - ssn: "188934"
+    - slot_was_set:
+        - subject: "maths"
+    - active_loop: null
+    - action: utter_slot_values
+    - action: utter_ask_feedback
     - intent: goodbye
     - action: utter_goodbye

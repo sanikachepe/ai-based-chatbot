@@ -12,17 +12,4 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Submit form
-  condition:
-  # Condition that form is active.
-  - active_loop: driving_license_form
-  steps:
-  # Form is deactivated
-  - action: driving_license_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  # The actions we want to run when the form is submitted.
-  - action: utter_submit
-  - action: utter_slot_values
 

@@ -10,16 +10,18 @@ intents:
   - location_entry
   - search_provider
   - get_driving_license
+  - name_entry
+  - ssn_entry
+  - subject_entry
+  - admission_enquiry 
 
-forms:
-  driving_license_form:
-    required_slots:
-      location:
-        - type: from_entity
-          entity: location
-      age:
-        - type: from_entity
-          entity: age
+entities:
+  - medical_facility_type
+  - location
+  - age
+  - name
+  - ssn
+  - subject
 
 slots:
   medical_facility_type:
@@ -30,6 +32,36 @@ slots:
     type: float
     min_value: 10
     max_value: 120
+  name:
+    type: text
+  ssn:
+    type: text
+  subject:
+    type: text
+
+forms:
+#  driving_license_form:
+#    required_slots:
+#      location:
+#        - type: from_entity
+#          entity: location
+#      age:
+#        - type: from_entity
+#          entity: age
+  admission_form:
+    required_slots:
+      name:
+        - type: from_entity
+          entity: name
+      ssn:
+        - type: from_entity
+          entity: ssn
+      subject:
+        - type: from_entity
+          entity: subject
+
+actions:
+  - action_facility_search
 
 responses:
   utter_greet:
@@ -48,18 +80,19 @@ responses:
     - text: "What is your age?"
 
   utter_slot_values:
-    - text: "Getting you a driving license in {location} for age {age}"
+    - text: "Received admission form for {name}, {ssn}, {subject}"
+
+  utter_ask_name:
+    - text: "What is your name?"
+
+  utter_ask_ssn:
+    - text: "What is your ssn number?"
+
+  utter_ask_subject:
+    - text: "What is your subject?"
 
   utter_submit:
     - text: "All done"
-
-actions:
-  - action_facility_search
-
-entities:
-  - medical_facility_type
-  - location
-  - age
 
 session_config:
   session_expiration_time: 60
