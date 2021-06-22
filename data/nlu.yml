@@ -16,7 +16,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -30,38 +29,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
-- intent: admission_enquiry
-  examples: |
-    - phd admission
-    - I want admission inPhD
-    - my name is [Sanika](name) and wanted admission on PhD
-    - Phd admission for [Sanika](name)
-
-- intent: name_entry
-  examples: |
-    - my name is [Sanika](name)
-    - my name is [Sarah](name)
-    - my name is [Aditya](name)
-    - my name is [Girija](name)
-
-- intent: ssn_entry
-  examples: |
-    - my ssn number is [123456](ssn)
-    - my ssn number is [678235](ssn)
-    - my ssn number is [243523](ssn)
-    - my ssn number is [378479](ssn)
-    - my ssn number is [657489](ssn)
-    - my ssn number is [783936](ssn)
-
-- intent: subject_entry
-  examples: |
-    - subject is [Maths](subject)
-    - subject is [Bio](subject)
-    - subject is [Physics](subject)
-    - subject is [Computer Science](subject)
-    - subject is [Chemistry](subject)
-
 - intent: affirm
   examples: |
     - yes
@@ -70,7 +37,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -80,14 +46,12 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: location_entry
   examples: |
     - [delhi](location)
@@ -106,7 +70,6 @@ nlu:
     - [surat](location)
     - [gangtok](location)
     - [bhopal](location)
-
 - intent: search_provider
   examples: |
     - I need a [hospital](medical_facility_type)
@@ -218,7 +181,6 @@ nlu:
     - [ayurveda](medical_facility_type) near me
     - [acupuncturist](medical_facility_type) near me
     - [microbiologist](medical_facility_type) near me
-
 - intent: get_driving_license
   examples: |
     - I need a driving licence
@@ -226,7 +188,6 @@ nlu:
     - how to get driving license?
     - where can i get a driving licence?
     - am I eligible for a driving license?
-
 - intent: age_entry
   examples: |
     - [18](age)
@@ -245,4 +206,7 @@ nlu:
     - [67](age)
     - [43](age)
     - [32](age)
+
+
+
 
