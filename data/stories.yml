@@ -45,6 +45,6 @@ stories:
         - subject: "maths"
     - active_loop: null
     - action: utter_slot_values
-    - action: utter_ask_feedback
+#    - action: utter_ask_feedback
     - intent: goodbye
     - action: utter_goodbye
