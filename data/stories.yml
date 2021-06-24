@@ -30,21 +30,43 @@ stories:
 #    - intent: goodbye
 #    - action: utter_goodbye
 
-- story: admission path
+#- story: admission path
+#  steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - intent: admission_enquiry
+#    - action: admission_form
+#    - active_loop: admission_form
+#    - slot_was_set:
+#        - name: "Sanika"
+#    - slot_was_set:
+#        - ssn: "188934"
+#    - slot_was_set:
+#        - subject: "maths"
+#    - active_loop: null
+#    - action: utter_slot_values
+##    - action: utter_ask_feedback
+#    - intent: goodbye
+#    - action: utter_goodbye
+
+- story: Story 001
   steps:
     - intent: greet
     - action: utter_greet
-    - intent: admission_enquiry
-    - action: admission_form
-    - active_loop: admission_form
-    - slot_was_set:
-        - name: "sanika"
-    - slot_was_set:
-        - ssn: "188934"
-    - slot_was_set:
-        - subject: "maths"
-    - active_loop: null
-    - action: utter_slot_values
-#    - action: utter_ask_feedback
+    - intent: weather
+    - action: utter_ask_location
+    - intent: location_entry
+    - action: action_weather
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: Story 002
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: city_weather
+      entities:
+        - location: "delhi"
+    - action: action_weather
     - intent: goodbye
     - action: utter_goodbye

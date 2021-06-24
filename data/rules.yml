@@ -12,4 +12,8 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: Greet with name after name_entry
+  steps:
+    - intent: name_entry
+    - action: utter_greet_with_name
 

@@ -31,12 +31,12 @@ nlu:
     - bye bye
     - see you later
 
-- intent: admission_enquiry
-  examples: |
-    - phd admission
-    - I want admission inPhD
-    - my name is [Sanika](name) and wanted admission on PhD
-    - Phd admission for [Sanika](name)
+#- intent: admission_enquiry
+#  examples: |
+#    - phd admission
+#    - I want admission inPhD
+#    - my name is [Sanika](name) and wanted admission on PhD
+#    - Phd admission for [Sanika](name)
 
 - intent: name_entry
   examples: |
@@ -44,23 +44,40 @@ nlu:
     - my name is [Sarah](name)
     - my name is [Aditya](name)
     - my name is [Girija](name)
+    - my name is [Sanjana](name)
+    - my name is [Mansvi](name)
+    - my name is [Priya](name)
+    - my name is [Rahul](name)
+    - my name is [Rashmi](name)
+    - my name is [Sachin](name)
+    - I am [Sanika](name)
+    - I am [Sarah](name)
+    - I am [Aditya](name)
+    - I am [Girija](name)
+    - I am [Sanjana](name)
+    - I am [Mansvi](name)
+    - I am [Priya](name)
+    - I am [Rahul](name)
+    - I am [Rashmi](name)
+    - I am [Sachin](name)
 
-- intent: ssn_entry
-  examples: |
-    - my ssn number is [123456](ssn)
-    - my ssn number is [678235](ssn)
-    - my ssn number is [243523](ssn)
-    - my ssn number is [378479](ssn)
-    - my ssn number is [657489](ssn)
-    - my ssn number is [783936](ssn)
 
-- intent: subject_entry
-  examples: |
-    - subject is [Maths](subject)
-    - subject is [Bio](subject)
-    - subject is [Physics](subject)
-    - subject is [Computer Science](subject)
-    - subject is [Chemistry](subject)
+#- intent: ssn_entry
+#  examples: |
+#    - my ssn number is [123456](ssn)
+#    - my ssn number is [678235](ssn)
+#    - my ssn number is [243523](ssn)
+#    - my ssn number is [378479](ssn)
+#    - my ssn number is [657489](ssn)
+#    - my ssn number is [783936](ssn)
+#
+#- intent: subject_entry
+#  examples: |
+#    - subject is [Maths](subject)
+#    - subject is [Bio](subject)
+#    - subject is [Physics](subject)
+#    - subject is [Computer Science](subject)
+#    - subject is [Chemistry](subject)
 
 - intent: affirm
   examples: |
@@ -246,3 +263,22 @@ nlu:
     - [43](age)
     - [32](age)
 
+- intent: weather
+  examples: |
+    - what's the weather
+    - what is the temperature today
+    - what is the tempeature
+    - i want to know the temperature
+    - i want to know the weather of today
+    - tell me weather forecast
+    - hows the weather today
+
+- intent: city_weather
+  examples: |
+    - show me what's the weather in [Delhi](location)
+    - the weather condition in [Chandigarh](location)
+    - hows weather in [Chennai](location)
+    - hows [Mumbai](location) today
+    - whats the weather in [Hyderabad](location)
+    - temperature in [Goa](location)
+    - tell me the temperature at [Ahmedabad](location)
