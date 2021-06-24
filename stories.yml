@@ -1,57 +1,61 @@
 version: "2.0"
 
 stories:
-
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
 - story: search hospital + location
   steps:
     - intent: greet
     - action: utter_greet
-    - intent: search_provider{"medical_facility_type":"hospital"}
+  
+    - intent: search_provider
+      entities:
+        - medical_facility_type: "hospital"
     - action: utter_ask_location
-    - intent: inform{"location":"delhi"}
-    - action: facility_search
+    - intent: location_entry
+      entities:
+        - location: "delhi"
+    - action: action_facility_search
+    - action: action_restart
     - intent: goodbye
     - action: utter_goodbye
 
--story: get driving license story
+- story: get driving license story
   steps:
     - intent: greet
     - action: utter_greet
-    - intent: search_provider{"driving_license":"driving licence"}
-    - action: utter_ask_location
-    - intent: inform{"location":"delhi"}
+    - intent: get_driving_license
+      entities: 
+       - driving_license: "driving license"
     - action: utter_ask_age
-    - intent: get_age{"age":"18"}
-    - action: get_driving_licence
+    - intent: age_entry
+      entities: 
+        - age: "12"
+    - action: utter_ask_location
+    - intent: location_entry
+      entities: 
+        - location: "delhi" 
+    - action: action_driving_license_form
+    #- action: action_followup_check
+    - action: action_restart
     - intent: goodbye
     - action: utter_goodbye
 
-
-    
+- story: get lerners license story
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_lerners_license
+      entities:
+       - lerners_license: "lerners license"
+    - action: utter_ask_age
+    - intent: age_entry
+      entities: 
+        - age: "12"
+    - action: utter_ask_location
+    - intent: location_entry
+      entities: 
+        - location: "delhi" 
+    - action: action_lerners_license_form
+    #- action: action_followup_check
+    - action: action_restart
+    - intent: goodbye
+    - action: utter_goodbye

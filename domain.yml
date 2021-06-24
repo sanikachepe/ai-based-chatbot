@@ -10,6 +10,7 @@ intents:
   - location_entry
   - search_provider
   - get_driving_license
+  - get_learners_license
 
 forms:
   driving_license_form:
@@ -59,12 +60,16 @@ actions:
   - action_driving_license_form
   - action_restart
   - action_followup_check
+  - action_learners_license_form
+  #- action_lerners_license_form
   
 
 entities:
   - medical_facility_type
   - location
   - age
+  - driving_license
+  - learners_license
 
 session_config:
   session_expiration_time: 60
