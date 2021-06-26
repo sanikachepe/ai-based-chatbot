@@ -9,10 +9,12 @@ intents:
   - age_entry
   - location_entry
   - search_provider
-  - get_driving_license
   - name_entry
   - weather
   - city_weather
+  - get_driving_license
+  - get_learners_license
+  - corona_state
 #  - ssn_entry
 #  - subject_entry
 #  - admission_enquiry
@@ -22,6 +24,9 @@ entities:
   - location
   - age
   - name
+  - driving_license
+  - learners_license
+  - state
 #  - ssn
 #  - subject
 
@@ -65,6 +70,11 @@ slots:
 actions:
   - action_facility_search
   - action_weather
+  - action_driving_license_form
+  - action_restart
+  - action_followup_check
+  - action_learners_license_form
+  - action_corona_tracker
 
 responses:
   utter_greet:
@@ -84,6 +94,15 @@ responses:
 
   utter_ask_age:
     - text: "What is your age?"
+
+  utter_steps:
+    - text: "do you want to know the steps"
+
+  utter_slot_values:
+    - text: "Getting you a driving license in {location} for age {age}"
+
+  utter_default:
+    - text: "please restate your request"
 
 #  utter_slot_values:
 #    - text: "Received admission form for {name}, {ssn}, {subject}"

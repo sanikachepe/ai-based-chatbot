@@ -238,11 +238,23 @@ nlu:
 
 - intent: get_driving_license
   examples: |
-    - I need a driving licence
-    - I need a driving license
-    - how to get driving license?
-    - where can i get a driving licence?
-    - am I eligible for a driving license?
+    - I need a [driving licence](driving_license)
+    - I need a [driving license](driving_license)
+    - how to get [driving license](driving_license)?
+    - where can i get a [driving licence](driving_license)?
+    - am I eligible for a [driving license](driving_license)?
+    - [dl](driving_license)
+    - [license](driving_license)
+    - [licence](driving_license)
+
+- intent: get_learners_license
+  examples: |
+    - I need a [learners licence](learners_license)
+    - I need a [learners license](learners_license)
+    - how to get [learners license](learners_license)?
+    - where can i get a [learners licence](learners_license)?
+    - am I eligible for a [learners license](learners_license)?
+    - [ll](learners_license)
 
 - intent: age_entry
   examples: |
@@ -282,3 +294,25 @@ nlu:
     - whats the weather in [Hyderabad](location)
     - temperature in [Goa](location)
     - tell me the temperature at [Ahmedabad](location)
+
+- intent: corona_state
+  examples: |
+    - [india](state)
+    - [corona](state)
+    - [karnataka](state)
+    - [maharashtra](state)
+    - [andhra pradesh](state)
+    - [bihar](state)
+    - [punjab](state)
+    - [odisha](state)
+    - [assam](state)
+    - [goa](state)
+    - [mp](state)
+    - [madhya pradesh](state)
+    - [west bengal](state)
+    - [himachal pradesh](state)
+    - [rajasthan](state)
+    - [mh](state)
+    - [ap](state)
+    - [hp](state)
+    - [kl](state)

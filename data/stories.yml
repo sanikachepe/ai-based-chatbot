@@ -70,3 +70,50 @@ stories:
     - action: action_weather
     - intent: goodbye
     - action: utter_goodbye
+
+- story: get driving license story
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_driving_license
+      entities:
+       - driving_license: "driving license"
+    - action: utter_ask_age
+    - intent: age_entry
+      entities:
+        - age: "12"
+    - action: utter_ask_location
+    - intent: location_entry
+      entities:
+        - location: "delhi"
+    - action: action_driving_license_form
+    #- action: action_followup_check
+    - action: action_restart
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: get lerners license story
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_learners_license
+      entities:
+       - lerners_license: "lerners license"
+    - action: utter_ask_age
+    - intent: age_entry
+      entities:
+        - age: "12"
+    - action: utter_ask_location
+    - intent: location_entry
+      entities:
+        - location: "delhi"
+    - action: action_learners_license_form
+    #- action: action_followup_check
+    - action: action_restart
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: corona tracker path
+  steps:
+    - intent: corona_state
+    - action: action_corona_tracker
