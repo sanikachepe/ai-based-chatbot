@@ -31,54 +31,6 @@ nlu:
     - bye bye
     - see you later
 
-#- intent: admission_enquiry
-#  examples: |
-#    - phd admission
-#    - I want admission inPhD
-#    - my name is [Sanika](name) and wanted admission on PhD
-#    - Phd admission for [Sanika](name)
-
-- intent: name_entry
-  examples: |
-    - my name is [Sanika](name)
-    - my name is [Sarah](name)
-    - my name is [Aditya](name)
-    - my name is [Girija](name)
-    - my name is [Sanjana](name)
-    - my name is [Mansvi](name)
-    - my name is [Priya](name)
-    - my name is [Rahul](name)
-    - my name is [Rashmi](name)
-    - my name is [Sachin](name)
-    - I am [Sanika](name)
-    - I am [Sarah](name)
-    - I am [Aditya](name)
-    - I am [Girija](name)
-    - I am [Sanjana](name)
-    - I am [Mansvi](name)
-    - I am [Priya](name)
-    - I am [Rahul](name)
-    - I am [Rashmi](name)
-    - I am [Sachin](name)
-
-
-#- intent: ssn_entry
-#  examples: |
-#    - my ssn number is [123456](ssn)
-#    - my ssn number is [678235](ssn)
-#    - my ssn number is [243523](ssn)
-#    - my ssn number is [378479](ssn)
-#    - my ssn number is [657489](ssn)
-#    - my ssn number is [783936](ssn)
-#
-#- intent: subject_entry
-#  examples: |
-#    - subject is [Maths](subject)
-#    - subject is [Bio](subject)
-#    - subject is [Physics](subject)
-#    - subject is [Computer Science](subject)
-#    - subject is [Chemistry](subject)
-
 - intent: affirm
   examples: |
     - yes
@@ -105,24 +57,24 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
-- intent: location_entry
+- intent: city_entry
   examples: |
-    - [delhi](location)
-    - [mumbai](location)
-    - [hyderabad](location)
-    - [chennai](location)
-    - [bangalore](location)
-    - [pune](location)
-    - [shimla](location)
-    - [chandigarh](location)
-    - [nashik](location)
-    - [ahmedabad](location)
-    - [kochi](location)
-    - [jaipur](location)
-    - [mysore](location)
-    - [surat](location)
-    - [gangtok](location)
-    - [bhopal](location)
+    - [delhi](city)
+    - [mumbai](city)
+    - [hyderabad](city)
+    - [chennai](city)
+    - [bangalore](city)
+    - [pune](city)
+    - [shimla](city)
+    - [chandigarh](city)
+    - [nashik](city)
+    - [ahmedabad](city)
+    - [kochi](city)
+    - [jaipur](city)
+    - [mysore](city)
+    - [surat](city)
+    - [gangtok](city)
+    - [bhopal](city)
 
 - intent: search_provider
   examples: |
@@ -238,42 +190,23 @@ nlu:
 
 - intent: get_driving_license
   examples: |
-    - I need a [driving licence](driving_license)
-    - I need a [driving license](driving_license)
-    - how to get [driving license](driving_license)?
-    - where can i get a [driving licence](driving_license)?
-    - am I eligible for a [driving license](driving_license)?
-    - [dl](driving_license)
-    - [license](driving_license)
-    - [licence](driving_license)
+    - I need a [driving licence](license_type)
+    - I need a [driving license](license_type)
+    - how to get [driving license](license_type)?
+    - where can i get a [driving licence](license_type)?
+    - am I eligible for a [driving license](license_type)?
+    - [dl](license_type)
+    - [license](license_type)
+    - [licence](license_type)
 
 - intent: get_learners_license
   examples: |
-    - I need a [learners licence](learners_license)
-    - I need a [learners license](learners_license)
-    - how to get [learners license](learners_license)?
-    - where can i get a [learners licence](learners_license)?
-    - am I eligible for a [learners license](learners_license)?
-    - [ll](learners_license)
-
-- intent: age_entry
-  examples: |
-    - [18](age)
-    - [15](age)
-    - [16](age)
-    - [17](age)
-    - [19](age)
-    - [20](age)
-    - [25](age)
-    - [30](age)
-    - [45](age)
-    - [37](age)
-    - [10](age)
-    - [12](age)
-    - [53](age)
-    - [67](age)
-    - [43](age)
-    - [32](age)
+    - I need a [learners licence](license_type)
+    - I need a [learners license](license_type)
+    - how to get [learners license](license_type)?
+    - where can i get a [learners licence](license_type)?
+    - am I eligible for a [learners license](license_type)?
+    - [ll](license_type)
 
 - intent: weather
   examples: |
@@ -284,35 +217,71 @@ nlu:
     - i want to know the weather of today
     - tell me weather forecast
     - hows the weather today
+    - weather today
+    - weather
+    - what is the weather condition today
+    - weather report
+    - what is the humidity
+    - what is the weather report for today
+    - what is todays weather forecast
+    - weather forecast
 
 - intent: city_weather
   examples: |
-    - show me what's the weather in [Delhi](location)
-    - the weather condition in [Chandigarh](location)
-    - hows weather in [Chennai](location)
-    - hows [Mumbai](location) today
-    - whats the weather in [Hyderabad](location)
-    - temperature in [Goa](location)
-    - tell me the temperature at [Ahmedabad](location)
+    - show me what's the weather in [Delhi](city)
+    - the weather condition in [Chandigarh](city)
+    - hows weather in [Chennai](city)
+    - hows [Mumbai](city) today
+    - whats the weather in [Hyderabad](city)
+    - temperature in [Goa](city)
+    - tell me the temperature at [Ahmedabad](city)
+    - [Delhi](city) weather
+    - [Amritsar](city) weather
+    - [Kolkata](city) temperature
+    - [Agra](city) humidity
+    - [Bangalore](city) weather
+    - [Surat](city) weather
+    - what is the weather condition in [Banglore](city)
 
 - intent: corona_state
   examples: |
-    - [india](state)
-    - [corona](state)
-    - [karnataka](state)
-    - [maharashtra](state)
-    - [andhra pradesh](state)
-    - [bihar](state)
-    - [punjab](state)
-    - [odisha](state)
-    - [assam](state)
-    - [goa](state)
-    - [mp](state)
-    - [madhya pradesh](state)
-    - [west bengal](state)
-    - [himachal pradesh](state)
-    - [rajasthan](state)
-    - [mh](state)
-    - [ap](state)
-    - [hp](state)
-    - [kl](state)
+    - count of covid patients in [india](state)
+    - whats the corona count in [karnataka](state)
+    - corona tally in [maharashtra](state)
+    - number of covid patients in [andhra pradesh](state)
+    - number of corona patients in [bihar](state)
+    - corona status in [punjab](state)
+    - covid tally in [odisha](state)
+    - number of active covid cases in [assam](state)
+    - covid status in [goa](state)
+    - number of covid cases in [mp](state)
+    - number of corona cases in [madhya pradesh](state)
+    - corona patients in [west bengal](state)
+    - covid patients in [himachal pradesh](state)
+    - number of covid cases in [rajasthan](state)
+    - cases in [mh](state)
+    - number of covid patients [ap](state)
+    - cases in [hp](state)
+    - corona patient count in [kl](state)
+
+- intent: inform_driving_license_type
+  examples: |
+    - [motorcycles without gear, upto 50 cc capacity](driving_license_type)
+    - [motorcycles with gear](driving_license_type)
+    - [commercial heavy vehicles or transport vehicles](driving_license_type)
+
+- intent: learner_license_number_entry
+  examples: |
+    - [123456789](learners_license_number)
+    - [637892948](learners_license_number)
+    - [849304930](learners_license_number)
+    - [758497548](learners_license_number)
+    - [432094893](learners_license_number)
+    - [292094840](learners_license_number)
+    - [532984903](learners_license_number)
+    - [298484905](learners_license_number)
+    - [357853989](learners_license_number)
+    - [209432843](learners_license_number)
+    - [759473902](learners_license_number)
+    - [324802984](learners_license_number)
+    - [530850392](learners_license_number)

@@ -6,74 +6,137 @@ intents:
   - affirm
   - deny
   - bot_challenge
-  - age_entry
-  - location_entry
+  - city_entry
   - search_provider
-  - name_entry
-  - weather
-  - city_weather
   - get_driving_license
   - get_learners_license
+  - weather
+  - city_weather
   - corona_state
-#  - ssn_entry
-#  - subject_entry
-#  - admission_enquiry
+  - inform_driving_license_type
+  - learner_license_number_entry
 
 entities:
   - medical_facility_type
-  - location
-  - age
-  - name
-  - driving_license
-  - learners_license
+  - city
+  - license_type
   - state
-#  - ssn
-#  - subject
+  - driving_license_type
+  - learners_license_number
 
 slots:
   medical_facility_type:
     type: text
-  location:
+  city:
     type: text
   age:
-    type: float
-    min_value: 10
-    max_value: 120
+    type: text
   name:
     type: text
-#  ssn:
-#    type: text
-#  subject:
-#    type: text
+  learners_license_number:
+    type: text
+  dob:
+    type: text
+  address:
+    type: text
+  aadhaar_card_number:
+    type: text
+  date_for_appointment:
+    type: text
+  slot_for_appointment:
+    type: categorical
+    values:
+      - 10.00 to 12.00
+      - 12.30 to 14.30
+      - 15.00 to 17.00
+  license_type:
+    influence_conversation: true
+    type: text
+  driving_license_type:
+    influence_conversation: true
+    type: categorical
+    values:
+      - motorcycles without gear, upto 50 cc capacity
+      - motorcycles with gear
+      - commercial heavy vehicles or transport vehicles
+  pob:
+    type: text
+  education:
+    type: text
+  citizenship_type:
+    type: categorical
+    values:
+      - birth
+      - descent
+      - registration
+      - naturalisation
+  blood_group:
+    type: text
+  previous_dl_number:
+    type: text
+  pin_code:
+    type: text
 
-#forms:
-#  driving_license_form:
-#    required_slots:
-#      location:
-#        - type: from_entity
-#          entity: location
-#      age:
-#        - type: from_entity
-#          entity: age
-#  admission_form:
-#    required_slots:
-#      name:
-#        - type: from_entity
-#          entity: name
-#      ssn:
-#        - type: from_entity
-#          entity: ssn
-#      subject:
-#        - type: from_entity
-#          entity: subject
+forms:
+  driving_license_form:
+    required_slots:
+        name:
+          - type: from_text
+        age:
+          - type: from_text
+        dob:
+          - type: from_text
+        address:
+          - type: from_text
+        city:
+          - type: from_entity
+            entity: city
+        pin_code:
+          - type: from_text
+        aadhaar_card_number:
+          - type: from_text
+        date_for_appointment:
+          - type: from_text
+        slot_for_appointment:
+          - type: from_text
+
+  learners_license_form:
+    required_slots:
+        name:
+          - type: from_text
+        age:
+          - type: from_text
+        dob:
+          - type: from_text
+        pob:
+          - type: from_text
+        blood_group:
+          - type: from_text
+        citizenship_type:
+          - type: from_text
+        education:
+          - type: from_text
+        address:
+          - type: from_text
+        city:
+          - type: from_entity
+            entity: city
+        pin_code:
+          - type: from_text
+        aadhaar_card_number:
+          - type: from_text
+        date_for_appointment:
+          - type: from_text
+        slot_for_appointment:
+          - type: from_text
 
 actions:
   - action_facility_search
   - action_weather
-  - action_driving_license_form
-  - action_restart
-  - action_followup_check
-  - action_learners_license_form
+#  - action_driving_license_form
+#  - action_restart
+#  - action_followup_check
+#  - action_learners_license_form
   - action_corona_tracker
 
 responses:
@@ -89,35 +152,116 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
-  utter_ask_location:
-    - text: "Sure. Where are you based?"
+  utter_ask_city:
+    - text: "What is the name of your city?"
+
+  utter_holds_ll:
+    - text: "Do you have a Learner's License?"
+
+  utter_need_ll:
+    - text: "An individual who wants to drive any type of motor vehicle in India has to get his/her learner's license first.\nA learner’s license is issued for learning.\nAfter a month of the issued learner’s license, the person has to appear for the test in front of an RTO authority, who upon proper examination, will declare if he/she has passed the exam or not."
 
   utter_ask_age:
     - text: "What is your age?"
 
-  utter_steps:
-    - text: "do you want to know the steps"
+  utter_ask_name:
+    - text: "What is your full name?"
 
-  utter_slot_values:
-    - text: "Getting you a driving license in {location} for age {age}"
+  utter_ask_dob:
+    - text: "Please enter your date of birth in DD-MM-YYYY format:"
+
+  utter_ask_pob:
+    - text: "Please enter your place of birth:"
+
+  utter_ask_education:
+    - text: "Please enter your education qualification:"
+
+  utter_ask_blood_group:
+    - text: "Please enter your blood group (e.g. B+ve):"
+
+  utter_ask_citizenship_type:
+    - text: "Please enter your Indian citizenship type (birth, descent, registration or naturalisation):"
+
+  utter_ask_address:
+    - text: "Please enter your home address:"
+
+  utter_ask_aadhaar_card_number:
+    - text: "Please enter your 12-digit Aadhaar Card Number:"
+
+  utter_ask_date_for_appointment:
+    - text: "Please enter your preferred date for the Driving Test in DD-MM-YYYY format:"
+
+  utter_ask_slot_for_appointment:
+    - text: "What is your preferred slot for the appointment?\n1. 10.00 to 12.00\n2. 12.30 to 14.30\n3. 15.00 to 17.00"
+
+  utter_steps:
+    - text: "Do you want to know the steps?"
+
+  utter_what_else:
+    - text: "How else can I help you?"
 
   utter_default:
     - text: "please restate your request"
 
-#  utter_slot_values:
-#    - text: "Received admission form for {name}, {ssn}, {subject}"
-#
-#  utter_ask_name:
-#    - text: "What is your name?"
-#
-#  utter_ask_ssn:
-#    - text: "What is your ssn number?"
-#
-#  utter_ask_subject:
-#    - text: "What is your subject?"
-#
-#  utter_submit:
-#    - text: "All done"
+  utter_eligibility_for_casetwo:
+    - text: "Is your age above 18, are you conversant with traffic rules and have valid age proof and address proof?"
+
+  utter_eligibility_for_caseone:
+    - text: "Is your age above 16, do you have your parent's consent, are you conversant with traffic rules and have valid age proof and address proof?"
+
+  utter_eligibility_for_casethree:
+    - text: "Is your age above 20, have you finished schooling till 8th standard, are you conversant with traffic rules and have valid age proof and address proof?"
+
+  utter_ask_driving_license_type:
+    - text: "Which of the following license are you applying for?\n1. motorcycles without gear, upto 50 cc capacity\n2. motorcycles with gear\n3. commercial heavy vehicles or transport vehicles"
+
+  utter_sorry:
+    - text: "Sorry you are not eligible for getting a {driving_license_type} :("
+
+  utter_eligible:
+    - text: "Congratulations! You are eligible for getting a {driving_license_type}. Please fill your details to continue."
+
+  utter_ask_learners_license_number:
+    - text: "Please enter your Learner's License number:"
+
+  utter_ask_to_apply_for_ll:
+    - text: "Do you want to apply for Learner's License?"
+
+  utter_ask_pin_code:
+    - text: "Please enter your pin code:"
+
+  utter_submit:
+    - text: "All done!"
+
+  utter_dl_submit:
+    - text: "Received your application for {license_type} with the following details:\n
+        license type: {driving_license_type}\n
+        name: {name}\n
+        age: {age}\n
+        dob: {dob}\n
+        address: {address}\n
+        city: {city}\n
+        pin_code: {pin_code}\n
+        Aadhaar card number: {aadhaar_card_number}\n
+        Date of Driving Test: {date_for_appointment}\n
+        Slot of Driving Test: {slot_for_appointment}\n"
+
+  utter_ll_submit:
+    - text: "Received your application for {license_type} with the following details:\n
+        license type: {driving_license_type}\n
+        name: {name}\n
+        age: {age}\n
+        date of birth: {dob}\n
+        place of birth: {pob}\n
+        blood group: {blood_group}\n
+        citizenship type: {citizenship_type}\n
+        educational qualification: {education}\n
+        address: {address}\n
+        city: {city}\n
+        pin_code: {pin_code}\n
+        Aadhaar card number: {aadhaar_card_number}\n
+        Date of Driving Test: {date_for_appointment}\n
+        Slot of Driving Test: {slot_for_appointment}\n"
 
 session_config:
   session_expiration_time: 60

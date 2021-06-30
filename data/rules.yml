@@ -12,8 +12,26 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Greet with name after name_entry
+- rule: Submit driving license form
+  condition:
+    - active_loop: driving_license_form
   steps:
-    - intent: name_entry
-    - action: utter_greet_with_name
+    - action: driving_license_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: utter_dl_submit
+    - action: utter_what_else
 
+- rule: Submit learners license form
+  condition:
+    - active_loop: license_form
+  steps:
+    - action: license_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: utter_ll_submit
+    - action: utter_what_else
