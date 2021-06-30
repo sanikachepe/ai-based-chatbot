@@ -16,39 +16,6 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
 
-#- story: get driving license story
-#  steps:
-#    - intent: greet
-#    - action: utter_greet
-#    - intent: get_driving_license
-#    - action: driving_license_form
-#    - active_loop: driving_license_form
-#    - slot_was_set:
-#        - location: "delhi"
-#    - slot_was_set:
-#        - age: "18"
-#    - intent: goodbye
-#    - action: utter_goodbye
-
-#- story: admission path
-#  steps:
-#    - intent: greet
-#    - action: utter_greet
-#    - intent: admission_enquiry
-#    - action: admission_form
-#    - active_loop: admission_form
-#    - slot_was_set:
-#        - name: "Sanika"
-#    - slot_was_set:
-#        - ssn: "188934"
-#    - slot_was_set:
-#        - subject: "maths"
-#    - active_loop: null
-#    - action: utter_slot_values
-##    - action: utter_ask_feedback
-#    - intent: goodbye
-#    - action: utter_goodbye
-
 - story: Story 001
   steps:
     - intent: greet
@@ -56,6 +23,8 @@ stories:
     - intent: weather
     - action: utter_ask_location
     - intent: location_entry
+      entities:
+        - location: "mumbai"
     - action: action_weather
     - intent: goodbye
     - action: utter_goodbye
@@ -71,49 +40,299 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
 
-- story: get driving license story
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: get_driving_license
-      entities:
-       - driving_license: "driving license"
-    - action: utter_ask_age
-    - intent: age_entry
-      entities:
-        - age: "12"
-    - action: utter_ask_location
-    - intent: location_entry
-      entities:
-        - location: "delhi"
-    - action: action_driving_license_form
-    #- action: action_followup_check
-    - action: action_restart
-    - intent: goodbye
-    - action: utter_goodbye
-
-- story: get lerners license story
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: get_learners_license
-      entities:
-       - lerners_license: "lerners license"
-    - action: utter_ask_age
-    - intent: age_entry
-      entities:
-        - age: "12"
-    - action: utter_ask_location
-    - intent: location_entry
-      entities:
-        - location: "delhi"
-    - action: action_learners_license_form
-    #- action: action_followup_check
-    - action: action_restart
-    - intent: goodbye
-    - action: utter_goodbye
-
 - story: corona tracker path
   steps:
+    - intent: greet
+    - action: utter_greet
     - intent: corona_state
+      entities:
+      - state: "maharashtra"
     - action: action_corona_tracker
+    - action: utter_what_else
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: driving license + holds aseonelearners license + c
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: affirm
+    - action: utter_ask_learners_license_number
+    - intent: learner_license_number_entry
+      entities:
+      - learners_license_number: "123456789"
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
+    - action: driving_license_form
+    - active_loop: driving_license_form
+
+- story: driving license + holds learners license + casetwo
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: affirm
+    - action: utter_ask_learners_license_number
+    - intent: learner_license_number_entry
+      entities:
+      - learners_license_number: "123456789"
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles with gear"
+    - action: driving_license_form
+    - active_loop: driving_license_form
+
+- story: driving license + holds learners license + casethree
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: affirm
+    - action: utter_ask_learners_license_number
+    - intent: learner_license_number_entry
+      entities:
+      - learners_license_number: "123456789"
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "commercial heavy vehicles or transport vehicles"
+    - action: driving_license_form
+    - active_loop: driving_license_form
+
+- story: driving license + no learners license + caseone+ caseredirect to learners license
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
+    - action: utter_eligibility_for_caseone
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form
+    - active_loop: learners_license_form
+
+- story: driving license + no learners license + caseone + caseredirect to learners license
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
+    - action: utter_eligibility_for_caseone
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form
+    - active_loop: learners_license_form
+
+- story: driving license + no learners license + caseone + ineligible
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
+    - action: utter_eligibility_for_caseone
+    - intent: deny
+    - action: utter_sorry
+
+- story: driving license + no learners license + casetwo + redirect to learners license
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles with gear"
+    - action: utter_eligibility_for_casetwo
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form
+    - active_loop: learners_license_form
+
+- story: driving license + no learners license + casetwo + ineligible
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles with gear"
+    - action: utter_eligibility_for_casetwo
+    - intent: deny
+    - action: utter_sorry
+
+- story: driving license + no learners license + casethree + redirect to learners license
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "commercial heavy vehicles or transport vehicles"
+    - action: utter_eligibility_for_casethree
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form
+    - active_loop: learners_license_form
+
+- story: driving license + no learners license + casethree + ineligible
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "commercial heavy vehicles or transport vehicles"
+    - action: utter_eligibility_for_casethree
+    - intent: affirm
+    - action: utter_sorry
+
+- story: driving license + no learners license + no redirect
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: deny
+
+- story: learners license + caseone
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
+    - action: utter_eligibility_for_caseone
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form
+    - active_loop: learners_license_form
+
+- story: learners license + caseone + ineligible
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
+    - action: utter_eligibility_for_caseone
+    - intent: deny
+    - action: utter_sorry
+
+- story: learners license + casetwo
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles with gear"
+    - action: utter_eligibility_for_casetwo
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form
+    - active_loop: learners_license_form
+
+- story: learners license + casetwo + ineligible
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "motorcycles with gear"
+    - action: utter_eligibility_for_casetwo
+    - intent: affirm
+    - action: utter_eligible
+    - intent: deny
+    - action: utter_sorry
+
+- story: learners license + casethree
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "commercial heavy vehicles or transport vehicles"
+    - action: utter_eligibility_for_casethree
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form
+    - active_loop: learners_license_form
+
+- story: learners license + casethree + ineligible
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_driving_license_type
+    - intent: inform_driving_license_type
+      entities:
+      - driving_license_type: "commercial heavy vehicles or transport vehicles"
+    - action: utter_eligibility_for_caseone
+    - intent: deny
+    - action: utter_sorry

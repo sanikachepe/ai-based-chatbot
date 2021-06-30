@@ -6,29 +6,23 @@ intents:
   - affirm
   - deny
   - bot_challenge
-  - age_entry
   - location_entry
   - search_provider
-  - name_entry
-  - weather
-  - city_weather
   - get_driving_license
   - get_learners_license
+  - weather
+  - city_weather
   - corona_state
-#  - ssn_entry
-#  - subject_entry
-#  - admission_enquiry
+  - inform_driving_license_type
+  - license_number_entry
 
 entities:
   - medical_facility_type
   - location
-  - age
-  - name
-  - driving_license
-  - learners_license
+  - license_type
   - state
-#  - ssn
-#  - subject
+  - driving_license_type
+  - learners_license_number
 
 slots:
   medical_facility_type:
@@ -36,44 +30,73 @@ slots:
   location:
     type: text
   age:
-    type: float
-    min_value: 10
-    max_value: 120
+    type: text
   name:
     type: text
-#  ssn:
-#    type: text
-#  subject:
-#    type: text
+  learners_license_number:
+    type: text
+  dob:
+    type: text
+  address:
+    type: text
+  aadhaar_card_number:
+    type: text
+  date_for_appointment:
+    type: text
+  time_for_appointment:
+    type: text
+  license_type:
+    influence_conversation: true
+    type: text
+  driving_license_type:
+    influence_conversation: true
+    type: categorical
+    values:
+      - motorcycles without gear, upto 50 cc capacity
+      - motorcycles with gear
+      - commercial heavy vehicles or transport vehicles
 
-#forms:
-#  driving_license_form:
-#    required_slots:
-#      location:
-#        - type: from_entity
-#          entity: location
-#      age:
-#        - type: from_entity
-#          entity: age
-#  admission_form:
-#    required_slots:
-#      name:
-#        - type: from_entity
-#          entity: name
-#      ssn:
-#        - type: from_entity
-#          entity: ssn
-#      subject:
-#        - type: from_entity
-#          entity: subject
+forms:
+  dl_form:
+    required_slots:
+        name:
+          - type: from_text
+        age:
+          - type: from_text
+        dob:
+          - type: from_text
+        address:
+          - type: from_text
+        aadhaar_card_number:
+          - type: from_text
+        date_for_appointment:
+          - type: from_text
+        time_for_appointment:
+          - type: from_text
+  ll_form:
+    required slots:
+        name:
+          - type: from_text
+        age:
+          - type: from_text
+        dob:
+          - type: from_text
+        address:
+          - type: from_text
+        aadhaar_card_number:
+          - type: from_text
+        date_for_appointment:
+          - type: from_text
+        time_for_appointment:
+          - type: from_text
 
 actions:
   - action_facility_search
   - action_weather
-  - action_driving_license_form
-  - action_restart
-  - action_followup_check
-  - action_learners_license_form
+#  - action_driving_license_form
+#  - action_restart
+#  - action_followup_check
+#  - action_learners_license_form
   - action_corona_tracker
 
 responses:
@@ -92,8 +115,32 @@ responses:
   utter_ask_location:
     - text: "Sure. Where are you based?"
 
+  utter_holds_ll:
+    - text: "Do you have a Learner's License?"
+
+  utter_need_ll:
+    - text: "An individual who wants to drive any type of motor vehicle in India has to get his/her learner's license first. A learner’s license is issued for learning.\nAfter a month of the issued learner’s license, the person has to appear for the test in front of an RTO authority, who upon proper examination, will declare if he/she has passed the exam or not."
+
   utter_ask_age:
     - text: "What is your age?"
+
+  utter_ask_name:
+    - text: "What is your name?"
+
+  utter_ask_dob:
+    - text: "Please enter your date of birth in DD-MM-YYYY format"
+
+  utter_ask_address:
+    - text: "Please enter your home address"
+
+  utter_ask_aadhaar_card_number:
+    - text: "Please enter your Aadhaar Card Number"
+
+  utter_ask_date_for_appointment:
+    - text: "Please enter your preferred date for the Driving Test"
+
+  utter_ask_time_for_appointment:
+    - text: "What is your preferred time for the appointment?"
 
   utter_steps:
     - text: "do you want to know the steps"
@@ -101,23 +148,38 @@ responses:
   utter_slot_values:
     - text: "Getting you a driving license in {location} for age {age}"
 
+  utter_what_else:
+    - text: "How else can I help you?"
+
   utter_default:
     - text: "please restate your request"
 
-#  utter_slot_values:
-#    - text: "Received admission form for {name}, {ssn}, {subject}"
-#
-#  utter_ask_name:
-#    - text: "What is your name?"
-#
-#  utter_ask_ssn:
-#    - text: "What is your ssn number?"
-#
-#  utter_ask_subject:
-#    - text: "What is your subject?"
-#
-#  utter_submit:
-#    - text: "All done"
+  utter_eligibility_for_casetwo:
+    - text: "Is your age above 18, are you conversant with traffic rules and have valid age proof and address proof?"
+
+  utter_eligibility_for_caseone:
+    - text: "Is your age above 16, do you have your parent's consent, are you conversant with traffic rules and have valid age proof and address proof?"
+
+  utter_eligibility_for_casethree:
+    - text: "Is your age above 20, have you finished schooling till 8th standard, are you conversant with traffic rules and have valid age proof and address proof?"
+
+  utter_ask_driving_license_type:
+    - text: "Which of the following driving license are you applying for?\n1. motorcycles without gear, upto 50 cc capacity\n2. motorcycles with gear\n3. commercial heavy vehicles or transport vehicles"
+
+  utter_sorry:
+    - text: "Sorry you are not eligible for getting a {driving_license_type}"
+
+  utter_eligible:
+    - text: "Congratulations! You are eligible for getting a {driving_license_type}. Please fill your details to continue."
+
+  utter_ask_learners_license_number:
+    - text: "Enter your Learner's License number"
+
+  utter_ask_to_apply_for_ll:
+    - text: "Do you want to apply for Learner's License?"
+
+  utter_submit:
+    - text: "All done!"
 
 session_config:
   session_expiration_time: 60
