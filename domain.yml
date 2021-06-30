@@ -234,7 +234,7 @@ responses:
     - text: "All done!"
 
   utter_dl_submit:
-    - text: "Received your application for {license_type} with the following details:\n
+    - text: "Received your application for driving license with the following details:\n
         license type: {driving_license_type}\n
         name: {name}\n
         age: {age}\n
@@ -247,7 +247,7 @@ responses:
         Slot of Driving Test: {slot_for_appointment}\n"
 
   utter_ll_submit:
-    - text: "Received your application for {license_type} with the following details:\n
+    - text: "Received your application for learners license with the following details:\n
         license type: {driving_license_type}\n
         name: {name}\n
         age: {age}\n
