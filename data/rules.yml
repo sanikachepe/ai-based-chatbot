@@ -26,9 +26,9 @@ rules:
 
 - rule: Submit learners license form
   condition:
-    - active_loop: license_form
+    - active_loop: learners_license_form
   steps:
-    - action: license_form
+    - action: learners_license_form
     - active_loop: null
     - slot_was_set:
         - requested_slot: null

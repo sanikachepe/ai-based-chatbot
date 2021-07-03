@@ -10,4 +10,3 @@ def get_weather(city):
     return weather_data
 
 
-

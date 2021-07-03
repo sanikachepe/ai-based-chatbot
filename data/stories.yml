@@ -8,10 +8,10 @@ stories:
     - intent: search_provider
       entities:
         - medical_facility_type: "hospital"
-    - action: utter_ask_city
-    - intent: city_entry
+    - action: utter_ask_location
+    - intent: location_entry
       entities:
-        - city: "delhi"
+        - location: "delhi"
     - action: action_facility_search
     - action: utter_what_else
 
@@ -21,9 +21,9 @@ stories:
     - action: utter_greet
     - intent: weather
     - action: utter_ask_city
-    - intent: city_entry
+    - intent: location_entry
       entities:
-        - city: "mumbai"
+        - location: "mumbai"
     - action: action_weather
     - action: utter_what_else
 
@@ -33,7 +33,7 @@ stories:
     - action: utter_greet
     - intent: city_weather
       entities:
-        - city: "delhi"
+        - location: "delhi"
     - action: action_weather
     - action: utter_what_else
 
@@ -54,10 +54,6 @@ stories:
       - license_type: "driving license"
     - action: utter_holds_ll
     - intent: affirm
-    - action: utter_ask_learners_license_number
-    - intent: learner_license_number_entry
-      entities:
-      - learners_license_number: "123456789"
     - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
@@ -65,7 +61,13 @@ stories:
     - action: driving_license_form
     - active_loop: driving_license_form
     - slot_was_set:
-      - name: "Ramesh Suresh Patel"
+      - learners_license_number: "123456789"
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
     - slot_was_set:
       - age: "17"
     - slot_was_set:
@@ -77,7 +79,9 @@ stories:
     - slot_was_set:
       - pin_code: "422101"
     - slot_was_set:
-      - aadhaar_card_number: "128748928748"
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "31-06-21"
     - slot_was_set:
@@ -90,10 +94,6 @@ stories:
       - license_type: "driving license"
     - action: utter_holds_ll
     - intent: affirm
-    - action: utter_ask_learners_license_number
-    - intent: learner_license_number_entry
-      entities:
-      - learners_license_number: "123456789"
     - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
@@ -101,7 +101,13 @@ stories:
     - action: driving_license_form
     - active_loop: driving_license_form
     - slot_was_set:
-      - name: "Ramesh Suresh Patel"
+      - learners_license_number: "123456789"
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
     - slot_was_set:
       - age: "17"
     - slot_was_set:
@@ -113,7 +119,9 @@ stories:
     - slot_was_set:
       - pin_code: "422101"
     - slot_was_set:
-      - aadhaar_card_number: "128748928748"
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "31-06-21"
     - slot_was_set:
@@ -126,10 +134,6 @@ stories:
       - license_type: "driving license"
     - action: utter_holds_ll
     - intent: affirm
-    - action: utter_ask_learners_license_number
-    - intent: learner_license_number_entry
-      entities:
-      - learners_license_number: "123456789"
     - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
@@ -137,7 +141,13 @@ stories:
     - action: driving_license_form
     - active_loop: driving_license_form
     - slot_was_set:
-      - name: "Ramesh Suresh Patel"
+      - learners_license_number: "123456789"
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
     - slot_was_set:
       - age: "17"
     - slot_was_set:
@@ -149,7 +159,9 @@ stories:
     - slot_was_set:
       - pin_code: "422101"
     - slot_was_set:
-      - aadhaar_card_number: "128748928748"
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "31-06-21"
     - slot_was_set:
@@ -175,7 +187,11 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-        - name: "Ramesh Suresh Patel"
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -183,7 +199,7 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+ve"
+        - blood_group: "B+"
     - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
@@ -195,7 +211,9 @@ stories:
     - slot_was_set:
         - pin_code: "422101"
     - slot_was_set:
-        - aadhaar_card_number: "128748928748"
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -240,7 +258,11 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-        - name: "Ramesh Suresh Patel"
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -248,7 +270,7 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+ve"
+        - blood_group: "B+"
     - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
@@ -260,7 +282,9 @@ stories:
     - slot_was_set:
         - pin_code: "422101"
     - slot_was_set:
-        - aadhaar_card_number: "128748928748"
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -305,7 +329,11 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-        - name: "Ramesh Suresh Patel"
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -313,7 +341,7 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+ve"
+        - blood_group: "B+"
     - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
@@ -325,7 +353,9 @@ stories:
     - slot_was_set:
         - pin_code: "422101"
     - slot_was_set:
-        - aadhaar_card_number: "128748928748"
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -377,7 +407,11 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-        - name: "Ramesh Suresh Patel"
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -385,7 +419,7 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+ve"
+        - blood_group: "B+"
     - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
@@ -397,7 +431,9 @@ stories:
     - slot_was_set:
         - pin_code: "422101"
     - slot_was_set:
-        - aadhaar_card_number: "128748928748"
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -432,7 +468,11 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-        - name: "Ramesh Suresh Patel"
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -440,7 +480,7 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+ve"
+        - blood_group: "B+"
     - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
@@ -452,7 +492,9 @@ stories:
     - slot_was_set:
         - pin_code: "422101"
     - slot_was_set:
-        - aadhaar_card_number: "128748928748"
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -489,7 +531,11 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-        - name: "Ramesh Suresh Patel"
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -497,7 +543,7 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+ve"
+        - blood_group: "B+"
     - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
@@ -509,7 +555,9 @@ stories:
     - slot_was_set:
         - pin_code: "422101"
     - slot_was_set:
-        - aadhaar_card_number: "128748928748"
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:

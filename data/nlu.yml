@@ -57,24 +57,24 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
-- intent: city_entry
+- intent: location_entry
   examples: |
-    - [delhi](city)
-    - [mumbai](city)
-    - [hyderabad](city)
-    - [chennai](city)
-    - [bangalore](city)
-    - [pune](city)
-    - [shimla](city)
-    - [chandigarh](city)
-    - [nashik](city)
-    - [ahmedabad](city)
-    - [kochi](city)
-    - [jaipur](city)
-    - [mysore](city)
-    - [surat](city)
-    - [gangtok](city)
-    - [bhopal](city)
+    - [delhi](location)
+    - [mumbai](location)
+    - [hyderabad](location)
+    - [chennai](location)
+    - [bangalore](location)
+    - [pune](location)
+    - [shimla](location)
+    - [chandigarh](location)
+    - [nashik](location)
+    - [ahmedabad](location)
+    - [kochi](location)
+    - [jaipur](location)
+    - [mysore](location)
+    - [surat](location)
+    - [gangtok](location)
+    - [bhopal](location)
 
 - intent: search_provider
   examples: |
@@ -192,6 +192,9 @@ nlu:
   examples: |
     - I need a [driving licence](license_type)
     - I need a [driving license](license_type)
+    - I need a [dl](license_type)
+    - how to get [dl](license_type)?
+    - where can I get a [dl](license_type)?
     - how to get [driving license](license_type)?
     - where can i get a [driving licence](license_type)?
     - am I eligible for a [driving license](license_type)?
@@ -207,6 +210,9 @@ nlu:
     - where can i get a [learners licence](license_type)?
     - am I eligible for a [learners license](license_type)?
     - [ll](license_type)
+    - I need a [ll](license_type)
+    - how to get [ll](license_type)?
+    - where can I get a [ll](license_type)?
 
 - intent: weather
   examples: |
@@ -228,20 +234,20 @@ nlu:
 
 - intent: city_weather
   examples: |
-    - show me what's the weather in [Delhi](city)
-    - the weather condition in [Chandigarh](city)
-    - hows weather in [Chennai](city)
-    - hows [Mumbai](city) today
-    - whats the weather in [Hyderabad](city)
-    - temperature in [Goa](city)
-    - tell me the temperature at [Ahmedabad](city)
-    - [Delhi](city) weather
-    - [Amritsar](city) weather
-    - [Kolkata](city) temperature
-    - [Agra](city) humidity
-    - [Bangalore](city) weather
-    - [Surat](city) weather
-    - what is the weather condition in [Banglore](city)
+    - show me what's the weather in [Delhi](location)
+    - the weather condition in [Chandigarh](location)
+    - hows weather in [Chennai](location)
+    - hows [Mumbai](location) today
+    - whats the weather in [Hyderabad](location)
+    - temperature in [Goa](location)
+    - tell me the temperature at [Ahmedabad](location)
+    - [Delhi](location) weather
+    - [Amritsar](location) weather
+    - [Kolkata](location) temperature
+    - [Agra](location) humidity
+    - [Bangalore](location) weather
+    - [Surat](location) weather
+    - what is the weather condition in [Banglore](location)
 
 - intent: corona_state
   examples: |
@@ -269,19 +275,3 @@ nlu:
     - [motorcycles without gear, upto 50 cc capacity](driving_license_type)
     - [motorcycles with gear](driving_license_type)
     - [commercial heavy vehicles or transport vehicles](driving_license_type)
-
-- intent: learner_license_number_entry
-  examples: |
-    - [123456789](learners_license_number)
-    - [637892948](learners_license_number)
-    - [849304930](learners_license_number)
-    - [758497548](learners_license_number)
-    - [432094893](learners_license_number)
-    - [292094840](learners_license_number)
-    - [532984903](learners_license_number)
-    - [298484905](learners_license_number)
-    - [357853989](learners_license_number)
-    - [209432843](learners_license_number)
-    - [759473902](learners_license_number)
-    - [324802984](learners_license_number)
-    - [530850392](learners_license_number)
