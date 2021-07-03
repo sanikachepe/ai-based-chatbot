@@ -14,7 +14,6 @@ intents:
   - city_weather
   - corona_state
   - inform_driving_license_type
-  - license_number_entry
 
 entities:
   - medical_facility_type
@@ -22,16 +21,21 @@ entities:
   - license_type
   - state
   - driving_license_type
-  - learners_license_number
 
 slots:
   medical_facility_type:
     type: text
   location:
     type: text
+  city:
+    type: text
   age:
     type: text
-  name:
+  first_name:
+    type: text
+  middle_name:
+    type: text
+  last_name:
     type: text
   learners_license_number:
     type: text
@@ -43,8 +47,12 @@ slots:
     type: text
   date_for_appointment:
     type: text
-  time_for_appointment:
-    type: text
+  slot_for_appointment:
+    type: categorical
+    values:
+      - 10.00 to 12.00
+      - 12.30 to 14.30
+      - 15.00 to 17.00
   license_type:
     influence_conversation: true
     type: text
@@ -55,11 +63,38 @@ slots:
       - motorcycles without gear, upto 50 cc capacity
       - motorcycles with gear
       - commercial heavy vehicles or transport vehicles
+  pob:
+    type: text
+  education:
+    type: text
+  citizenship_type:
+    type: categorical
+    values:
+      - birth
+      - descent
+      - registration
+      - naturalisation
+  blood_group:
+    type: text
+  previous_dl_number:
+    type: text
+  pin_code:
+    type: text
+  state:
+    type: text
+  phone_number:
+    type: text
 
 forms:
-  dl_form:
+  driving_license_form:
     required_slots:
-        name:
+        learners_license_number:
+          - type: from_text
+        first_name:
+          - type: from_text
+        middle_name:
+          - type: from_text
+        last_name:
           - type: from_text
         age:
           - type: from_text
@@ -67,86 +102,129 @@ forms:
           - type: from_text
         address:
           - type: from_text
+        city:
+          - type: from_text
+        pin_code:
+          - type: from_text
+        phone_number:
+          - type: from_text
         aadhaar_card_number:
           - type: from_text
         date_for_appointment:
           - type: from_text
-        time_for_appointment:
+        slot_for_appointment:
           - type: from_text
-  ll_form:
-    required slots:
-        name:
+
+  learners_license_form:
+    required_slots:
+        first_name:
+          - type: from_text
+        middle_name:
+          - type: from_text
+        last_name:
           - type: from_text
         age:
           - type: from_text
         dob:
           - type: from_text
+        pob:
+          - type: from_text
+        blood_group:
+          - type: from_text
+        citizenship_type:
+          - type: from_text
+        education:
+          - type: from_text
         address:
+          - type: from_text
+        city:
+          - type: from_text
+        pin_code:
+          - type: from_text
+        phone_number:
           - type: from_text
         aadhaar_card_number:
           - type: from_text
         date_for_appointment:
           - type: from_text
-        time_for_appointment:
+        slot_for_appointment:
           - type: from_text
 
 actions:
   - action_facility_search
   - action_weather
-#  - action_driving_license_form
-#  - action_restart
-#  - action_followup_check
-#  - action_learners_license_form
+  - validate_driving_license_form
   - action_corona_tracker
 
 responses:
   utter_greet:
-  - text: "Hey! How can I help you?"
+    - text: "Hey! How can I help you?"
 
   utter_greet_with_name:
-  - text: "Hey {name}! How can I help you?"
+    - text: "Hey {name}! How can I help you?"
 
   utter_goodbye:
-  - text: "Happy to help :)"
+    - text: "Happy to help :)"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "I am a bot, powered by Rasa."
 
   utter_ask_location:
     - text: "Sure. Where are you based?"
+
+  utter_ask_city:
+    - text: "Please enter the name of your city:"
 
   utter_holds_ll:
     - text: "Do you have a Learner's License?"
 
   utter_need_ll:
-    - text: "An individual who wants to drive any type of motor vehicle in India has to get his/her learner's license first. A learner’s license is issued for learning.\nAfter a month of the issued learner’s license, the person has to appear for the test in front of an RTO authority, who upon proper examination, will declare if he/she has passed the exam or not."
+    - text: "An individual who wants to drive any type of motor vehicle in India has to get his/her learner's license first.\nA learner’s license is issued for learning.\nAfter a month of the issued learner’s license, the person has to appear for the test in front of an RTO authority, who upon proper examination, will declare if he/she has passed the exam or not."
 
   utter_ask_age:
     - text: "What is your age?"
 
-  utter_ask_name:
-    - text: "What is your name?"
+  utter_ask_first_name:
+    - text: "What is your first name?"
+
+  utter_ask_middle_name:
+    - text: "What is your middle name?"
+
+  utter_ask_last_name:
+    - text: "What is your last name?"
 
   utter_ask_dob:
-    - text: "Please enter your date of birth in DD-MM-YYYY format"
+    - text: "Please enter your date of birth in DD-MM-YYYY format:"
+
+  utter_ask_pob:
+    - text: "Please enter your place of birth:"
+
+  utter_ask_education:
+    - text: "Please enter your education qualification:"
+
+  utter_ask_blood_group:
+    - text: "Please enter your blood group (e.g. B+ve):"
+
+  utter_ask_citizenship_type:
+    - text: "Please enter your Indian citizenship type (birth, descent, registration or naturalisation):"
 
   utter_ask_address:
-    - text: "Please enter your home address"
+    - text: "Please enter your home address:"
+
+  utter_ask_state:
+    - text: "Please enter the name of your state:"
 
   utter_ask_aadhaar_card_number:
-    - text: "Please enter your Aadhaar Card Number"
+    - text: "Please enter your 12-digit Aadhaar Card Number in XXXX XXXX XXXX format:"
 
   utter_ask_date_for_appointment:
-    - text: "Please enter your preferred date for the Driving Test"
+    - text: "Please enter your preferred date for the Driving Test in DD-MM-YYYY format:"
 
-  utter_ask_time_for_appointment:
-    - text: "What is your preferred time for the appointment?"
+  utter_ask_slot_for_appointment:
+    - text: "What is your preferred slot for the appointment?\n1. 10.00 to 12.00\n2. 12.30 to 14.30\n3. 15.00 to 17.00"
 
   utter_steps:
-    - text: "do you want to know the steps"
-
-  utter_slot_values:
-    - text: "Getting you a driving license in {location} for age {age}"
+    - text: "Do you want to know the steps?"
 
   utter_what_else:
     - text: "How else can I help you?"
@@ -164,22 +242,62 @@ responses:
     - text: "Is your age above 20, have you finished schooling till 8th standard, are you conversant with traffic rules and have valid age proof and address proof?"
 
   utter_ask_driving_license_type:
-    - text: "Which of the following driving license are you applying for?\n1. motorcycles without gear, upto 50 cc capacity\n2. motorcycles with gear\n3. commercial heavy vehicles or transport vehicles"
+    - text: "Which of the following license are you applying for?\n1. motorcycles without gear, upto 50 cc capacity\n2. motorcycles with gear\n3. commercial heavy vehicles or transport vehicles"
 
   utter_sorry:
-    - text: "Sorry you are not eligible for getting a {driving_license_type}"
+    - text: "Sorry you are not eligible for getting a {driving_license_type} :("
 
   utter_eligible:
     - text: "Congratulations! You are eligible for getting a {driving_license_type}. Please fill your details to continue."
 
   utter_ask_learners_license_number:
-    - text: "Enter your Learner's License number"
+    - text: "Please enter your 9 digit Learner's License number:"
 
   utter_ask_to_apply_for_ll:
     - text: "Do you want to apply for Learner's License?"
 
+  utter_ask_pin_code:
+    - text: "Please enter your pin code:"
+
+  utter_ask_phone_number:
+    - text: "Please enter your phone number:"
+
   utter_submit:
     - text: "All done!"
+
+  utter_dl_submit:
+    - text: "Received your application for driving license with the following details:\n
+        License type: {driving_license_type}\n
+        Learners license number: {learners_license_number}\n
+        Name: {first_name} {middle_name} {last_name}\n
+        Age: {age}\n
+        Dob: {dob}\n
+        Address: {address}\n
+        City: {city}\n
+        Pin code: {pin_code}\n
+        State: {state}
+        Phone number: {phone_number}
+        Aadhaar card number: {aadhaar_card_number}\n
+        Date of Driving Test: {date_for_appointment}\n
+        Slot of Driving Test: {slot_for_appointment}\n"
+
+  utter_ll_submit:
+    - text: "Received your application for learners license with the following details:\n
+        License type: {driving_license_type}\n
+        Name: {first_name} {middle_name} {last_name}\n
+        Age: {age}\n
+        Date of birth: {dob}\n
+        Place of birth: {pob}\n
+        Blood group: {blood_group}\n
+        Citizenship type: {citizenship_type}\n
+        Educational qualification: {education}\n
+        Address: {address}\n
+        City: {city}\n
+        Pin code: {pin_code}\n
+        Phone number: {phone_number}\n
+        Aadhaar card number: {aadhaar_card_number}\n
+        Date of Learning License Test: {date_for_appointment}\n
+        Slot of Learning License Test: {slot_for_appointment}\n"
 
 session_config:
   session_expiration_time: 60

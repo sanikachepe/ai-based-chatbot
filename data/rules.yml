@@ -11,3 +11,27 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Submit driving license form
+  condition:
+    - active_loop: driving_license_form
+  steps:
+    - action: driving_license_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: utter_dl_submit
+    - action: utter_what_else
+
+- rule: Submit learners license form
+  condition:
+    - active_loop: learners_license_form
+  steps:
+    - action: learners_license_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: utter_ll_submit
+    - action: utter_what_else

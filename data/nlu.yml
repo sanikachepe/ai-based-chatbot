@@ -192,6 +192,9 @@ nlu:
   examples: |
     - I need a [driving licence](license_type)
     - I need a [driving license](license_type)
+    - I need a [dl](license_type)
+    - how to get [dl](license_type)?
+    - where can I get a [dl](license_type)?
     - how to get [driving license](license_type)?
     - where can i get a [driving licence](license_type)?
     - am I eligible for a [driving license](license_type)?
@@ -207,6 +210,9 @@ nlu:
     - where can i get a [learners licence](license_type)?
     - am I eligible for a [learners license](license_type)?
     - [ll](license_type)
+    - I need a [ll](license_type)
+    - how to get [ll](license_type)?
+    - where can I get a [ll](license_type)?
 
 - intent: weather
   examples: |
@@ -269,19 +275,3 @@ nlu:
     - [motorcycles without gear, upto 50 cc capacity](driving_license_type)
     - [motorcycles with gear](driving_license_type)
     - [commercial heavy vehicles or transport vehicles](driving_license_type)
-
-- intent: license_number_entry
-  examples: |
-    - [123456789](learners_license_number)
-    - [637892948](learners_license_number)
-    - [849304930](learners_license_number)
-    - [758497548](learners_license_number)
-    - [432094893](learners_license_number)
-    - [292094840](learners_license_number)
-    - [532984903](learners_license_number)
-    - [298484905](learners_license_number)
-    - [357853989](learners_license_number)
-    - [209432843](learners_license_number)
-    - [759473902](learners_license_number)
-    - [324802984](learners_license_number)
-    - [530850392](learners_license_number)

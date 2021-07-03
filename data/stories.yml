@@ -1,7 +1,7 @@
 version: "2.0"
 
 stories:
-- story: search hospital + location
+- story: search hospital + city
   steps:
     - intent: greet
     - action: utter_greet
@@ -13,21 +13,19 @@ stories:
       entities:
         - location: "delhi"
     - action: action_facility_search
-    - intent: goodbye
-    - action: utter_goodbye
+    - action: utter_what_else
 
 - story: Story 001
   steps:
     - intent: greet
     - action: utter_greet
     - intent: weather
-    - action: utter_ask_location
+    - action: utter_ask_city
     - intent: location_entry
       entities:
         - location: "mumbai"
     - action: action_weather
-    - intent: goodbye
-    - action: utter_goodbye
+    - action: utter_what_else
 
 - story: Story 002
   steps:
@@ -37,8 +35,7 @@ stories:
       entities:
         - location: "delhi"
     - action: action_weather
-    - intent: goodbye
-    - action: utter_goodbye
+    - action: utter_what_else
 
 - story: corona tracker path
   steps:
@@ -49,26 +46,46 @@ stories:
       - state: "maharashtra"
     - action: action_corona_tracker
     - action: utter_what_else
-    - intent: goodbye
-    - action: utter_goodbye
 
-- story: driving license + holds aseonelearners license + c
+- story: driving license + holds learners license + caseone
   steps:
     - intent: get_driving_license
       entities:
       - license_type: "driving license"
     - action: utter_holds_ll
     - intent: affirm
-    - action: utter_ask_learners_license_number
-    - intent: learner_license_number_entry
-      entities:
-      - learners_license_number: "123456789"
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
     - action: driving_license_form
     - active_loop: driving_license_form
+    - slot_was_set:
+      - learners_license_number: "123456789"
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+      - age: "17"
+    - slot_was_set:
+      - dob: "31-10-86"
+    - slot_was_set:
+      - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+      - city: "nashik"
+    - slot_was_set:
+      - pin_code: "422101"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+        - date_for_appointment: "31-06-21"
+    - slot_was_set:
+      - slot_for_appointment: "10.00 to 12.00"
 
 - story: driving license + holds learners license + casetwo
   steps:
@@ -77,16 +94,38 @@ stories:
       - license_type: "driving license"
     - action: utter_holds_ll
     - intent: affirm
-    - action: utter_ask_learners_license_number
-    - intent: learner_license_number_entry
-      entities:
-      - learners_license_number: "123456789"
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles with gear"
     - action: driving_license_form
     - active_loop: driving_license_form
+    - slot_was_set:
+      - learners_license_number: "123456789"
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+      - age: "17"
+    - slot_was_set:
+      - dob: "31-10-86"
+    - slot_was_set:
+      - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+      - city: "nashik"
+    - slot_was_set:
+      - pin_code: "422101"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+        - date_for_appointment: "31-06-21"
+    - slot_was_set:
+      - slot_for_appointment: "10.00 to 12.00"
 
 - story: driving license + holds learners license + casethree
   steps:
@@ -95,18 +134,40 @@ stories:
       - license_type: "driving license"
     - action: utter_holds_ll
     - intent: affirm
-    - action: utter_ask_learners_license_number
-    - intent: learner_license_number_entry
-      entities:
-      - learners_license_number: "123456789"
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "commercial heavy vehicles or transport vehicles"
     - action: driving_license_form
     - active_loop: driving_license_form
+    - slot_was_set:
+      - learners_license_number: "123456789"
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+      - age: "17"
+    - slot_was_set:
+      - dob: "31-10-86"
+    - slot_was_set:
+      - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+      - city: "nashik"
+    - slot_was_set:
+      - pin_code: "422101"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+        - date_for_appointment: "31-06-21"
+    - slot_was_set:
+      - slot_for_appointment: "10.00 to 12.00"
 
-- story: driving license + no learners license + caseone+ caseredirect to learners license
+- story: driving license + no learners license + caseone + redirect to learners license
   steps:
     - intent: get_driving_license
       entities:
@@ -116,7 +177,7 @@ stories:
     - action: utter_need_ll
     - action: utter_ask_to_apply_for_ll
     - intent: affirm
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
@@ -125,26 +186,38 @@ stories:
     - action: utter_eligible
     - action: learners_license_form
     - active_loop: learners_license_form
-
-- story: driving license + no learners license + caseone + caseredirect to learners license
-  steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: deny
-    - action: utter_need_ll
-    - action: utter_ask_to_apply_for_ll
-    - intent: affirm
-    - action: utter_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
-    - action: utter_eligibility_for_caseone
-    - intent: affirm
-    - action: utter_eligible
-    - action: learners_license_form
-    - active_loop: learners_license_form
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+        - age: "22"
+    - slot_was_set:
+        - dob: "31-10-86"
+    - slot_was_set:
+        - pob: "nagpur"
+    - slot_was_set:
+        - blood_group: "B+ve"
+    - slot_was_set:
+        - citizenship_type: "birth"
+    - slot_was_set:
+        - education: "B.E"
+    - slot_was_set:
+        - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+        - city: "nashik"
+    - slot_was_set:
+        - pin_code: "422101"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+        - date_for_appointment: "20-06-21"
+    - slot_was_set:
+        - slot_for_appointment: "10.00 to 12.00"
 
 - story: driving license + no learners license + caseone + ineligible
   steps:
@@ -156,13 +229,14 @@ stories:
     - action: utter_need_ll
     - action: utter_ask_to_apply_for_ll
     - intent: affirm
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
     - action: utter_eligibility_for_caseone
     - intent: deny
     - action: utter_sorry
+    - action: utter_what_else
 
 - story: driving license + no learners license + casetwo + redirect to learners license
   steps:
@@ -174,7 +248,7 @@ stories:
     - action: utter_need_ll
     - action: utter_ask_to_apply_for_ll
     - intent: affirm
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles with gear"
@@ -183,6 +257,38 @@ stories:
     - action: utter_eligible
     - action: learners_license_form
     - active_loop: learners_license_form
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+        - age: "22"
+    - slot_was_set:
+        - dob: "31-10-86"
+    - slot_was_set:
+        - pob: "nagpur"
+    - slot_was_set:
+        - blood_group: "B+ve"
+    - slot_was_set:
+        - citizenship_type: "birth"
+    - slot_was_set:
+        - education: "B.E"
+    - slot_was_set:
+        - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+        - city: "nashik"
+    - slot_was_set:
+        - pin_code: "422101"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+        - date_for_appointment: "20-06-21"
+    - slot_was_set:
+        - slot_for_appointment: "10.00 to 12.00"
 
 - story: driving license + no learners license + casetwo + ineligible
   steps:
@@ -194,13 +300,14 @@ stories:
     - action: utter_need_ll
     - action: utter_ask_to_apply_for_ll
     - intent: affirm
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles with gear"
     - action: utter_eligibility_for_casetwo
     - intent: deny
     - action: utter_sorry
+    - action: utter_what_else
 
 - story: driving license + no learners license + casethree + redirect to learners license
   steps:
@@ -212,7 +319,7 @@ stories:
     - action: utter_need_ll
     - action: utter_ask_to_apply_for_ll
     - intent: affirm
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "commercial heavy vehicles or transport vehicles"
@@ -221,6 +328,38 @@ stories:
     - action: utter_eligible
     - action: learners_license_form
     - active_loop: learners_license_form
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+        - age: "22"
+    - slot_was_set:
+        - dob: "31-10-86"
+    - slot_was_set:
+        - pob: "nagpur"
+    - slot_was_set:
+        - blood_group: "B+ve"
+    - slot_was_set:
+        - citizenship_type: "birth"
+    - slot_was_set:
+        - education: "B.E"
+    - slot_was_set:
+        - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+        - city: "nashik"
+    - slot_was_set:
+        - pin_code: "422101"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+        - date_for_appointment: "20-06-21"
+    - slot_was_set:
+        - slot_for_appointment: "10.00 to 12.00"
 
 - story: driving license + no learners license + casethree + ineligible
   steps:
@@ -232,13 +371,14 @@ stories:
     - action: utter_need_ll
     - action: utter_ask_to_apply_for_ll
     - intent: affirm
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "commercial heavy vehicles or transport vehicles"
     - action: utter_eligibility_for_casethree
     - intent: affirm
     - action: utter_sorry
+    - action: utter_what_else
 
 - story: driving license + no learners license + no redirect
   steps:
@@ -250,13 +390,14 @@ stories:
     - action: utter_need_ll
     - action: utter_ask_to_apply_for_ll
     - intent: deny
+    - action: utter_what_else
 
 - story: learners license + caseone
   steps:
     - intent: get_learners_license
       entities:
       - license_type: "learners license"
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
@@ -265,26 +406,59 @@ stories:
     - action: utter_eligible
     - action: learners_license_form
     - active_loop: learners_license_form
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+        - age: "22"
+    - slot_was_set:
+        - dob: "31-10-86"
+    - slot_was_set:
+        - pob: "nagpur"
+    - slot_was_set:
+        - blood_group: "B+ve"
+    - slot_was_set:
+        - citizenship_type: "birth"
+    - slot_was_set:
+        - education: "B.E"
+    - slot_was_set:
+        - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+        - city: "nashik"
+    - slot_was_set:
+        - pin_code: "422101"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+        - date_for_appointment: "20-06-21"
+    - slot_was_set:
+        - slot_for_appointment: "10.00 to 12.00"
 
 - story: learners license + caseone + ineligible
   steps:
     - intent: get_learners_license
       entities:
       - license_type: "learners license"
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
     - action: utter_eligibility_for_caseone
     - intent: deny
     - action: utter_sorry
+    - action: utter_what_else
 
 - story: learners license + casetwo
   steps:
     - intent: get_learners_license
       entities:
       - license_type: "learners license"
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles with gear"
@@ -293,13 +467,45 @@ stories:
     - action: utter_eligible
     - action: learners_license_form
     - active_loop: learners_license_form
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+        - age: "22"
+    - slot_was_set:
+        - dob: "31-10-86"
+    - slot_was_set:
+        - pob: "nagpur"
+    - slot_was_set:
+        - blood_group: "B+ve"
+    - slot_was_set:
+        - citizenship_type: "birth"
+    - slot_was_set:
+        - education: "B.E"
+    - slot_was_set:
+        - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+        - city: "nashik"
+    - slot_was_set:
+        - pin_code: "422101"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+        - date_for_appointment: "20-06-21"
+    - slot_was_set:
+        - slot_for_appointment: "10.00 to 12.00"
 
 - story: learners license + casetwo + ineligible
   steps:
     - intent: get_learners_license
       entities:
       - license_type: "learners license"
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "motorcycles with gear"
@@ -308,13 +514,14 @@ stories:
     - action: utter_eligible
     - intent: deny
     - action: utter_sorry
+    - action: utter_what_else
 
 - story: learners license + casethree
   steps:
     - intent: get_learners_license
       entities:
       - license_type: "learners license"
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "commercial heavy vehicles or transport vehicles"
@@ -323,16 +530,49 @@ stories:
     - action: utter_eligible
     - action: learners_license_form
     - active_loop: learners_license_form
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+        - age: "22"
+    - slot_was_set:
+        - dob: "31-10-86"
+    - slot_was_set:
+        - pob: "nagpur"
+    - slot_was_set:
+        - blood_group: "B+ve"
+    - slot_was_set:
+        - citizenship_type: "birth"
+    - slot_was_set:
+        - education: "B.E"
+    - slot_was_set:
+        - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+        - city: "nashik"
+    - slot_was_set:
+        - pin_code: "422101"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+        - date_for_appointment: "20-06-21"
+    - slot_was_set:
+        - slot_for_appointment: "10.00 to 12.00"
 
 - story: learners license + casethree + ineligible
   steps:
     - intent: get_learners_license
       entities:
       - license_type: "learners license"
-    - action: utter_driving_license_type
+    - action: utter_ask_driving_license_type
     - intent: inform_driving_license_type
       entities:
       - driving_license_type: "commercial heavy vehicles or transport vehicles"
-    - action: utter_eligibility_for_caseone
+    - action: utter_eligibility_for_casethree
     - intent: deny
     - action: utter_sorry
+    - action: utter_what_else
