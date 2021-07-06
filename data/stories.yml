@@ -1,31 +1,64 @@
 version: "2.0"
 
 stories:
-- story: search hospital + city
+- story: search hospital + location
   steps:
     - intent: greet
-    - action: utter_greet
+    - action: utter_greet  
     - intent: search_provider
       entities:
         - medical_facility_type: "hospital"
-    - action: utter_ask_city
-    - intent: city_entry
+    - action: utter_ask_location
+    - intent: location_entry
       entities:
-        - city: "delhi"
+        - location: "delhi"
     - action: action_facility_search
-    - action: utter_what_else
+    - action: action_restart
+    - intent: goodbye
+    - action: utter_goodbye
 
-- story: Story 001
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: weather
-    - action: utter_ask_city
-    - intent: city_entry
-      entities:
-        - city: "mumbai"
-    - action: action_weather
-    - action: utter_what_else
+# - story: get driving license story
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - intent: get_driving_license
+#       entities: 
+#        - driving_license: "driving license"
+#     - action: utter_ask_age
+#     - intent: age_entry
+#       entities: 
+#         - age: "12"
+#     - action: utter_ask_location
+#     - intent: location_entry
+#       entities: 
+#         - location: "delhi" 
+#     - action: action_driving_license_form
+#    # - action: action_followup_check
+#     - action: action_restart
+#     - intent: goodbye
+#     - action: utter_goodbye
+
+# - story: get learners license story
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - intent: get_learners_license
+#       entities:
+#        - learners_license: "learners license"
+#     - action: utter_ask_age
+#     - intent: age_entry
+#       entities: 
+#         - age: "12"
+#     - action: utter_ask_location
+#     - intent: location_entry
+#       entities: 
+#         - location: "delhi" 
+#     - action: action_learners_license_form
+#    # - action: action_followup_check
+#     - action: action_restart
+#     - intent: goodbye
+#     - action: utter_goodbye
+#check
 
 - story: Story 002
   steps:
@@ -33,498 +66,58 @@ stories:
     - action: utter_greet
     - intent: city_weather
       entities:
-        - city: "delhi"
+        - location: "delhi"
     - action: action_weather
-    - action: utter_what_else
+    - intent: goodbye
+    - action: utter_goodbye
 
-- story: corona tracker path
+- story: Story 001
   steps:
     - intent: greet
     - action: utter_greet
-    - intent: corona_state
-      entities:
-      - state: "maharashtra"
-    - action: action_corona_tracker
-    - action: utter_what_else
+    - intent: weather
+    - action: utter_ask_location
+    - intent: location_entry
+    - action: action_weather
+    - intent: goodbye
+    - action: utter_goodbye
 
-- story: driving license + holds learners license + caseone
+- story: police station
   steps:
-    - intent: get_driving_license
+    - intent: greet
+    - action: utter_greet
+    - intent: police_station
+      entities: 
+       - police_station: "police station"
+    - action: utter_ask_location     
+    - intent: location_entry    
       entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: affirm
-    - action: utter_ask_learners_license_number
-    - intent: learner_license_number_entry
-      entities:
-      - learners_license_number: "123456789"
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
-    - action: driving_license_form
-    - active_loop: driving_license_form
-    - slot_was_set:
-      - name: "Ramesh Suresh Patel"
-    - slot_was_set:
-      - age: "17"
-    - slot_was_set:
-      - dob: "31-10-86"
-    - slot_was_set:
-      - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-      - city: "nashik"
-    - slot_was_set:
-      - pin_code: "422101"
-    - slot_was_set:
-      - aadhaar_card_number: "128748928748"
-    - slot_was_set:
-        - date_for_appointment: "31-06-21"
-    - slot_was_set:
-      - slot_for_appointment: "10.00 to 12.00"
+        - location: "delhi"
+    - action: action_police_station
+    - intent: goodbye
+    - action: utter_goodbye
 
-- story: driving license + holds learners license + casetwo
-  steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: affirm
-    - action: utter_ask_learners_license_number
-    - intent: learner_license_number_entry
-      entities:
-      - learners_license_number: "123456789"
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles with gear"
-    - action: driving_license_form
-    - active_loop: driving_license_form
-    - slot_was_set:
-      - name: "Ramesh Suresh Patel"
-    - slot_was_set:
-      - age: "17"
-    - slot_was_set:
-      - dob: "31-10-86"
-    - slot_was_set:
-      - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-      - city: "nashik"
-    - slot_was_set:
-      - pin_code: "422101"
-    - slot_was_set:
-      - aadhaar_card_number: "128748928748"
-    - slot_was_set:
-        - date_for_appointment: "31-06-21"
-    - slot_was_set:
-      - slot_for_appointment: "10.00 to 12.00"
+# - story: happy name path
+#   steps:
+#     - intent: tell_name
+#     - action: utter_name
+#     - action: utter_my_name
+#     - intent: my_name
+#       entities:
+#       - name: "rahul"
+#     - slot_was_set:
+#         - name: "rahul"
+#     - action: utter_mobile_number
+#     - intent: mobile_number
+#       entities:
+#       - number: "8209829808"
+#     - slot_was_set:
+#         - number: "8209829808"
+#     - action: utter_thanks
 
-- story: driving license + holds learners license + casethree
+- story: police numbers
   steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: affirm
-    - action: utter_ask_learners_license_number
-    - intent: learner_license_number_entry
-      entities:
-      - learners_license_number: "123456789"
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "commercial heavy vehicles or transport vehicles"
-    - action: driving_license_form
-    - active_loop: driving_license_form
-    - slot_was_set:
-      - name: "Ramesh Suresh Patel"
-    - slot_was_set:
-      - age: "17"
-    - slot_was_set:
-      - dob: "31-10-86"
-    - slot_was_set:
-      - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-      - city: "nashik"
-    - slot_was_set:
-      - pin_code: "422101"
-    - slot_was_set:
-      - aadhaar_card_number: "128748928748"
-    - slot_was_set:
-        - date_for_appointment: "31-06-21"
-    - slot_was_set:
-      - slot_for_appointment: "10.00 to 12.00"
-
-- story: driving license + no learners license + caseone + redirect to learners license
-  steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: deny
-    - action: utter_need_ll
-    - action: utter_ask_to_apply_for_ll
-    - intent: affirm
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
-    - action: utter_eligibility_for_caseone
-    - intent: affirm
-    - action: utter_eligible
-    - action: learners_license_form
-    - active_loop: learners_license_form
-    - slot_was_set:
-        - name: "Ramesh Suresh Patel"
-    - slot_was_set:
-        - age: "22"
-    - slot_was_set:
-        - dob: "31-10-86"
-    - slot_was_set:
-        - pob: "nagpur"
-    - slot_was_set:
-        - blood_group: "B+ve"
-    - slot_was_set:
-        - citizenship_type: "birth"
-    - slot_was_set:
-        - education: "B.E"
-    - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-        - city: "nashik"
-    - slot_was_set:
-        - pin_code: "422101"
-    - slot_was_set:
-        - aadhaar_card_number: "128748928748"
-    - slot_was_set:
-        - date_for_appointment: "20-06-21"
-    - slot_was_set:
-        - slot_for_appointment: "10.00 to 12.00"
-
-- story: driving license + no learners license + caseone + ineligible
-  steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: deny
-    - action: utter_need_ll
-    - action: utter_ask_to_apply_for_ll
-    - intent: affirm
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
-    - action: utter_eligibility_for_caseone
-    - intent: deny
-    - action: utter_sorry
-    - action: utter_what_else
-
-- story: driving license + no learners license + casetwo + redirect to learners license
-  steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: deny
-    - action: utter_need_ll
-    - action: utter_ask_to_apply_for_ll
-    - intent: affirm
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles with gear"
-    - action: utter_eligibility_for_casetwo
-    - intent: affirm
-    - action: utter_eligible
-    - action: learners_license_form
-    - active_loop: learners_license_form
-    - slot_was_set:
-        - name: "Ramesh Suresh Patel"
-    - slot_was_set:
-        - age: "22"
-    - slot_was_set:
-        - dob: "31-10-86"
-    - slot_was_set:
-        - pob: "nagpur"
-    - slot_was_set:
-        - blood_group: "B+ve"
-    - slot_was_set:
-        - citizenship_type: "birth"
-    - slot_was_set:
-        - education: "B.E"
-    - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-        - city: "nashik"
-    - slot_was_set:
-        - pin_code: "422101"
-    - slot_was_set:
-        - aadhaar_card_number: "128748928748"
-    - slot_was_set:
-        - date_for_appointment: "20-06-21"
-    - slot_was_set:
-        - slot_for_appointment: "10.00 to 12.00"
-
-- story: driving license + no learners license + casetwo + ineligible
-  steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: deny
-    - action: utter_need_ll
-    - action: utter_ask_to_apply_for_ll
-    - intent: affirm
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles with gear"
-    - action: utter_eligibility_for_casetwo
-    - intent: deny
-    - action: utter_sorry
-    - action: utter_what_else
-
-- story: driving license + no learners license + casethree + redirect to learners license
-  steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: deny
-    - action: utter_need_ll
-    - action: utter_ask_to_apply_for_ll
-    - intent: affirm
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "commercial heavy vehicles or transport vehicles"
-    - action: utter_eligibility_for_casethree
-    - intent: affirm
-    - action: utter_eligible
-    - action: learners_license_form
-    - active_loop: learners_license_form
-    - slot_was_set:
-        - name: "Ramesh Suresh Patel"
-    - slot_was_set:
-        - age: "22"
-    - slot_was_set:
-        - dob: "31-10-86"
-    - slot_was_set:
-        - pob: "nagpur"
-    - slot_was_set:
-        - blood_group: "B+ve"
-    - slot_was_set:
-        - citizenship_type: "birth"
-    - slot_was_set:
-        - education: "B.E"
-    - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-        - city: "nashik"
-    - slot_was_set:
-        - pin_code: "422101"
-    - slot_was_set:
-        - aadhaar_card_number: "128748928748"
-    - slot_was_set:
-        - date_for_appointment: "20-06-21"
-    - slot_was_set:
-        - slot_for_appointment: "10.00 to 12.00"
-
-- story: driving license + no learners license + casethree + ineligible
-  steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: deny
-    - action: utter_need_ll
-    - action: utter_ask_to_apply_for_ll
-    - intent: affirm
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "commercial heavy vehicles or transport vehicles"
-    - action: utter_eligibility_for_casethree
-    - intent: affirm
-    - action: utter_sorry
-    - action: utter_what_else
-
-- story: driving license + no learners license + no redirect
-  steps:
-    - intent: get_driving_license
-      entities:
-      - license_type: "driving license"
-    - action: utter_holds_ll
-    - intent: deny
-    - action: utter_need_ll
-    - action: utter_ask_to_apply_for_ll
-    - intent: deny
-    - action: utter_what_else
-
-- story: learners license + caseone
-  steps:
-    - intent: get_learners_license
-      entities:
-      - license_type: "learners license"
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
-    - action: utter_eligibility_for_caseone
-    - intent: affirm
-    - action: utter_eligible
-    - action: learners_license_form
-    - active_loop: learners_license_form
-    - slot_was_set:
-        - name: "Ramesh Suresh Patel"
-    - slot_was_set:
-        - age: "22"
-    - slot_was_set:
-        - dob: "31-10-86"
-    - slot_was_set:
-        - pob: "nagpur"
-    - slot_was_set:
-        - blood_group: "B+ve"
-    - slot_was_set:
-        - citizenship_type: "birth"
-    - slot_was_set:
-        - education: "B.E"
-    - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-        - city: "nashik"
-    - slot_was_set:
-        - pin_code: "422101"
-    - slot_was_set:
-        - aadhaar_card_number: "128748928748"
-    - slot_was_set:
-        - date_for_appointment: "20-06-21"
-    - slot_was_set:
-        - slot_for_appointment: "10.00 to 12.00"
-
-- story: learners license + caseone + ineligible
-  steps:
-    - intent: get_learners_license
-      entities:
-      - license_type: "learners license"
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles without gear, upto 50 cc capacity"
-    - action: utter_eligibility_for_caseone
-    - intent: deny
-    - action: utter_sorry
-    - action: utter_what_else
-
-- story: learners license + casetwo
-  steps:
-    - intent: get_learners_license
-      entities:
-      - license_type: "learners license"
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles with gear"
-    - action: utter_eligibility_for_casetwo
-    - intent: affirm
-    - action: utter_eligible
-    - action: learners_license_form
-    - active_loop: learners_license_form
-    - slot_was_set:
-        - name: "Ramesh Suresh Patel"
-    - slot_was_set:
-        - age: "22"
-    - slot_was_set:
-        - dob: "31-10-86"
-    - slot_was_set:
-        - pob: "nagpur"
-    - slot_was_set:
-        - blood_group: "B+ve"
-    - slot_was_set:
-        - citizenship_type: "birth"
-    - slot_was_set:
-        - education: "B.E"
-    - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-        - city: "nashik"
-    - slot_was_set:
-        - pin_code: "422101"
-    - slot_was_set:
-        - aadhaar_card_number: "128748928748"
-    - slot_was_set:
-        - date_for_appointment: "20-06-21"
-    - slot_was_set:
-        - slot_for_appointment: "10.00 to 12.00"
-
-- story: learners license + casetwo + ineligible
-  steps:
-    - intent: get_learners_license
-      entities:
-      - license_type: "learners license"
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "motorcycles with gear"
-    - action: utter_eligibility_for_casetwo
-    - intent: affirm
-    - action: utter_eligible
-    - intent: deny
-    - action: utter_sorry
-    - action: utter_what_else
-
-- story: learners license + casethree
-  steps:
-    - intent: get_learners_license
-      entities:
-      - license_type: "learners license"
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "commercial heavy vehicles or transport vehicles"
-    - action: utter_eligibility_for_casethree
-    - intent: affirm
-    - action: utter_eligible
-    - action: learners_license_form
-    - active_loop: learners_license_form
-    - slot_was_set:
-        - name: "Ramesh Suresh Patel"
-    - slot_was_set:
-        - age: "22"
-    - slot_was_set:
-        - dob: "31-10-86"
-    - slot_was_set:
-        - pob: "nagpur"
-    - slot_was_set:
-        - blood_group: "B+ve"
-    - slot_was_set:
-        - citizenship_type: "birth"
-    - slot_was_set:
-        - education: "B.E"
-    - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-        - city: "nashik"
-    - slot_was_set:
-        - pin_code: "422101"
-    - slot_was_set:
-        - aadhaar_card_number: "128748928748"
-    - slot_was_set:
-        - date_for_appointment: "20-06-21"
-    - slot_was_set:
-        - slot_for_appointment: "10.00 to 12.00"
-
-- story: learners license + casethree + ineligible
-  steps:
-    - intent: get_learners_license
-      entities:
-      - license_type: "learners license"
-    - action: utter_ask_driving_license_type
-    - intent: inform_driving_license_type
-      entities:
-      - driving_license_type: "commercial heavy vehicles or transport vehicles"
-    - action: utter_eligibility_for_casethree
-    - intent: deny
-    - action: utter_sorry
-    - action: utter_what_else
+    - intent: police_help
+    - action: utter_police_report_or_number
+    - intent: report FIR
+    - action: utter_report_type

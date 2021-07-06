@@ -7,31 +7,199 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
+#----------------------------------------------------------------------------------------------
+
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Submit driving license form
-  condition:
-    - active_loop: driving_license_form
-  steps:
-    - action: driving_license_form
-    - active_loop: null
-    - slot_was_set:
-        - requested_slot: null
-    - action: utter_submit
-    - action: utter_dl_submit
-    - action: utter_what_else
+#----------------------------------------------------------------------------------------------  
 
-- rule: Submit learners license form
-  condition:
-    - active_loop: license_form
+- rule: police help
   steps:
-    - action: license_form
-    - active_loop: null
-    - slot_was_set:
-        - requested_slot: null
-    - action: utter_submit
-    - action: utter_ll_submit
-    - action: utter_what_else
+  - intent: police_help
+  - action: utter_police_report_or_number  
+#----------------------------------------------------------------------------------------------  
+
+- rule: police report fir
+  steps:
+  - intent: report FIR
+  - action: utter_report_type  
+#----------------------------------------------------------------------------------------------  
+
+- rule: civic grievance
+  steps:
+  - intent: civic grievance
+  - action: civic_grievance_form
+  - active_loop: civic_grievance_form
+
+- rule: Submit form cg
+  condition:
+  # Condition that form is active.
+  - active_loop: civic_grievance_form
+  steps:
+  # Form is deactivated
+  - action: civic_grievance_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit_cg  
+
+#----------------------------------------------------------------------------------------------
+
+- rule: Activate form
+  steps:
+  - intent: helpline_numbers
+  - action: police_number_form
+  - active_loop: police_number_form
+
+
+- rule: Submit form
+  condition:
+  # Condition that form is active.
+  - active_loop: police_number_form
+  steps:
+  # Form is deactivated
+  - action: police_number_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit
+#----------------------------------------------------------------------------------------------
+
+- rule: Activate form2
+  steps:
+  - intent: other
+  - action: user_details_form
+  - active_loop: user_details_form
+
+
+- rule: Submit form2
+  condition:
+  # Condition that form is active.
+  - active_loop: user_details_form
+  steps:
+  # Form is deactivated
+  - action: user_details_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit_fir
+
+#----------------------------------------------------------------------------------------------
+
+- rule: Activate form3
+  steps:
+  - intent: vehicle_theft
+  - action: theft_of_vehicle_form
+  - active_loop: theft_of_vehicle_form
+
+
+- rule: Submit form3
+  condition:
+  # Condition that form is active.
+  - active_loop: theft_of_vehicle_form
+  steps:
+  # Form is deactivated
+  - action: theft_of_vehicle_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit_fir3
+
+#----------------------------------------------------------------------------------------------
+
+#theft of goods:
+- rule: Activate form4
+  steps:
+  - intent: theft_goods
+  - action: theft_of_goods_form
+  - active_loop: theft_of_goods_form
+
+
+- rule: Submit form4
+  condition:
+  # Condition that form is active.
+  - active_loop: theft_of_goods_form
+  steps:
+  # Form is deactivated
+  - action: theft_of_goods_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit_fir4
+
+#----------------------------------------------------------------------------------------------
+
+#misssing person:
+- rule: Activate form5
+  steps:
+  - intent: missing_person
+  - action: missing_person_form
+  - active_loop: missing_person_form
+
+
+- rule: Submit form5
+  condition:
+  # Condition that form is active.
+  - active_loop: missing_person_form
+  steps:
+  # Form is deactivated
+  - action: missing_person_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit_fir5
+
+#----------------------------------------------------------------------------------------------
+
+  #lost and found:
+- rule: Activate form6
+  steps:
+  - intent: lost_found
+  - action: lost_and_found_form
+  - active_loop: lost_and_found_form
+
+
+- rule: Submit form6
+  condition:
+  # Condition that form is active.
+  - active_loop: lost_and_found_form
+  steps:
+  # Form is deactivated
+  - action: lost_and_found_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit_fir6    
+
+#----------------------------------------------------------------------------------------------
+
+# assault form  
+- rule: Activate form7
+  steps:
+  - intent: assault
+  - action: assault_form
+  - active_loop: assault_form
+
+
+- rule: Submit form7
+  condition:
+  # Condition that form is active.
+  - active_loop: assault_form
+  steps:
+  # Form is deactivated
+  - action: assault_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_submit_fir7    

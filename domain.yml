@@ -28,6 +28,9 @@ intents:
   - missing_mobile
   - assault
   - other
+  - report FIR
+  - civic grievance
+  - aadhar_no
   
   - my_name:
       use_entities:
@@ -83,7 +86,7 @@ slots:
     type: text
   clothes_of_mm:
     type: text
-  item_found:
+  item_lost_or_found:
     type: text
   location_of_item:
     type: text
@@ -93,6 +96,10 @@ slots:
     type: text
   lost_or_found:
     type: text 
+  landmark:
+    type: text  
+  grievance: 
+    type: text  
     
 
 responses:
@@ -139,7 +146,7 @@ responses:
     - text: What is your email address?
 
   utter_ask_dob:
-    - text: What is your date of birth in DD/MM/YYYY format?      
+    - text: What is your date of birth in DD-MM-YYYY format?      
   
   utter_ask_mobile_no: 
     - text: What is your mobile number?
@@ -184,20 +191,26 @@ responses:
   utter_ask_clothes_of_mm:
     - text: What clothes was the missing person wearing?
 
-  utter_ask_item_found:
-    - text: Describle the item found?
+  utter_ask_item_lost_or_found:
+    - text: Describle the item lost/found?
 
   utter_ask_location_of_item:
-    - text: Where was the item found?
+    - text: Where was the item lost/found?
+
   utter_ask_lost_or_found:
-    - text: The item has been Lost/ Found?  
+    - text: Was the item Lost or Found?  
   
   utter_ask_complaint_against:
     - text: Who is the complaint against? Please provide name and relation  
 
   utter_ask_assault_description:
     - text: Describe the assault  
+
+  utter_ask_grievance: 
+    - text: What grievance would you like to report?
   
+  utter_ask_landmark:
+    - text: Please provide the location and nearest landmark
     
 
 
@@ -232,6 +245,14 @@ actions:
   - action_submit_fir5
   - action_submit_fir6
   - action_submit_fir7
+  - validate_user_details_form
+  - action_submit_cg
+  - validate_theft_of_goods_form
+  - validate_theft_of_vehicle_form
+  - validate_missing_person_form
+  - validate_assault_form
+  - validate_lost_and_found_form
+  - validate_civic_grievance_form
   #- action_lerners_license_form  
 
 entities:
@@ -270,11 +291,13 @@ entities:
   - age_of_mm
   - sex
   - clothes_of_mm
-  - item_found
+  - item_lost_or_found
   - location_of_item
   - complaint_against
   - assault_description
   - lost_or_found 
+  - civic_grievance
+  - landmark
 
 forms:
   user_details_form:
@@ -369,7 +392,9 @@ forms:
     dob: 
       - type: from_text
         entity: dob           
-    
+    last_seen:
+      - type: from_text
+        entity: last_seen 
     date_time:
       - type: from_text
         entity: date_time
@@ -440,9 +465,9 @@ forms:
     lost_or_found:
       - type: from_text
         entity: lost_or_found            
-    item_found:
+    item_lost_or_found:
       - type: from_text
-        entity: item_found
+        entity: item_lost_or_found
     location_of_item:
       - type: from_text
         entity: location_of_item
@@ -479,6 +504,37 @@ forms:
       - type: from_text
         entity: anything_else                
 
+
+  civic_grievance_form:
+    name:
+      - type: from_text
+        entity: name
+    mobile_no:
+      - type: from_text
+        enitity: mobile_no
+    aadhar_no:
+      - type: from_text
+        enitity: aadhar_no 
+    grievance:
+      - type: from_text
+        entity: grievance  
+    location:
+      - type: from_text
+        entity: location
+    state:
+      - type: from_text
+        entity: state
+    landmark:
+      - type: from_text
+        entity: landmark
+    anything_else:
+      - type: from_text
+        entity: anything_else
+
+
+   
+      
+    
 
 
 

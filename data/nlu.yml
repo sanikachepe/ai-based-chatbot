@@ -16,7 +16,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -30,7 +29,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -39,7 +37,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -49,33 +46,30 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
-- intent: city_entry
+- intent: location_entry
   examples: |
-    - [delhi](city)
-    - [mumbai](city)
-    - [hyderabad](city)
-    - [chennai](city)
-    - [bangalore](city)
-    - [pune](city)
-    - [shimla](city)
-    - [chandigarh](city)
-    - [nashik](city)
-    - [ahmedabad](city)
-    - [kochi](city)
-    - [jaipur](city)
-    - [mysore](city)
-    - [surat](city)
-    - [gangtok](city)
-    - [bhopal](city)
-
+    - [delhi](location)
+    - [mumbai](location)
+    - [hyderabad](location)
+    - [chennai](location)
+    - [bangalore](location)
+    - [pune](location)
+    - [shimla](location)
+    - [chandigarh](location)
+    - [nashik](location)
+    - [ahmedabad](location)
+    - [kochi](location)
+    - [jaipur](location)
+    - [mysore](location)
+    - [surat](location)
+    - [gangtok](location)
+    - [bhopal](location)
 - intent: search_provider
   examples: |
     - I need a [hospital](medical_facility_type)
@@ -187,26 +181,45 @@ nlu:
     - [ayurveda](medical_facility_type) near me
     - [acupuncturist](medical_facility_type) near me
     - [microbiologist](medical_facility_type) near me
-
 - intent: get_driving_license
   examples: |
-    - I need a [driving licence](license_type)
-    - I need a [driving license](license_type)
-    - how to get [driving license](license_type)?
-    - where can i get a [driving licence](license_type)?
-    - am I eligible for a [driving license](license_type)?
-    - [dl](license_type)
-    - [license](license_type)
-    - [licence](license_type)
+    - I need a [driving licence](driving_license)
+    - I need a [driving license](driving_license)
+    - how to get [driving license](driving_license)?
+    - where can i get a [driving licence](driving_license)?
+    - am I eligible for a [driving license](driving_license)?
+    - [dl](driving_license)
+    - [license](driving_license)
+    - [licence](driving_license)
 
 - intent: get_learners_license
   examples: |
-    - I need a [learners licence](license_type)
-    - I need a [learners license](license_type)
-    - how to get [learners license](license_type)?
-    - where can i get a [learners licence](license_type)?
-    - am I eligible for a [learners license](license_type)?
-    - [ll](license_type)
+    - I need a [learners licence](learners_license)
+    - I need a [learners license](learners_license)
+    - how to get [learners license](learners_license)?
+    - where can i get a [learners licence](learners_license)?
+    - am I eligible for a [learners license](learners_license)?
+    - [ll](learners_license)
+        
+
+# - intent: age_entry
+#   examples: |
+#     - [18](age)
+#     - [15](age)
+#     - [16](age)
+#     - [17](age)
+#     - [19](age)
+#     - [20](age)
+#     - [25](age)
+#     - [30](age)
+#     - [45](age)
+#     - [37](age)
+#     - [10](age)
+#     - [12](age)
+#     - [53](age)
+#     - [67](age)
+#     - [43](age)
+#     - [32](age)
 
 - intent: weather
   examples: |
@@ -217,71 +230,174 @@ nlu:
     - i want to know the weather of today
     - tell me weather forecast
     - hows the weather today
-    - weather today
-    - weather
-    - what is the weather condition today
-    - weather report
-    - what is the humidity
-    - what is the weather report for today
-    - what is todays weather forecast
-    - weather forecast
-
+    
 - intent: city_weather
   examples: |
-    - show me what's the weather in [Delhi](city)
-    - the weather condition in [Chandigarh](city)
-    - hows weather in [Chennai](city)
-    - hows [Mumbai](city) today
-    - whats the weather in [Hyderabad](city)
-    - temperature in [Goa](city)
-    - tell me the temperature at [Ahmedabad](city)
-    - [Delhi](city) weather
-    - [Amritsar](city) weather
-    - [Kolkata](city) temperature
-    - [Agra](city) humidity
-    - [Bangalore](city) weather
-    - [Surat](city) weather
-    - what is the weather condition in [Banglore](city)
+    - show me what's the weather in [Delhi](location)
+    - the weather condition in [Chandigarh](location)
+    - hows weather in [Chennai](location)
+    - hows [Mumbai](location) today
+    - whats the weather in [Hyderabad](location)
+    - temperature in [Goa](location)
+    - tell me the temperature at [Ahmedabad](location)
 
-- intent: corona_state
-  examples: |
-    - count of covid patients in [india](state)
-    - whats the corona count in [karnataka](state)
-    - corona tally in [maharashtra](state)
-    - number of covid patients in [andhra pradesh](state)
-    - number of corona patients in [bihar](state)
-    - corona status in [punjab](state)
-    - covid tally in [odisha](state)
-    - number of active covid cases in [assam](state)
-    - covid status in [goa](state)
-    - number of covid cases in [mp](state)
-    - number of corona cases in [madhya pradesh](state)
-    - corona patients in [west bengal](state)
-    - covid patients in [himachal pradesh](state)
-    - number of covid cases in [rajasthan](state)
-    - cases in [mh](state)
-    - number of covid patients [ap](state)
-    - cases in [hp](state)
-    - corona patient count in [kl](state)
+# - intent: police_station
+#   examples: |
+#    - [police station](police_station)
+#    - [police](police_station)
+#    - where is the [police station](police_station)?
+#    - how to visit [police station](police_station)?
+#    - [polis](police_station)
+#   - [police stations](police_station) in [mumbai](location)
+ #- local [police station](police_station)
+ #  - [delhi](location) [police station](police_station)
+# - intent: my_name
+#   examples: |
+#     - my name is [ashish](name)
+#     - my name is [rahul](name)
+#     - my name is [apneet](name)
+#     - [ashish](name) is my name
+#     - [ashish](name) this side
+#     - people call me [ashish](name)
+#     - [mansvi](name)
+#     - [Mansvi](name)
+#     - [aditya](name)
+#     - [aryan](name)
+#     - [riya](name)
 
-- intent: inform_driving_license_type
-  examples: |
-    - [motorcycles without gear, upto 50 cc capacity](driving_license_type)
-    - [motorcycles with gear](driving_license_type)
-    - [commercial heavy vehicles or transport vehicles](driving_license_type)
+# - intent: mobile_number
+#   examples: |
+#     - my number is [8209829808]{"entity":"number"}
+#     - [8209829808]{"entity":"number"}
+#     - [8209829808]{"entity":"number"} is my number
+#     - my nobile number is [8209829808]{"entity":"number"}
+#     - [1234567890](number)
+#     - [9897687654](number)
+#     - [7689546732](number)
 
-- intent: learner_license_number_entry
+
+- intent: tell_name
   examples: |
-    - [123456789](learners_license_number)
-    - [637892948](learners_license_number)
-    - [849304930](learners_license_number)
-    - [758497548](learners_license_number)
-    - [432094893](learners_license_number)
-    - [292094840](learners_license_number)
-    - [532984903](learners_license_number)
-    - [298484905](learners_license_number)
-    - [357853989](learners_license_number)
-    - [209432843](learners_license_number)
-    - [759473902](learners_license_number)
-    - [324802984](learners_license_number)
-    - [530850392](learners_license_number)
+    - what is your name?
+    - tell me your name
+    - what others call you
+    - what should i call you?
+
+- intent: problem_type
+  examples: |
+    - [child support](problem)
+    - [violence](problem)  
+    - [ambulance](problem)
+    - [fire](problem)
+    - [women](problem)
+    - [child abuse](problem)
+
+- intent: state_name
+  examples: |
+    - [maharashtra](state)
+    - [punjab](state)
+    - [delhi](state)
+    - [west bengal](state)
+    - [haryana](state)  
+      
+
+- intent: police_help
+  examples: |
+    - [police](police)
+    - [polis](police)
+    - i need to [complain](police)
+    - [police complaint](police)
+    - [report](police)
+    - [help](police)      
+
+# - intent: email_address
+#   examples: |
+#     - [mansvi@gmail.com](email)
+#     - [mansvi12@yahoo.com](email)
+#     - [mansvi2001@hotmail.com](email)
+#     - [adityarocks@gmail.in](email)
+#     - [aditya.rocks@yahoo.in](email)
+#     - [rohansharma2000@gmail.com](email)
+
+# - intent: dob
+#   examples: |
+#     - [01/01/2000](dob)
+#     - [12/04/1996](dob)      
+#     - [23/11/2017](dob)
+
+- intent: helpline_numbers
+  examples: |
+    - [helpline numbers](contact)
+    - [number](contact)      
+    - [helpline](contact)
+    - [helpline number](contact)
+    - [phone](number)
+    - [phone number](number)
+    - [call](number)
+
+- intent: report FIR
+  examples: |
+    - [report FIR](report)
+    - [report](report)      
+    - [FIR](report)
+    - [fir](report)
+    - [repo](report)
+    - [r](report)
+    - [f](report)
+
+- intent: vehicle_theft
+  examples: |
+    - [theft of vehicle](vehicle_theft)
+    - [Theft of vehicle](vehicle_theft)
+    - [vehicle theft](vehicle_theft)
+
+- intent: theft_goods
+  examples: |
+    - [theft of goods](theft_goods)
+    - [goods theft](theft_goods)
+    - [goods]((theft_goods)
+    - [things](theft_goods)   
+
+- intent: missing_person
+  examples: |
+    - [missing person](missing_person)
+    - [Missing Person](missing_person)
+    - [person missing](missing_person)
+    - [person](missing_person)   
+
+- intent: lost_found
+  examples: |
+    - [lost anf found](lost_found)
+    - [lost](lost_found)
+    - [lost found](lost_found)
+    - [found](lost_found)        
+
+- intent: missing_mobile
+  examples: |
+    - [missing mobile](missing_mobile)
+    - [mobile](missing_mobile)
+    - [phone](missing_mobile)
+    - [stolen phone](missing_mobile)
+    - [mobile stolen](mobile_missing)
+    - [phone stolen](mobile_missing)
+
+- intent: assault
+  examples: |         
+    - [assault](assault)
+    - [violence](assault)
+    - [harrasment](assault)
+    - [harrassment](assault)
+
+- intent: other
+  examples: |
+    - [other](other)
+    - [others](other)
+    
+
+- intent: civic grievance 
+  examples: |
+    - [civic grievance](civic_grievance)    
+    - [grievance](civic_grievance)
+    - [civic](civic_grievance)
+    - [society problem](civic_grievance)
+    - [roads](civic_grievance)
