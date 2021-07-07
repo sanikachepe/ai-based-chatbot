@@ -1,19 +1,39 @@
 version: "2.0"
 
 stories:
-- story: search hospital + city
+- story: healthcare facility
   steps:
     - intent: greet
     - action: utter_greet
     - intent: search_provider
       entities:
         - medical_facility_type: "hospital"
-    - action: utter_ask_location
-    - intent: location_entry
-      entities:
-        - location: "delhi"
-    - action: action_facility_search
-    - action: utter_what_else
+    - action: medical_facility_form
+    - active_loop: medical_facility_form
+    - slot_was_set:
+      - name_of_ailment: "Common Cold"
+    - slot_was_set:
+      - first_name: "Ramesh"
+    - slot_was_set:
+      - middle_name: "Suresh"
+    - slot_was_set:
+      - last_name: "Patel"
+    - slot_was_set:
+      - age: "17"
+    - slot_was_set:
+      - dob: "31-10-86"
+    - slot_was_set:
+      - blood_group: "B+"
+    - slot_was_set:
+        - phone_number: "8208940379"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
+      - address: "12, Kamal Kunj, Indira Nagar."
+    - slot_was_set:
+      - city: "nashik"
+    - slot_was_set:
+      - pin_code: "422101"
 
 - story: Story 001
   steps:
@@ -73,15 +93,15 @@ stories:
     - slot_was_set:
       - dob: "31-10-86"
     - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
       - address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
       - city: "nashik"
     - slot_was_set:
       - pin_code: "422101"
-    - slot_was_set:
-        - phone_number: "8208940479"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "31-06-21"
     - slot_was_set:
@@ -113,15 +133,15 @@ stories:
     - slot_was_set:
       - dob: "31-10-86"
     - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
       - address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
       - city: "nashik"
     - slot_was_set:
       - pin_code: "422101"
-    - slot_was_set:
-        - phone_number: "8208940479"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "31-06-21"
     - slot_was_set:
@@ -153,15 +173,15 @@ stories:
     - slot_was_set:
       - dob: "31-10-86"
     - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
+    - slot_was_set:
       - address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
       - city: "nashik"
     - slot_was_set:
       - pin_code: "422101"
-    - slot_was_set:
-        - phone_number: "8208940479"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "31-06-21"
     - slot_was_set:
@@ -199,21 +219,19 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+"
-    - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
         - education: "B.E"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
         - pin_code: "422101"
-    - slot_was_set:
-        - phone_number: "8208940479"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -270,21 +288,19 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+"
-    - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
         - education: "B.E"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
         - pin_code: "422101"
-    - slot_was_set:
-        - phone_number: "8208940479"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -341,21 +357,19 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+"
-    - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
         - education: "B.E"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
         - pin_code: "422101"
-    - slot_was_set:
-        - phone_number: "8208940479"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -419,21 +433,19 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+"
-    - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
         - education: "B.E"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
         - pin_code: "422101"
-    - slot_was_set:
-        - phone_number: "8208940479"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -480,21 +492,19 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+"
-    - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
         - education: "B.E"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
         - pin_code: "422101"
-    - slot_was_set:
-        - phone_number: "8208940479"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:
@@ -543,21 +553,19 @@ stories:
     - slot_was_set:
         - pob: "nagpur"
     - slot_was_set:
-        - blood_group: "B+"
-    - slot_was_set:
         - citizenship_type: "birth"
     - slot_was_set:
         - education: "B.E"
+    - slot_was_set:
+        - phone_number: "8208940479"
+    - slot_was_set:
+        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
         - pin_code: "422101"
-    - slot_was_set:
-        - phone_number: "8208940479"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
     - slot_was_set:
         - date_for_appointment: "20-06-21"
     - slot_was_set:

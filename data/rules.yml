@@ -12,6 +12,17 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: Submit medical facility form
+  condition:
+    - active_loop: medical_facility_form
+  steps:
+    - action: medical_facility_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: utter_what_else
+
 - rule: Submit driving license form
   condition:
     - active_loop: driving_license_form

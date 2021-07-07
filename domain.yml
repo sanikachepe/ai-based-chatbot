@@ -84,8 +84,54 @@ slots:
     type: text
   phone_number:
     type: text
+  sex:
+    type: categorical
+    values:
+      - male
+      - female
+      - intersex
+  marital_status:
+    type: categorical
+    values:
+      - married
+      - single
+      - divorced
+      - widowed
+  name_of_ailment:
+    type: text
 
 forms:
+  medical_facility_form:
+    required_slots:
+      name_of_ailment:
+        - type: from_text
+      first_name:
+        - type: from_text
+      middle_name:
+        - type: from_text
+      last_name:
+        - type: from_text
+      age:
+        - type: from_text
+      dob:
+        - type: from_text
+      blood_group:
+        - type: from_text
+      sex:
+        - type: from_text
+      marital_status:
+        - type: from_text
+      phone_number:
+        - type: from_text
+      aadhaar_card_number:
+        - type: from_text
+      address:
+        - type: from_text
+      city:
+        - type: from_text
+      pin_code:
+        - type: from_text
+
   driving_license_form:
     required_slots:
         learners_license_number:
@@ -100,15 +146,15 @@ forms:
           - type: from_text
         dob:
           - type: from_text
+        phone_number:
+          - type: from_text
+        aadhaar_card_number:
+          - type: from_text
         address:
           - type: from_text
         city:
           - type: from_text
         pin_code:
-          - type: from_text
-        phone_number:
-          - type: from_text
-        aadhaar_card_number:
           - type: from_text
         date_for_appointment:
           - type: from_text
@@ -129,21 +175,19 @@ forms:
           - type: from_text
         pob:
           - type: from_text
-        blood_group:
-          - type: from_text
         citizenship_type:
           - type: from_text
         education:
+          - type: from_text
+        phone_number:
+          - type: from_text
+        aadhaar_card_number:
           - type: from_text
         address:
           - type: from_text
         city:
           - type: from_text
         pin_code:
-          - type: from_text
-        phone_number:
-          - type: from_text
-        aadhaar_card_number:
           - type: from_text
         date_for_appointment:
           - type: from_text
@@ -155,6 +199,8 @@ actions:
   - action_weather
   - validate_driving_license_form
   - action_corona_tracker
+  - validate_learners_license_form
+  - validate_medical_facility_form
 
 responses:
   utter_greet:
@@ -195,6 +241,15 @@ responses:
 
   utter_ask_dob:
     - text: "Please enter your date of birth in DD-MM-YYYY format:"
+
+  utter_ask_sex:
+    - text: "Please enter your sex(Male/Female/Intersex):"
+
+  utter_ask_marital_status:
+    - text: "Please enter your marital status(Married/Single/Divorced/Widowed):"
+
+  utter_ask_name_of_ailment:
+    - text: "What are you suffering from?"
 
   utter_ask_pob:
     - text: "Please enter your place of birth:"
@@ -248,7 +303,7 @@ responses:
     - text: "Sorry you are not eligible for getting a {driving_license_type} :("
 
   utter_eligible:
-    - text: "Congratulations! You are eligible for getting a {driving_license_type}. Please fill your details to continue."
+    - text: "Congratulations! You are eligible for getting a {driving_license_type} learners license. Please fill your details to continue."
 
   utter_ask_learners_license_number:
     - text: "Please enter your 9 digit Learner's License number:"
