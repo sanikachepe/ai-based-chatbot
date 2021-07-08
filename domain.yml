@@ -239,7 +239,7 @@ actions:
   - action_weather
   - action_police_station
   - action_submit
-  - action_submit_fir
+  - action_submit_other
   - action_submit_fir3
   - action_submit_fir4
   - action_submit_fir5
