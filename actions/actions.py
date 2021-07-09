@@ -146,20 +146,10 @@ class ValidateMedicalFacilityForm(FormValidationAction):
             tracker: Tracker,
             domain: DomainDict,
     ) -> Dict[Text, Any]:
-        """Validate `driving_license_type` value."""
-        driving_license_type = tracker.get_slot('driving_license_type')
+        """Validate `age` value."""
 
-        print(f"age given = {slot_value} driving_license_type = {driving_license_type}")
         if not slot_value.isnumeric():
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and int(slot_value) < 16:
-                dispatcher.utter_message(text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 16 years of age.")
-                return {"age": None}
-            elif driving_license_type == "motorcycles with gear" and int(slot_value) < 18:
-                dispatcher.utter_message(text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 18 years of age.")
-                return {"age": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and int(slot_value) < 20:
-                dispatcher.utter_message(text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 20 years of age.")
-                return {"age": None}
+            return {"age": None}
         else:
             return {"age": slot_value}
 
@@ -183,16 +173,7 @@ class ValidateMedicalFacilityForm(FormValidationAction):
             datetime_obj = datetime.datetime.strptime(date_str, format_str)
             input_year = datetime_obj.year
             print(datetime_obj.date())
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and present_year - input_year < 16:
-                dispatcher.utter_message(text="Your birth year doesn't seem to be correct as it makes your age less than 16, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "motorcycles with" and present_year - input_year < 18:
-                dispatcher.utter_message(text="Your birth year doesn't seem to be correct as it makes your age less than 18, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and present_year - input_year < 20:
-                dispatcher.utter_message(text="Your birth year doesn't seem to be correct as it makes your age less than 20, the age for eligibility.")
-                return {"dob": None}
-            elif int(present_year - input_year) != int(age)+1 and int(present_year - input_year) != int(age):
+            if int(present_year - input_year) != int(age)+1 and int(present_year - input_year) != int(age):
                 dispatcher.utter_message(text="Your birth year doesn't seem to be correct as it doesn't match your age.")
                 return {"dob": None}
             else:
@@ -210,14 +191,12 @@ class ValidateMedicalFacilityForm(FormValidationAction):
             domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `blood_group` value."""
-
         print(f"blood group given = {slot_value}")
-        regex = "/^(A|B|AB|O)[+-]$/i"
+        regex = ("^(A|B|AB|O)[+-]$")
         p = re.compile(regex)
         if slot_value is None:
             dispatcher.utter_message(text=f"Please enter a valid blood group and in proper format.")
             return {"blood_group": None}
-
         if re.search(p, slot_value):
             return {"blood_group": slot_value}
         else:
