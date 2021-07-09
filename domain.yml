@@ -6,45 +6,98 @@ intents:
   - affirm
   - deny
   - bot_challenge
+ 
   - location_entry
   - search_provider
   - get_driving_license
   - get_learners_license
   - weather
   - city_weather
+  - police_station
+   
+  - problem_type
+  - police_help
+  - helpline_numbers
+  - vehicle_theft
+  - theft_goods
+  - missing_person
+  - lost_found
+  - missing_mobile
+  - assault
+  - other
+  - report FIR
+  - civic grievance
   - corona_state
   - inform_driving_license_type
+  
+ 
 
-entities:
-  - medical_facility_type
-  - location
-  - license_type
-  - state
-  - driving_license_type
 
 slots:
+
+  age:
+    type: text  
+  name:
+    type: text
+  state:
+    type: text
+  problem:
+    type: text    
+  email:
+    type: text  
+  dob:
+    type: text
+  vehicle:
+    type: text
+  number_plate:
+    type: text
+  colour:
+    type: text
+  date_time:
+    type: text
+  last_seen:
+    type: text
+  anything_else:
+    type: text
+  mobile_no:
+    type: text
+  aadhar_no:
+    type: text
+  current_address:
+    type: text
+  goods_stolen:
+    type: text
+  name_of_missing_person:
+    type: text
+  age_of_mm:
+    type: text
+  sex_of_mm:
+    type: text
+  clothes_of_mm:
+    type: text
+  item_lost_or_found:
+    type: text
+  location_of_item:
+    type: text
+  complaint_against:
+    type: text
+  assault_description:
+    type: text
+  lost_or_found:
+    type: text 
+  landmark:
+    type: text  
+  grievance: 
+    type: text  
   medical_facility_type:
     type: text
   location:
     type: text
   city:
-    type: text
-  age:
-    type: text
-  first_name:
-    type: text
-  middle_name:
-    type: text
-  last_name:
-    type: text
+    type: text 
   learners_license_number:
     type: text
-  dob:
-    type: text
-  address:
-    type: text
-  aadhaar_card_number:
-    type: text
+    
   date_for_appointment:
     type: text
   slot_for_appointment:
@@ -82,8 +135,7 @@ slots:
     type: text
   state_for_license:
     type: text
-  phone_number:
-    type: text
+ 
   sex:
     type: categorical
     values:
@@ -98,123 +150,119 @@ slots:
       - divorced
       - widowed
   name_of_ailment:
-    type: text
+    type: text  
 
-forms:
-  medical_facility_form:
-    required_slots:
-      name_of_ailment:
-        - type: from_text
-      first_name:
-        - type: from_text
-      middle_name:
-        - type: from_text
-      last_name:
-        - type: from_text
-      age:
-        - type: from_text
-      dob:
-        - type: from_text
-      blood_group:
-        - type: from_text
-      sex:
-        - type: from_text
-      marital_status:
-        - type: from_text
-      phone_number:
-        - type: from_text
-      aadhaar_card_number:
-        - type: from_text
-      address:
-        - type: from_text
-      city:
-        - type: from_text
-      pin_code:
-        - type: from_text
-
-  driving_license_form:
-    required_slots:
-        learners_license_number:
-          - type: from_text
-        first_name:
-          - type: from_text
-        middle_name:
-          - type: from_text
-        last_name:
-          - type: from_text
-        age:
-          - type: from_text
-        dob:
-          - type: from_text
-        phone_number:
-          - type: from_text
-        aadhaar_card_number:
-          - type: from_text
-        address:
-          - type: from_text
-        city:
-          - type: from_text
-        pin_code:
-          - type: from_text
-        date_for_appointment:
-          - type: from_text
-        slot_for_appointment:
-          - type: from_text
-
-  learners_license_form:
-    required_slots:
-        first_name:
-          - type: from_text
-        middle_name:
-          - type: from_text
-        last_name:
-          - type: from_text
-        age:
-          - type: from_text
-        dob:
-          - type: from_text
-        pob:
-          - type: from_text
-        citizenship_type:
-          - type: from_text
-        education:
-          - type: from_text
-        phone_number:
-          - type: from_text
-        aadhaar_card_number:
-          - type: from_text
-        address:
-          - type: from_text
-        city:
-          - type: from_text
-        pin_code:
-          - type: from_text
-        date_for_appointment:
-          - type: from_text
-        slot_for_appointment:
-          - type: from_text
-
-actions:
-  - action_facility_search
-  - action_weather
-  - validate_driving_license_form
-  - action_corona_tracker
-  - validate_learners_license_form
-  - validate_medical_facility_form
 
 responses:
   utter_greet:
-    - text: "Hey! How can I help you?"
-
-  utter_greet_with_name:
-    - text: "Hey {name}! How can I help you?"
+  - text: "Hey! How can I help you?"
 
   utter_goodbye:
-    - text: "Happy to help :)"
+  - text: "Happy to help :)"
 
   utter_iamabot:
-    - text: "I am a bot, powered by Rasa."
+  - text: "I am a bot, powered by Rasa."
+  
+  utter_default:
+    - text: please restate your request
 
+
+
+  utter_ask_state:
+    - text: What state are you in?
+
+  utter_ask_name:
+    - text: What is your full name?
+
+  utter_ask_problem:
+    - text: what would you like to report?  
+  
+  utter_ask_email:
+    - text: What is your email address?
+
+  utter_ask_dob:
+    - text: What is your date of birth in DD-MM-YYYY format?      
+  
+  utter_ask_mobile_no: 
+    - text: What is your mobile number?
+  
+  utter_ask_vehicle:
+    - text: What vehicle was stolen? Please give company and model name.
+  
+  utter_ask_number_plate:
+    - text: What is your vehicle's vehicle registration number?
+   
+  utter_ask_colour:
+    - text: What is the colour of your vehicle?  
+
+  utter_ask_aadhar_no:
+    - text: What is your Aadhar number?
+  
+  utter_ask_current_address:
+    - text: What is your current address?  
+  
+  utter_ask_date_time:
+    - text: What was the date and time of the incident?
+
+  utter_ask_last_seen:
+    - text: Where was he/she/it last seen?
+  
+  utter_ask_anything_else:
+    - text: Is there anything else you would like to inform?
+
+  utter_ask_goods_stolen:
+    - text: What were the goods stolen?
+
+  utter_ask_name_of_missing_person:
+    - text: What is the name of missing person?
+
+  utter_ask_age_of_mm:
+    - text: What is the age of missing person?
+  
+  utter_ask_sex_of_mm:
+    - text: what is the sex of missing person?
+
+  utter_ask_clothes_of_mm:
+    - text: What clothes was the missing person wearing?
+
+  utter_ask_item_lost_or_found:
+    - text: Describle the item lost/found?
+
+  utter_ask_location_of_item:
+    - text: Where was the item lost/found?
+
+  utter_ask_lost_or_found:
+    - text: Was the item Lost or Found?  
+  
+  utter_ask_complaint_against:
+    - text: Who is the complaint against? Please provide name and relation  
+
+  utter_ask_assault_description:
+    - text: Describe the assault  
+
+  utter_ask_grievance: 
+    - text: What grievance would you like to report?
+  
+  utter_ask_landmark:
+    - text: Please provide the location and nearest landmark
+    
+
+
+  utter_thanks:
+    - text: Thanks for providing the values.
+
+  utter_police_report_or_number:
+    - text: "Would you like\n 
+            1) To report an FIR?\n 
+            2) Get police helpline number?"  
+  utter_report_type:
+    - text: "Would you like to report\n
+            1) Theft of a vehicle\n
+            2) Theft of goods\n
+            3) Missing Person\n
+            4) Lost and Found\n
+            5) Assault\n 
+            6) Other"     
   utter_ask_location:
     - text: "Sure. Where are you based?"
 
@@ -229,18 +277,6 @@ responses:
 
   utter_ask_age:
     - text: "What is your age?"
-
-  utter_ask_first_name:
-    - text: "What is your first name?"
-
-  utter_ask_middle_name:
-    - text: "What is your middle name?"
-
-  utter_ask_last_name:
-    - text: "What is your last name?"
-
-  utter_ask_dob:
-    - text: "Please enter your date of birth in DD-MM-YYYY format:"
 
   utter_ask_sex:
     - text: "Please enter your sex(Male/Female/Intersex):"
@@ -262,16 +298,6 @@ responses:
 
   utter_ask_citizenship_type:
     - text: "Please enter your Indian citizenship type (birth, descent, registration or naturalisation):"
-
-  utter_ask_address:
-    - text: "Please enter your home address:"
-
-  utter_ask_state:
-    - text: "Please enter the name of your state:"
-
-  utter_ask_aadhaar_card_number:
-    - text: "Please enter your 12-digit Aadhaar Card Number in XXXX XXXX XXXX format:"
-
   utter_ask_date_for_appointment:
     - text: "Please enter your preferred date for the Driving Test in DD-MM-YYYY format:"
 
@@ -284,17 +310,15 @@ responses:
   utter_what_else:
     - text: "How else can I help you?"
 
-  utter_default:
-    - text: "please restate your request"
-
+ 
   utter_eligibility_for_casetwo:
-    - text: "Is your age above 18, are you conversant with traffic rules and have valid age proof and address proof?"
+    - text: "Is your age above 18, are you conversant with traffic rules and have valid age proof and current_address proof?"
 
   utter_eligibility_for_caseone:
-    - text: "Is your age above 16, do you have your parent's consent, are you conversant with traffic rules and have valid age proof and address proof?"
+    - text: "Is your age above 16, do you have your parent's consent, are you conversant with traffic rules and have valid age proof and current_address proof?"
 
   utter_eligibility_for_casethree:
-    - text: "Is your age above 20, have you finished schooling till 8th standard, are you conversant with traffic rules and have valid age proof and address proof?"
+    - text: "Is your age above 20, have you finished schooling till 8th standard, are you conversant with traffic rules and have valid age proof and current_address proof?"
 
   utter_ask_driving_license_type:
     - text: "Which of the following license are you applying for?\n1. motorcycles without gear, upto 50 cc capacity\n2. motorcycles with gear\n3. commercial heavy vehicles or transport vehicles"
@@ -314,8 +338,7 @@ responses:
   utter_ask_pin_code:
     - text: "Please enter your pin code:"
 
-  utter_ask_phone_number:
-    - text: "Please enter your phone number:"
+ 
 
   utter_submit:
     - text: "All done!"
@@ -324,36 +347,445 @@ responses:
     - text: "Received your application for driving license with the following details:\n
         License type: {driving_license_type}\n
         Learners license number: {learners_license_number}\n
-        Name: {first_name} {middle_name} {last_name}\n
+        Name: {name} {middle_name} {last_name}\n
         Age: {age}\n
         Dob: {dob}\n
-        Address: {address}\n
+        current_address: {current_address}\n
         City: {city}\n
         Pin code: {pin_code}\n
         State: {state_for_license}\n
-        Phone number: {phone_number}\n
-        Aadhaar card number: {aadhaar_card_number}\n
+        Phone number: {mobile_no}\n
+        Aadhaar card number: {aadhar_no}\n
         Date of Driving Test: {date_for_appointment}\n
         Slot of Driving Test: {slot_for_appointment}\n"
 
   utter_ll_submit:
     - text: "Received your application for learners license with the following details:\n
         License type: {driving_license_type}\n
-        Name: {first_name} {middle_name} {last_name}\n
+        Name: {name} {middle_name} {last_name}\n
         Age: {age}\n
         Date of birth: {dob}\n
         Place of birth: {pob}\n
         Blood group: {blood_group}\n
         Citizenship type: {citizenship_type}\n
         Educational qualification: {education}\n
-        Address: {address}\n
+        current_address: {current_address}\n
         City: {city}\n
         Pin code: {pin_code}\n
         State: {state_for_license}\n
-        Phone number: {phone_number}\n
-        Aadhaar card number: {aadhaar_card_number}\n
+        Phone number: {mobile_no}\n
+        Aadhaar card number: {aadhar_no}\n
         Date of Learning License Test: {date_for_appointment}\n
         Slot of Learning License Test: {slot_for_appointment}\n"
+
+                  
+
+actions:
+  - action_facility_search
+  
+  - action_restart
+  - action_followup_check
+ 
+  - action_weather
+  - action_police_station
+  - action_submit
+  - action_submit_other
+  - action_submit_fir3
+  - action_submit_fir4
+  - action_submit_fir5
+  - action_submit_fir6
+  - action_submit_fir7
+  - validate_user_details_form
+  - action_submit_cg
+  - validate_theft_of_goods_form
+  - validate_theft_of_vehicle_form
+  - validate_missing_person_form
+  - validate_assault_form
+  - validate_lost_and_found_form
+  - validate_civic_grievance_form
+  - action_checking
+  - action_databasevt
+  - validate_driving_license_form
+  - action_corona_tracker
+  - validate_learners_license_form
+  - validate_medical_facility_form
+
+  
+
+entities:
+  - medical_facility_type
+  - location
+   
+  - license_type
+  - missing_person
+  - police_station
+  # - name
+  # - number
+  # - problem
+  # - state
+  # - police
+  # - email
+  # - dob
+  # - contact
+  # - vehicle_theft
+  # - theft_goods
+  # - lost_found
+  # - missing_mobile
+  # - other
+  # - assault
+  # - vehicle
+  # - number_plate
+  # - colour
+  # - date_time
+  # - last_seen
+  # - anything_else
+  # - mobile_no
+  # - aadhar_no
+  # - current_address
+  # - goods_stolen
+  # - name_of_missing_person
+  # - age_of_mm
+  # - sex_of_mm
+  # - sex
+  # - clothes_of_mm
+  # - item_lost_or_found
+  # - location_of_item
+  # - complaint_against
+  # - assault_description
+  # - lost_or_found 
+  # - civic_grievance
+  #- landmark
+
+forms:
+  user_details_form:
+    name:
+    - type: from_text          
+    mobile_no:
+    - type: from_text          
+    aadhar_no:
+    - type: from_text          
+    current_address:
+    - type: from_text          
+    dob: 
+    - type: from_text          
+    problem:
+    - type: from_text              
+    email: 
+    - type: from_text           
+
+# forms:
+#   user:
+#     required_slots:
+#         slot_name:
+#         - type: from_entity
+#           entity: entity_name
+#           role: role_name
+#           group: group name
+#           intent: intent_name
+#           not_intent: excluded_intent              
+
+  # police_number_form:
+  #   name:
+  #     - type: from_entity
+        
+  #   state:
+  #     - type: from_entity
+        
+  #   problem:
+  #     - type: from_entity
+           
+  #   location:
+  #     - type: from_entity
+            
+
+  theft_of_vehicle_form:
+    name:
+      - type: from_text        
+    mobile_no:
+      - type: from_text
+        
+    aadhar_no:
+      - type: from_text
+         
+    current_address:
+      - type: from_text
+        
+    email: 
+      - type: from_text
+            
+    dob: 
+      - type: from_text
+                        
+    vehicle:
+      - type: from_text
+       
+    number_plate:
+      - type: from_text
+        
+    colour: 
+      - type: from_text    
+    last_seen:
+      - type: from_text        
+    anything_else:
+      - type: from_text
+        
+
+  theft_of_goods_form: 
+    name: 
+      - type: from_text
+        
+    mobile_no:
+      - type: from_text
+    aadhar_no:
+      - type: from_text
+          
+    current_address:
+      - type: from_text
+       
+    email: 
+      - type: from_text
+           
+    dob: 
+      - type: from_text
+                 
+    last_seen:
+      - type: from_text
+       
+    date_time:
+      - type: from_text
+        
+    goods_stolen:
+      - type: from_text
+        
+    anything_else:
+      - type: from_text
+       
+
+  missing_person_form:
+    name:
+      - type: from_text
+        
+    mobile_no:
+      - type: from_text
+        
+    aadhar_no:
+      - type: from_text
+         
+    current_address:
+      - type: from_text
+           
+    email: 
+      - type: from_text
+           
+    dob: 
+      - type: from_text
+              
+    name_of_missing_person:
+      - type: from_text
+        
+    age_of_mm:
+      - type: from_text
+        
+    sex_of_mm: 
+      - type: from_text
+        
+    clothes_of_mm:
+      - type: from_text
+       
+    last_seen:
+      - type: from_text
+     
+    anything_else:
+      - type: from_text
+        
+        
+  lost_and_found_form:
+    name:
+      - type: from_text
+        
+    mobile_no:
+      - type: from_text
+        
+    aadhar_no:
+      - type: from_text
+        
+    current_address:
+      - type: from_text
+        
+    email: 
+      - type: from_text
+           
+    dob: 
+      - type: from_text
+           
+    lost_or_found:
+      - type: from_text
+                   
+    item_lost_or_found:
+      - type: from_text
+        
+    location_of_item:
+      - type: from_text
+        
+    anything_else:
+      - type: from_text
+        
+  
+  assault_form:
+    name: 
+      - type: from_text
+       
+    mobile_no:
+      - type: from_text
+        
+    aadhar_no:
+      - type: from_text
+       
+    current_address:
+      - type: from_text
+       
+    email: 
+      - type: from_text
+            
+    dob: 
+      - type: from_text
+         
+    complaint_against:
+      - type: from_text
+       
+    assault_description:
+      - type: from_text
+       
+    anything_else:
+      - type: from_text
+                  
+
+
+  civic_grievance_form:
+    name:
+      - type: from_text
+       
+    mobile_no:
+      - type: from_text
+        
+    aadhar_no:
+      - type: from_text
+        
+    grievance:
+      - type: from_text
+       
+    location:
+      - type: from_text
+       
+    state:
+      - type: from_text
+    
+    landmark:
+      - type: from_text
+     
+    anything_else:
+      - type: from_text
+     
+  
+  medical_facility_form:
+    required_slots:
+      name_of_ailment:
+        - type: from_text
+      name:
+        - type: from_text
+      age:
+        - type: from_text
+      dob:
+        - type: from_text
+      blood_group:
+        - type: from_text
+      sex:
+        - type: from_text
+      marital_status:
+        - type: from_text
+      mobile_no:
+        - type: from_text
+      aadhar_no:
+        - type: from_text
+      current_address:
+        - type: from_text
+      city:
+        - type: from_text
+      pin_code:
+        - type: from_text
+
+  driving_license_form:
+    required_slots:
+        learners_license_number:
+          - type: from_text
+        name:
+          - type: from_text
+        
+        age:
+          - type: from_text
+        dob:
+          - type: from_text
+        mobile_no:
+          - type: from_text
+        aadhar_no:
+          - type: from_text
+        current_address:
+          - type: from_text
+        city:
+          - type: from_text
+        pin_code:
+          - type: from_text
+        date_for_appointment:
+          - type: from_text
+        slot_for_appointment:
+          - type: from_text
+
+  learners_license_form:
+    required_slots:
+        name:
+          - type: from_text
+        middle_name:
+          - type: from_text
+        last_name:
+          - type: from_text
+        age:
+          - type: from_text
+        dob:
+          - type: from_text
+        pob:
+          - type: from_text
+        citizenship_type:
+          - type: from_text
+        education:
+          - type: from_text
+        mobile_no:
+          - type: from_text
+        aadhar_no:
+          - type: from_text
+        current_address:
+          - type: from_text
+        city:
+          - type: from_text
+        pin_code:
+          - type: from_text
+        date_for_appointment:
+          - type: from_text
+        slot_for_appointment:
+          - type: from_text      
+
+
+   
+      
+    
+
+
+
+
+
+
+
+
+
 
 session_config:
   session_expiration_time: 60

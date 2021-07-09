@@ -1,51 +1,64 @@
 version: "2.0"
 
 stories:
-- story: healthcare facility
+- story: search hospital + location
   steps:
     - intent: greet
-    - action: utter_greet
+    - action: utter_greet  
     - intent: search_provider
       entities:
         - medical_facility_type: "hospital"
-    - action: medical_facility_form
-    - active_loop: medical_facility_form
-    - slot_was_set:
-      - name_of_ailment: "Common Cold"
-    - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
-    - slot_was_set:
-      - age: "17"
-    - slot_was_set:
-      - dob: "31-10-86"
-    - slot_was_set:
-      - blood_group: "B+"
-    - slot_was_set:
-        - phone_number: "8208940379"
-    - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
-    - slot_was_set:
-      - address: "12, Kamal Kunj, Indira Nagar."
-    - slot_was_set:
-      - city: "nashik"
-    - slot_was_set:
-      - pin_code: "422101"
-
-- story: Story 001
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: weather
-    - action: utter_ask_city
+    - action: utter_ask_location
     - intent: location_entry
       entities:
-        - location: "mumbai"
-    - action: action_weather
-    - action: utter_what_else
+        - location: "delhi"
+    - action: action_facility_search
+    - action: action_restart
+    - intent: goodbye
+    - action: utter_goodbye
+
+# - story: get driving license story
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - intent: get_driving_license
+#       entities: 
+#        - driving_license: "driving license"
+#     - action: utter_ask_age
+#     - intent: age_entry
+#       entities: 
+#         - age: "12"
+#     - action: utter_ask_location
+#     - intent: location_entry
+#       entities: 
+#         - location: "delhi" 
+#     - action: action_driving_license_form
+#    # - action: action_followup_check
+#     - action: action_restart
+#     - intent: goodbye
+#     - action: utter_goodbye
+
+# - story: get learners license story
+#   steps:
+#     - intent: greet
+#     - action: utter_greet
+#     - intent: get_learners_license
+#       entities:
+#        - learners_license: "learners license"
+#     - action: utter_ask_age
+#     - intent: age_entry
+#       entities: 
+#         - age: "12"
+#     - action: utter_ask_location
+#     - intent: location_entry
+#       entities: 
+#         - location: "delhi" 
+#     - action: action_learners_license_form
+#    # - action: action_followup_check
+#     - action: action_restart
+#     - intent: goodbye
+#     - action: utter_goodbye
+#check
 
 - story: Story 002
   steps:
@@ -55,7 +68,59 @@ stories:
       entities:
         - location: "delhi"
     - action: action_weather
-    - action: utter_what_else
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: Story 001
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: weather
+    - action: utter_ask_location
+    - intent: location_entry
+    - action: action_weather
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: police station
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: police_station
+      entities: 
+       - police_station: "police station"
+    - action: utter_ask_location     
+    - intent: location_entry    
+      entities:
+        - location: "delhi"
+    - action: action_police_station
+    - intent: goodbye
+    - action: utter_goodbye
+
+# - story: happy name path
+#   steps:
+#     - intent: tell_name
+#     - action: utter_name
+#     - action: utter_my_name
+#     - intent: my_name
+#       entities:
+#       - name: "rahul"
+#     - slot_was_set:
+#         - name: "rahul"
+#     - action: utter_mobile_number
+#     - intent: mobile_number
+#       entities:
+#       - number: "8209829808"
+#     - slot_was_set:
+#         - number: "8209829808"
+#     - action: utter_thanks
+
+- story: police numbers
+  steps:
+    - intent: police_help
+    - action: utter_police_report_or_number
+    - intent: report FIR
+    - action: utter_report_type
 
 - story: corona tracker path
   steps:
@@ -83,21 +148,18 @@ stories:
     - slot_was_set:
       - learners_license_number: "123456789"
     - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
+      - name: "Ramesh"
+    
     - slot_was_set:
       - age: "17"
     - slot_was_set:
       - dob: "31-10-86"
     - slot_was_set:
-        - phone_number: "8208940479"
+        - mobile_no: "8208940479"
     - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
+        - aadhar_no: "1287 4892 8748"
     - slot_was_set:
-      - address: "12, Kamal Kunj, Indira Nagar."
+      - current_address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
       - city: "nashik"
     - slot_was_set:
@@ -123,21 +185,18 @@ stories:
     - slot_was_set:
       - learners_license_number: "123456789"
     - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
+      - name: "Ramesh"
+   
     - slot_was_set:
       - age: "17"
     - slot_was_set:
       - dob: "31-10-86"
     - slot_was_set:
-        - phone_number: "8208940479"
+        - mobile_no: "8208940479"
     - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
+        - aadhar_no: "1287 4892 8748"
     - slot_was_set:
-      - address: "12, Kamal Kunj, Indira Nagar."
+      - current_address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
       - city: "nashik"
     - slot_was_set:
@@ -163,21 +222,18 @@ stories:
     - slot_was_set:
       - learners_license_number: "123456789"
     - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
+      - name: "Ramesh"
+    
     - slot_was_set:
       - age: "17"
     - slot_was_set:
       - dob: "31-10-86"
     - slot_was_set:
-        - phone_number: "8208940479"
+        - mobile_no: "8208940479"
     - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
+        - aadhar_no: "1287 4892 8748"
     - slot_was_set:
-      - address: "12, Kamal Kunj, Indira Nagar."
+      - current_address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
       - city: "nashik"
     - slot_was_set:
@@ -207,11 +263,8 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
+      - name: "Ramesh"
+    
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -223,11 +276,11 @@ stories:
     - slot_was_set:
         - education: "B.E"
     - slot_was_set:
-        - phone_number: "8208940479"
+        - mobile_no: "8208940479"
     - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
+        - aadhar_no: "1287 4892 8748"
     - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
+        - current_address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
@@ -276,11 +329,8 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
+      - name: "Ramesh"
+    
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -292,11 +342,11 @@ stories:
     - slot_was_set:
         - education: "B.E"
     - slot_was_set:
-        - phone_number: "8208940479"
+        - mobile_no: "8208940479"
     - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
+        - aadhar_no: "1287 4892 8748"
     - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
+        - current_address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
@@ -345,11 +395,7 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
+      - name: "Ramesh"
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -361,11 +407,11 @@ stories:
     - slot_was_set:
         - education: "B.E"
     - slot_was_set:
-        - phone_number: "8208940479"
+        - mobile_no: "8208940479"
     - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
+        - aadhar_no: "1287 4892 8748"
     - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
+        - current_address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
@@ -421,11 +467,8 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
+      - name: "Ramesh"
+    
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -437,11 +480,11 @@ stories:
     - slot_was_set:
         - education: "B.E"
     - slot_was_set:
-        - phone_number: "8208940479"
+        - mobile_no: "8208940479"
     - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
+        - aadhar_no: "1287 4892 8748"
     - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
+        - current_address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
@@ -480,11 +523,8 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
+      - name: "Ramesh"
+   
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -496,11 +536,11 @@ stories:
     - slot_was_set:
         - education: "B.E"
     - slot_was_set:
-        - phone_number: "8208940479"
+        - mobile_no: "8208940479"
     - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
+        - aadhar_no: "1287 4892 8748"
     - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
+        - current_address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
@@ -541,11 +581,8 @@ stories:
     - action: learners_license_form
     - active_loop: learners_license_form
     - slot_was_set:
-      - first_name: "Ramesh"
-    - slot_was_set:
-      - middle_name: "Suresh"
-    - slot_was_set:
-      - last_name: "Patel"
+      - name: "Ramesh"
+    
     - slot_was_set:
         - age: "22"
     - slot_was_set:
@@ -557,11 +594,11 @@ stories:
     - slot_was_set:
         - education: "B.E"
     - slot_was_set:
-        - phone_number: "8208940479"
+        - mobile_no: "8208940479"
     - slot_was_set:
-        - aadhaar_card_number: "1287 4892 8748"
+        - aadhar_no: "1287 4892 8748"
     - slot_was_set:
-        - address: "12, Kamal Kunj, Indira Nagar."
+        - current_address: "12, Kamal Kunj, Indira Nagar."
     - slot_was_set:
         - city: "nashik"
     - slot_was_set:
