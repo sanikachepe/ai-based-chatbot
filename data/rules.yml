@@ -45,7 +45,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_cg  
+  - action: action_dbcg  
 
 #----------------------------------------------------------------------------------------------
 
@@ -133,7 +133,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir4
+  - action: action_databasegt
 
 #----------------------------------------------------------------------------------------------
 
@@ -156,7 +156,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir5
+  - action: action_mpdb
 
 #----------------------------------------------------------------------------------------------
 
@@ -179,7 +179,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir6    
+  - action: action_dblf    
 
 #----------------------------------------------------------------------------------------------
 
@@ -202,7 +202,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir7    
+  - action: action_dbas    
 #----------------------------------------------------------------------------------------------
 - rule: Submit medical facility form
   condition:
@@ -224,6 +224,7 @@ rules:
     - active_loop: null
     - slot_was_set:
         - requested_slot: null
+        
     - action: utter_submit
     - action: utter_dl_submit
     - action: utter_what_else

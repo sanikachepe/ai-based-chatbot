@@ -168,6 +168,7 @@ stories:
         - date_for_appointment: "31-06-21"
     - slot_was_set:
       - slot_for_appointment: "10.00 to 12.00"
+    - action: action_dbdlgearless  
 
 - story: driving license + holds learners license + casetwo
   steps:

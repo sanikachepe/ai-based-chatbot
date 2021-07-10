@@ -347,7 +347,7 @@ responses:
     - text: "Received your application for driving license with the following details:\n
         License type: {driving_license_type}\n
         Learners license number: {learners_license_number}\n
-        Name: {name} {middle_name} {last_name}\n
+        Name: {name} \n
         Age: {age}\n
         Dob: {dob}\n
         current_address: {current_address}\n
@@ -362,7 +362,7 @@ responses:
   utter_ll_submit:
     - text: "Received your application for learners license with the following details:\n
         License type: {driving_license_type}\n
-        Name: {name} {middle_name} {last_name}\n
+        Name: {name} \n
         Age: {age}\n
         Date of birth: {dob}\n
         Place of birth: {pob}\n
@@ -389,14 +389,7 @@ actions:
   - action_weather
   - action_police_station
   - action_submit
-  - action_submit_other
-  - action_submit_fir3
-  - action_submit_fir4
-  - action_submit_fir5
-  - action_submit_fir6
-  - action_submit_fir7
   - validate_user_details_form
-  - action_submit_cg
   - validate_theft_of_goods_form
   - validate_theft_of_vehicle_form
   - validate_missing_person_form
@@ -405,6 +398,17 @@ actions:
   - validate_civic_grievance_form
   - action_checking
   - action_databasevt
+  - action_mpdb
+  - action_databasegt
+  - action_dblf
+  - action_dbcg
+  - action_dbas
+  - action_dbdlchv
+  - action_dbdlgear
+  - action_dbllchv
+  - action_dbllgear
+  - action_dbllgearless
+  - action_dbdlgearless
   - validate_driving_license_form
   - action_corona_tracker
   - validate_learners_license_form

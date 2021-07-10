@@ -189,34 +189,11 @@ class ReportFIROtherForm(Action):
                 # The slot is not filled yet. Request the user to fill this slot next.
                 return [SlotSet("requested_slot", slot_name)]
 
-        # print("done")        
-
-#         conn_other = sqlite3.connect('other_fir.db') #connecting to other firs database
-#         c = conn_other.cursor()# creating cursor
-#         c.execute(""" CREATE TABLE other FIRS(
-#                 name text,
-#                 mobile_no text,
-#                 aadhar_no text,
-#                 email text,
-#                 dob text,
-#                 problem text
-#                 )""")
-#         many_inputs = [(tracker.get_slot("name"),tracker.get_slot("mobile_no"), tracker.get_slot("aadhar_no"), tracker.get_slot("email"), tracker.get_slot("dob"), tracker.get_slot("problem"))     
-# ]
-#         c.executemany("INSERT INTO other FIRS VALUES(?,?,?,?,?,?)", many_inputs) #inserting values 
-#         conn_other.commit()
-#         print("added to other fir db")
-        
-                
-       # database.otherfir(tracker.get_slot("name"),tracker.get_slot("mobile_no"), tracker.get_slot("aadhar_no"), tracker.get_slot("email"), tracker.get_slot("dob"), tracker.get_slot("problem"))     
-
-    
-
-        # All slots are filled.
+           # All slots are filled.
         return [SlotSet("requested_slot", None)]
 
 
-class Actioncheck(Action):
+class Actionsubmittingother(Action):
     def name(self) -> Text:
         return "action_checking"
 
@@ -226,25 +203,7 @@ class Actioncheck(Action):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
-        
-#         print ("checking")
-#         conn_other = sqlite3.connect('other_fir.db') #connecting to other firs database
-#         c = conn_other.cursor()# creating cursor
-#         c.execute(""" CREATE TABLE other_firs(
-#                 name text,
-#                 mobile_no text,
-#                 aadhar_no text,
-#                 email text,
-#                 dob text,
-#                 problem text
-#                 )""")
-#         many_inputs = [(tracker.get_slot("name"),tracker.get_slot("mobile_no"), tracker.get_slot("aadhar_no"), tracker.get_slot("email"), tracker.get_slot("dob"), tracker.get_slot("problem"))     
-# ]
-#         c.executemany("INSERT INTO other_firs VALUES(?,?,?,?,?,?)", many_inputs) #inserting values 
-#         conn_other.commit()
-#         print("added to other fir db")
-        
-#         conn_other.close()
+
         name= tracker.get_slot("name")
         mobile_no =tracker.get_slot("mobile_no")
         aadhar_no =tracker.get_slot("aadhar_no")
@@ -257,7 +216,7 @@ class Actioncheck(Action):
         database.otherfir(name,mobile_no, aadhar_no,email, dob, problem)     
 
 
-        #dispatcher.utter_message(text = tracker.get_slot("name")+ "hi")
+        dispatcher.utter_message(text = "thank you for the information, " + tracker.get_slot("name"))
         return [AllSlotsReset()]        
 
 # class ActionSubmit(Action):
@@ -279,6 +238,7 @@ class Actioncheck(Action):
 
 #         dispatcher.utter_message(text = tracker.get_slot("name")+ "hi")
 #         return [AllSlotsReset()]
+
  #-------------------------------------------------------------------------
 # vehicle theft form
 class ReportFIROvehicletheftForm(Action):
@@ -323,27 +283,13 @@ class Actiondbvt(Action):
 
 
 
-        database.vehicletheft(name,mobile_no, aadhar_no,email, dob, vehicle,number_plate,colour, last_seen, anything_else)     
+        database.vehicletheft(name ,mobile_no, aadhar_no,email, dob, vehicle,number_plate,colour, last_seen, anything_else)     
 
 
-        #dispatcher.utter_message(text = tracker.get_slot("name")+ "hi")
+        dispatcher.utter_message(text = "thank you for the information, " + tracker.get_slot("name"))
         return [AllSlotsReset()]             
 
-# class ActionSubmit(Action):
-#     def name(self) -> Text:
-#         return "action_submit_fir3"
 
-#     def run(
-#         self,
-#         dispatcher,
-#         tracker: Tracker,
-#         domain: "DomainDict",
-#     ) -> List[Dict[Text, Any]]:
-
-          
-
-#         dispatcher.utter_message(text = "thank you for the information ," + tracker.get_slot("name"))
-#         return [AllSlotsReset()]
  #-------------------------------------------------------------------------        
 #theft form
 
@@ -365,9 +311,11 @@ class ReportFIRgoodstheftForm(Action):
         # All slots are filled.
         return [SlotSet("requested_slot", None)]
 
-class ActionSubmit(Action):
+class Actiondbgt(Action):
     def name(self) -> Text:
-        return "action_submit_fir4"
+        return "action_databasegt"
+
+
 
     def run(
         self,
@@ -375,6 +323,18 @@ class ActionSubmit(Action):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
+
+        name = tracker.get_slot("name")
+        mobile_no =tracker.get_slot("mobile_no")
+        aadhar_no =tracker.get_slot("aadhar_no")
+        email =tracker.get_slot("email") 
+        dob =  tracker.get_slot("dob")
+        goods_stolen = tracker.get_slot("goods_stolen")
+        date_time= tracker.get_slot("date_time")        
+        last_seen = tracker.get_slot("last_seen")
+        anything_else = tracker.get_slot("anything_else")
+
+        database.goods_theft(name ,mobile_no , aadhar_no , email , dob, goods_stolen, date_time, last_seen, anything_else)
 
 
        
@@ -401,9 +361,9 @@ class ReportFIRMissingPersonForm(Action):
         # All slots are filled.
         return [SlotSet("requested_slot", None)]
 
-class ActionSubmit(Action):
+class ActionSubmitmpdb(Action):
     def name(self) -> Text:
-        return "action_submit_fir5"
+        return "action_mpdb"
 
     def run(
         self,
@@ -411,6 +371,22 @@ class ActionSubmit(Action):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
+
+        name = tracker.get_slot("name")
+        mobile_no =tracker.get_slot("mobile_no")
+        aadhar_no =tracker.get_slot("aadhar_no")
+        email =tracker.get_slot("email") 
+        dob =  tracker.get_slot("dob")
+        name_of_missing_person = tracker.get_slot("name_of_missing_person")
+        age_of_mm= tracker.get_slot("age_of_mm")     
+        sex_of_mm= tracker.get_slot("sex_of_mm")
+        clothes_of_mm = tracker.get_slot("clothes_of_mm")   
+        last_seen = tracker.get_slot("last_seen")
+        anything_else = tracker.get_slot("anything_else")
+
+        database.missingperson(name, mobile_no,aadhar_no,email, dob,name_of_missing_person,age_of_mm,sex_of_mm,clothes_of_mm,last_seen,anything_else)
+        print("done")
+
 
            
 
@@ -438,7 +414,7 @@ class ReportLostandFoundForm(Action):
 
 class ActionSubmit(Action):
     def name(self) -> Text:
-        return "action_submit_fir6"
+        return "action_dblf"
 
     def run(
         self,
@@ -446,10 +422,21 @@ class ActionSubmit(Action):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
+        name = tracker.get_slot("name")
+        mobile_no =tracker.get_slot("mobile_no")
+        aadhar_no =tracker.get_slot("aadhar_no")
+        email =tracker.get_slot("email") 
+        dob =  tracker.get_slot("dob")
+        lost_or_found = tracker.get_slot("lost_or_found")
+        item_lost_or_found= tracker.get_slot("item_lost_or_found")
+        location_of_item= tracker.get_slot("location_of_item")
+        anything_else = tracker.get_slot("anything_else")
 
-           
+        database.lostandfound(name, mobile_no,aadhar_no,email, dob,lost_or_found,item_lost_or_found,location_of_item,anything_else)
 
-        dispatcher.utter_message(text = "thank you for the information ," + tracker.get_slot("name"))
+        dispatcher.utter_message(text = "thank you for the information ," + tracker.get_slot("name"))          
+
+       
         return [AllSlotsReset()]  
 #-------------------------------------------------------------------------        
 
@@ -473,7 +460,7 @@ class ReportAssaultForm(Action):
 
 class ActionSubmit(Action):
     def name(self) -> Text:
-        return "action_submit_fir7"
+        return "action_dbas"
 
     def run(
         self,
@@ -482,6 +469,16 @@ class ActionSubmit(Action):
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
 
+        name = tracker.get_slot("name")
+        mobile_no =tracker.get_slot("mobile_no")
+        aadhar_no =tracker.get_slot("aadhar_no")
+        email =tracker.get_slot("email") 
+        dob =  tracker.get_slot("dob")
+        complaint_against = tracker.get_slot("complaint_against")
+        assault_description= tracker.get_slot("assault_description")
+        anything_else = tracker.get_slot("anything_else")
+
+        database.assault(name, mobile_no,aadhar_no,email, dob, complaint_against,assault_description,anything_else)
            
 
         dispatcher.utter_message(text = "thank you for the information ," + tracker.get_slot("name"))
@@ -509,7 +506,7 @@ class ReportCivicGrievanceForm(Action):
 
 class ActionSubmit(Action):
     def name(self) -> Text:
-        return "action_submit_cg"
+        return "action_dbcg"
 
     def run(
         self,
@@ -517,13 +514,207 @@ class ActionSubmit(Action):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
-
          
+        name = tracker.get_slot("name")
+        mobile_no = tracker.get_slot("mobile_no")
+        aadhar_no = tracker.get_slot("aadhar_no")
+        civic_grievance = tracker.get_slot("civic_grievance")
+        location = tracker.get_slot("location")
+        state = tracker.get_slot("state")
+        landmark = tracker.get_slot("landmark")
+        anything_else = tracker.get_slot("anything_else")
+
+        database.civic_grievance(name, mobile_no,aadhar_no,civic_grievance, location,state, landmark, anything_else)         
 
 
         dispatcher.utter_message(text = "thank you for the information, " + tracker.get_slot("name"))
         return [AllSlotsReset()]
 
+
+class ActionSubmitDL(Action):
+    def name(self) -> Text:
+        return "action_dbdlgearless"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+         
+        learners_licence_no = tracker.get_slot("learners_license_no")
+        name = tracker.get_slot("name") 
+        age = tracker.get_slot("age")
+        dob = tracker.get_slot("dob") 
+        mobile_no = tracker.get_slot("mobile_no")
+        aadhar_no = tracker.get_slot("aadhar_no")  
+        current_address = tracker.get_slot("current_address")
+        city = tracker.get_slot("city")
+        pincode = tracker.get_slot("pincode") 
+        date_for_appointment = tracker.get_slot("date_for_appointment")
+        slot_for_appointment = tracker.get_slot("slot_for_appointment")
+
+        
+
+        database.dl_mc_gearless(learners_licence_no, name ,age , dob, mobile_no , aadhar_no , current_address ,city,pincode ,date_for_appointment ,slot_for_appointment)
+
+        return[AllSlotsReset()]
+
+
+class ActionSubmitDL(Action):
+    def name(self) -> Text:
+        return "action_dbdlgear"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+         
+        learners_licence_no = tracker.get_slot("learners_license_no")
+        name = tracker.get_slot("name") 
+        age = tracker.get_slot("age")
+        dob = tracker.get_slot("dob") 
+        mobile_no = tracker.get_slot("mobile_no")
+        aadhar_no = tracker.get_slot("aadhar_no")  
+        current_address = tracker.get_slot("current_address")
+        city = tracker.get_slot("city")
+        pincode = tracker.get_slot("pincode") 
+        date_for_appointment = tracker.get_slot("date_for_appointment")
+        slot_for_appointment = tracker.get_slot("slot_for_appointment")
+
+        
+
+        database.dl_mc_gear(learners_licence_no, name ,age , dob, mobile_no , aadhar_no , current_address ,city,pincode ,date_for_appointment ,slot_for_appointment)
+
+        return[AllSlotsReset()]
+
+
+class ActionSubmitDL(Action):
+    def name(self) -> Text:
+        return "action_dbdlchv"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+         
+        learners_licence_no = tracker.get_slot("learners_license_no")
+        name = tracker.get_slot("name") 
+        age = tracker.get_slot("age")
+        dob = tracker.get_slot("dob") 
+        mobile_no = tracker.get_slot("mobile_no")
+        aadhar_no = tracker.get_slot("aadhar_no")  
+        current_address = tracker.get_slot("current_address")
+        city = tracker.get_slot("city")
+        pincode = tracker.get_slot("pincode") 
+        date_for_appointment = tracker.get_slot("date_for_appointment")
+        slot_for_appointment = tracker.get_slot("slot_for_appointment")
+
+        
+
+        database.dl_chv(learners_licence_no, name ,age , dob, mobile_no , aadhar_no , current_address ,city,pincode ,date_for_appointment ,slot_for_appointment)
+
+        return[AllSlotsReset()]
+
+class ActionSubmitLL(Action):
+    def name(self) -> Text:
+        return "action_dbllgearless"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+         
+        
+        name = tracker.get_slot("name") 
+        age = tracker.get_slot("age")
+        dob = tracker.get_slot("dob") 
+        pob = tracker.get_slot("pob")
+        citizenship_type= tracker.get_slot("citizenship_type")
+        education= tracker.get_slot("education")
+        mobile_no = tracker.get_slot("mobile_no")
+        aadhar_no = tracker.get_slot("aadhar_no")  
+        current_address = tracker.get_slot("current_address")
+        city = tracker.get_slot("city")
+        pincode = tracker.get_slot("pincode") 
+        date_for_appointment = tracker.get_slot("date_for_appointment")
+        slot_for_appointment = tracker.get_slot("slot_for_appointment")
+
+        
+
+        database.ll_mc_gearless( name ,age , dob, pob,citizenship_type, education, mobile_no , aadhar_no , current_address ,city,pincode ,date_for_appointment ,slot_for_appointment)
+
+        return[AllSlotsReset()]
+
+
+class ActionSubmitLL(Action):
+    def name(self) -> Text:
+        return "action_dbllgear"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+         
+        name = tracker.get_slot("name") 
+        age = tracker.get_slot("age")
+        dob = tracker.get_slot("dob") 
+        pob = tracker.get_slot("pob")
+        citizenship_type= tracker.get_slot("citizenship_type")
+        education= tracker.get_slot("education")
+        mobile_no = tracker.get_slot("mobile_no")
+        aadhar_no = tracker.get_slot("aadhar_no")  
+        current_address = tracker.get_slot("current_address")
+        city = tracker.get_slot("city")
+        pincode = tracker.get_slot("pincode") 
+        date_for_appointment = tracker.get_slot("date_for_appointment")
+        slot_for_appointment = tracker.get_slot("slot_for_appointment")
+
+        
+
+        database.ll_mc_gear(name ,age , dob, pob,citizenship_type, education, mobile_no , aadhar_no , current_address ,city,pincode ,date_for_appointment ,slot_for_appointment)
+
+        return[AllSlotsReset()]
+
+
+class ActionSubmitLL(Action):
+    def name(self) -> Text:
+        return "action_dbllchv"
+
+    def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+         
+        name = tracker.get_slot("name") 
+        age = tracker.get_slot("age")
+        dob = tracker.get_slot("dob") 
+        pob = tracker.get_slot("pob")
+        citizenship_type= tracker.get_slot("citizenship_type")
+        education= tracker.get_slot("education")
+        mobile_no = tracker.get_slot("mobile_no")
+        aadhar_no = tracker.get_slot("aadhar_no")  
+        current_address = tracker.get_slot("current_address")
+        city = tracker.get_slot("city")
+        pincode = tracker.get_slot("pincode") 
+        date_for_appointment = tracker.get_slot("date_for_appointment")
+        slot_for_appointment = tracker.get_slot("slot_for_appointment")
+
+        
+
+        database.ll_chv(name ,age , dob, pob,citizenship_type, education, mobile_no , aadhar_no , current_address ,city,pincode ,date_for_appointment ,slot_for_appointment)
+
+        return[AllSlotsReset()]        
 #-------------------------------------------------------------------------
 #--------------------------------------------------------------------------
 #--------------------------------------------------------------------------
@@ -594,7 +785,7 @@ class ValidateUserDetailsForm(FormValidationAction):
             dispatcher.utter_message(text="Seems like you have entered your date of birth in the incorrect format or have entered an incorrect date. Please use DD-MM-YYYY format and enter a valid date.")
             return {"dob": None}
 #--------------------------------------------------------------------------
-    def validate_current_current_address(
+    def validate_current_address(
             self,
             slot_value: Any,
             dispatcher: CollectingDispatcher,
@@ -607,9 +798,9 @@ class ValidateUserDetailsForm(FormValidationAction):
         print(f"current_address given = {slot_value} length = {len(slot_value)}")
         if len(slot_value) <= 10:
             dispatcher.utter_message(text=f"That's a very short current_address. I'm assuming you mis-spelled.")
-            return {"current_current_address": None}
+            return {"current_address": None}
         else:
-            return {"current_current_address": slot_value}
+            return {"current_address": slot_value}
 #--------------------------------------------------------------------------
     def validate_email(
             self,
@@ -781,7 +972,7 @@ class ValidateTheftOfVehicleForm(FormValidationAction):
             dispatcher.utter_message(text="Seems like you have entered your date of birth in the incorrect format or have entered an incorrect date. Please use DD-MM-YYYY format and enter a valid date.")
             return {"dob": None}
 #--------------------------------------------------------------------------
-    def validate_current_current_address(
+    def validate_current_address(
             self,
             slot_value: Any,
             dispatcher: CollectingDispatcher,
@@ -794,9 +985,9 @@ class ValidateTheftOfVehicleForm(FormValidationAction):
         print(f"current_address given = {slot_value} length = {len(slot_value)}")
         if len(slot_value) <= 10:
             dispatcher.utter_message(text=f"That's a very short current_address. I'm assuming you mis-spelled.")
-            return {"current_current_address": None}
+            return {"current_address": None}
         else:
-            return {"current_current_address": slot_value}
+            return {"current_address": slot_value}
 #--------------------------------------------------------------------------
 
     def validate_last_seen(
@@ -996,7 +1187,7 @@ class ValidateTheftOfGoodsForm(FormValidationAction):
             dispatcher.utter_message(text="Seems like you have entered your date of birth in the incorrect format or have entered an incorrect date. Please use DD-MM-YYYY format and enter a valid date.")
             return {"dob": None}
 #--------------------------------------------------------------------------
-    def validate_current_current_address(
+    def validate_current_address(
             self,
             slot_value: Any,
             dispatcher: CollectingDispatcher,
@@ -1009,9 +1200,9 @@ class ValidateTheftOfGoodsForm(FormValidationAction):
         print(f"current_address given = {slot_value} length = {len(slot_value)}")
         if len(slot_value) <= 10:
             dispatcher.utter_message(text=f"That's a very short current_address. I'm assuming you mis-spelled.")
-            return {"current_current_address": None}
+            return {"current_address": None}
         else:
-            return {"current_current_address": slot_value}
+            return {"current_address": slot_value}
 #--------------------------------------------------------------------------
 
     def validate_last_seen(
@@ -1203,7 +1394,7 @@ class ValidateMissingPersonForm(FormValidationAction):
             dispatcher.utter_message(text="Seems like you have entered your date of birth in the incorrect format or have entered an incorrect date. Please use DD-MM-YYYY format and enter a valid date.")
             return {"dob": None}
 #--------------------------------------------------------------------------
-    def validate_current_current_address(
+    def validate_current_address(
             self,
             slot_value: Any,
             dispatcher: CollectingDispatcher,
@@ -1216,9 +1407,9 @@ class ValidateMissingPersonForm(FormValidationAction):
         print(f"current_address given = {slot_value} length = {len(slot_value)}")
         if len(slot_value) <= 10:
             dispatcher.utter_message(text=f"That's a very short current_address. I'm assuming you mis-spelled.")
-            return {"current_current_address": None}
+            return {"current_address": None}
         else:
-            return {"current_current_address": slot_value}
+            return {"current_address": slot_value}
 #--------------------------------------------------------------------------
 
     def validate_last_seen(
@@ -1408,7 +1599,7 @@ class ValidateLostAndFoundForm(FormValidationAction):
             dispatcher.utter_message(text="Seems like you have entered your date of birth in the incorrect format or have entered an incorrect date. Please use DD-MM-YYYY format and enter a valid date.")
             return {"dob": None}
 #--------------------------------------------------------------------------
-    def validate_current_current_address(
+    def validate_current_address(
             self,
             slot_value: Any,
             dispatcher: CollectingDispatcher,
@@ -1421,9 +1612,9 @@ class ValidateLostAndFoundForm(FormValidationAction):
         print(f"current_address given = {slot_value} length = {len(slot_value)}")
         if len(slot_value) <= 10:
             dispatcher.utter_message(text=f"That's a very short current_address. I'm assuming you mis-spelled.")
-            return {"current_current_address": None}
+            return {"current_address": None}
         else:
-            return {"current_current_address": slot_value}
+            return {"current_address": slot_value}
 
 #--------------------------------------------------------------------------           
     def validate_email(
@@ -1598,7 +1789,7 @@ class ValidateAssaultFirForm(FormValidationAction):
             dispatcher.utter_message(text="Seems like you have entered your date of birth in the incorrect format or have entered an incorrect date. Please use DD-MM-YYYY format and enter a valid date.")
             return {"dob": None}
 #--------------------------------------------------------------------------
-    def validate_current_current_address(
+    def validate_current_address(
             self,
             slot_value: Any,
             dispatcher: CollectingDispatcher,
@@ -1611,9 +1802,9 @@ class ValidateAssaultFirForm(FormValidationAction):
         print(f"current_address given = {slot_value} length = {len(slot_value)}")
         if len(slot_value) <= 10:
             dispatcher.utter_message(text=f"That's a very short current_address. I'm assuming you mis-spelled.")
-            return {"current_current_address": None}
+            return {"current_address": None}
         else:
-            return {"current_current_address": slot_value}
+            return {"current_address": slot_value}
 #--------------------------------------------------------------------------
     def validate_email(
             self,
@@ -2319,28 +2510,28 @@ class ValidateDrivingLicenseForm(FormValidationAction):
             SlotSet("state_for_license", state_of_city)
             return {"city": slot_value}
 
-    def validate_pin_code(
-            self,
-            slot_value: Any,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        """Validate `pin_code` value."""
+    # def validate_pin_code(
+    #         self,
+    #         slot_value: Any,
+    #         dispatcher: CollectingDispatcher,
+    #         tracker: Tracker,
+    #         domain: DomainDict,
+    # ) -> Dict[Text, Any]:
+    #     """Validate `pin_code` value."""
 
-        print(f"pin code given = {slot_value} length = {len(slot_value)}")
-        pin_code = tracker.get_slot('pin_code')
-        final_url = f"https://api.postalpincode.in/pincode/" + pin_code
-        pin_data = requests.get(final_url).json()
-        if len(slot_value) != 6 and not slot_value.isnumeric():
-            dispatcher.utter_message(text=f"Seems like you have entered an incorrect pin code. A pin code must be of 6 digits.")
-            return {"pin_code": None}
-        else:
-            if pin_data[0]['Status'] == 'Success' and pin_data[0]['PostOffice'][0]['District'] == tracker.get_slot('city').title():
-                return {"pin_code": slot_value}
-            else:
-                dispatcher.utter_message(text=f"Seems like you have entered an incorrect pin code or your pin code doesn't match your city. Please enter a valid pin code.")
-                return {"pin_code": None}
+    #     print(f"pin code given = {slot_value} length = {len(slot_value)}")
+    #     pin_code = tracker.get_slot('pin_code')
+    #     final_url = f"https://api.postalpincode.in/pincode/" + pin_code
+    #     pin_data = requests.get(final_url).json()
+    #     if len(slot_value) != 6 and not slot_value.isnumeric():
+    #         dispatcher.utter_message(text=f"Seems like you have entered an incorrect pin code. A pin code must be of 6 digits.")
+    #         return {"pin_code": None}
+    #     else:
+    #         if pin_data[0]['Status'] == 'Success' and pin_data[0]['PostOffice'][0]['District'] == tracker.get_slot('city').title():
+    #             return {"pin_code": slot_value}
+    #         else:
+    #             dispatcher.utter_message(text=f"Seems like you have entered an incorrect pin code or your pin code doesn't match your city. Please enter a valid pin code.")
+    #             return {"pin_code": None}
 
     def validate_date_for_appointment(
             self,
