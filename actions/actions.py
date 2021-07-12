@@ -2482,16 +2482,9 @@ class ValidateDrivingLicenseForm1(FormValidationAction):
         """Validate `driving_license_type` value."""
         driving_license_type = tracker.get_slot('driving_license_type')
 
-        print(f"age given = {slot_value} driving_license_type = {driving_license_type}")
-        if not slot_value.isnumeric():
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and int(slot_value) < 16:
+        print(f"age given = {slot_value}")
+        if not slot_value.isnumeric() and int(slot_value) < 16:
                 dispatcher.utter_message(text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 16 years of age.")
-                return {"age": None}
-            elif driving_license_type == "motorcycles with gear" and int(slot_value) < 18:
-                dispatcher.utter_message(text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 18 years of age.")
-                return {"age": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and int(slot_value) < 20:
-                dispatcher.utter_message(text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 20 years of age.")
                 return {"age": None}
         else:
             return {"age": slot_value}
@@ -2516,14 +2509,8 @@ class ValidateDrivingLicenseForm1(FormValidationAction):
             datetime_obj = datetime.datetime.strptime(date_str, format_str)
             input_year = datetime_obj.year
             print(datetime_obj.date())
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and present_year - input_year < 16:
+            if present_year - input_year < 16:
                 dispatcher.utter_message(text="Your birth year doesn't seem to be correct as it makes your age less than 16, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "motorcycles with" and present_year - input_year < 18:
-                dispatcher.utter_message(text="Your birth year doesn't seem to be correct as it makes your age less than 18, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and present_year - input_year < 20:
-                dispatcher.utter_message(text="Your birth year doesn't seem to be correct as it makes your age less than 20, the age for eligibility.")
                 return {"dob": None}
             elif int(present_year - input_year) != int(age)+1 and int(present_year - input_year) != int(age):
                 dispatcher.utter_message(text="Your birth year doesn't seem to be correct as it doesn't match your age.")
@@ -2753,18 +2740,9 @@ class ValidateDrivingLicenseForm2(FormValidationAction):
         driving_license_type = tracker.get_slot('driving_license_type')
 
         print(f"age given = {slot_value} driving_license_type = {driving_license_type}")
-        if not slot_value.isnumeric():
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and int(slot_value) < 16:
-                dispatcher.utter_message(
-                    text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 16 years of age.")
-                return {"age": None}
-            elif driving_license_type == "motorcycles with gear" and int(slot_value) < 18:
+        if not slot_value.isnumeric() and int(slot_value) < 18:
                 dispatcher.utter_message(
                     text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 18 years of age.")
-                return {"age": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and int(slot_value) < 20:
-                dispatcher.utter_message(
-                    text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 20 years of age.")
                 return {"age": None}
         else:
             return {"age": slot_value}
@@ -2789,17 +2767,9 @@ class ValidateDrivingLicenseForm2(FormValidationAction):
             datetime_obj = datetime.datetime.strptime(date_str, format_str)
             input_year = datetime_obj.year
             print(datetime_obj.date())
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and present_year - input_year < 16:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 16, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "motorcycles with" and present_year - input_year < 18:
+            if present_year - input_year < 18:
                 dispatcher.utter_message(
                     text="Your birth year doesn't seem to be correct as it makes your age less than 18, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and present_year - input_year < 20:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 20, the age for eligibility.")
                 return {"dob": None}
             elif int(present_year - input_year) != int(age) + 1 and int(present_year - input_year) != int(age):
                 dispatcher.utter_message(
@@ -3035,17 +3005,8 @@ class ValidateDrivingLicenseForm3(FormValidationAction):
         """Validate `driving_license_type` value."""
         driving_license_type = tracker.get_slot('driving_license_type')
 
-        print(f"age given = {slot_value} driving_license_type = {driving_license_type}")
-        if not slot_value.isnumeric():
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and int(slot_value) < 16:
-                dispatcher.utter_message(
-                    text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 16 years of age.")
-                return {"age": None}
-            elif driving_license_type == "motorcycles with gear" and int(slot_value) < 18:
-                dispatcher.utter_message(
-                    text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 18 years of age.")
-                return {"age": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and int(slot_value) < 20:
+        print(f"age given = {slot_value}")
+        if not slot_value.isnumeric() and int(slot_value) < 20:
                 dispatcher.utter_message(
                     text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 20 years of age.")
                 return {"age": None}
@@ -3062,7 +3023,6 @@ class ValidateDrivingLicenseForm3(FormValidationAction):
         """Validate `dob` value."""
 
         print(f"dob given = {slot_value}")
-        driving_license_type = tracker.get_slot('driving_license_type')
         today = datetime.datetime.now()
         age = tracker.get_slot('age')
         present_year = today.year
@@ -3072,15 +3032,7 @@ class ValidateDrivingLicenseForm3(FormValidationAction):
             datetime_obj = datetime.datetime.strptime(date_str, format_str)
             input_year = datetime_obj.year
             print(datetime_obj.date())
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and present_year - input_year < 16:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 16, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "motorcycles with" and present_year - input_year < 18:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 18, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and present_year - input_year < 20:
+            if present_year - input_year < 20:
                 dispatcher.utter_message(
                     text="Your birth year doesn't seem to be correct as it makes your age less than 20, the age for eligibility.")
                 return {"dob": None}
@@ -3299,20 +3251,11 @@ class ValidateLearnersLicenseForm1(FormValidationAction):
             domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `name` value."""
-        driving_license_type = tracker.get_slot('driving_license_type')
 
-        print(f"age given = {slot_value} driving_license_type = {driving_license_type}")
-        if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and int(slot_value) < 16:
+        print(f"age given = {slot_value}")
+        if int(slot_value) < 16:
             dispatcher.utter_message(
-                text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 16 years of age.")
-            return {"age": None}
-        elif driving_license_type == "motorcycles with gear" and int(slot_value) < 18:
-            dispatcher.utter_message(
-                text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 18 years of age.")
-            return {"age": None}
-        elif driving_license_type == "commercial heavy vehicles or transport vehicles" and int(slot_value) < 20:
-            dispatcher.utter_message(
-                text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 20 years of age.")
+                text=f"Seems like you have entered a wrong value. If you are eligible for this learners license and already have a learners license, then you must be above 16 years of age.")
             return {"age": None}
         else:
             return {"age": slot_value}
@@ -3327,7 +3270,6 @@ class ValidateLearnersLicenseForm1(FormValidationAction):
         """Validate `dob` value."""
 
         print(f"dob given = {slot_value}")
-        driving_license_type = tracker.get_slot('driving_license_type')
         today = datetime.datetime.now()
         age = tracker.get_slot('age')
         present_year = today.year
@@ -3337,18 +3279,9 @@ class ValidateLearnersLicenseForm1(FormValidationAction):
             datetime_obj = datetime.datetime.strptime(date_str, format_str)
             input_year = datetime_obj.year
             print(datetime_obj.date())
-            print(driving_license_type)
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and present_year - input_year < 16:
+            if present_year - input_year < 16:
                 dispatcher.utter_message(
                     text="Your birth year doesn't seem to be correct as it makes your age less than 16, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "motorcycles with" and present_year - input_year < 18:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 18, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and present_year - input_year < 20:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 20, the age for eligibility.")
                 return {"dob": None}
             elif int(present_year - input_year) != int(age) + 1 and int(present_year - input_year) != int(age):
                 dispatcher.utter_message(
@@ -3624,17 +3557,9 @@ class ValidateLearnersLicenseForm2(FormValidationAction):
         driving_license_type = tracker.get_slot('driving_license_type')
 
         print(f"age given = {slot_value} driving_license_type = {driving_license_type}")
-        if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and int(slot_value) < 16:
-            dispatcher.utter_message(
-                text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 16 years of age.")
-            return {"age": None}
-        elif driving_license_type == "motorcycles with gear" and int(slot_value) < 18:
+        if int(slot_value) < 18:
             dispatcher.utter_message(
                 text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 18 years of age.")
-            return {"age": None}
-        elif driving_license_type == "commercial heavy vehicles or transport vehicles" and int(slot_value) < 20:
-            dispatcher.utter_message(
-                text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 20 years of age.")
             return {"age": None}
         else:
             return {"age": slot_value}
@@ -3660,17 +3585,9 @@ class ValidateLearnersLicenseForm2(FormValidationAction):
             input_year = datetime_obj.year
             print(datetime_obj.date())
             print(driving_license_type)
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and present_year - input_year < 16:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 16, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "motorcycles with" and present_year - input_year < 18:
+            if present_year - input_year < 18:
                 dispatcher.utter_message(
                     text="Your birth year doesn't seem to be correct as it makes your age less than 18, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and present_year - input_year < 20:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 20, the age for eligibility.")
                 return {"dob": None}
             elif int(present_year - input_year) != int(age) + 1 and int(present_year - input_year) != int(age):
                 dispatcher.utter_message(
@@ -3947,15 +3864,7 @@ class ValidateLearnersLicenseForm3(FormValidationAction):
         driving_license_type = tracker.get_slot('driving_license_type')
 
         print(f"age given = {slot_value} driving_license_type = {driving_license_type}")
-        if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and int(slot_value) < 16:
-            dispatcher.utter_message(
-                text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 16 years of age.")
-            return {"age": None}
-        elif driving_license_type == "motorcycles with gear" and int(slot_value) < 18:
-            dispatcher.utter_message(
-                text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 18 years of age.")
-            return {"age": None}
-        elif driving_license_type == "commercial heavy vehicles or transport vehicles" and int(slot_value) < 20:
+        if int(slot_value) < 20:
             dispatcher.utter_message(
                 text=f"Seems like you have entered a wrong value. If you are eligible for {driving_license_type} and already have a learners license, then you must be above 20 years of age.")
             return {"age": None}
@@ -3972,7 +3881,6 @@ class ValidateLearnersLicenseForm3(FormValidationAction):
         """Validate `dob` value."""
 
         print(f"dob given = {slot_value}")
-        driving_license_type = tracker.get_slot('driving_license_type')
         today = datetime.datetime.now()
         age = tracker.get_slot('age')
         present_year = today.year
@@ -3982,16 +3890,7 @@ class ValidateLearnersLicenseForm3(FormValidationAction):
             datetime_obj = datetime.datetime.strptime(date_str, format_str)
             input_year = datetime_obj.year
             print(datetime_obj.date())
-            print(driving_license_type)
-            if driving_license_type == "motorcycles without gear, upto 50 cc capacity" and present_year - input_year < 16:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 16, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "motorcycles with" and present_year - input_year < 18:
-                dispatcher.utter_message(
-                    text="Your birth year doesn't seem to be correct as it makes your age less than 18, the age for eligibility.")
-                return {"dob": None}
-            elif driving_license_type == "commercial heavy vehicles or transport vehicles" and present_year - input_year < 20:
+            if present_year - input_year < 20:
                 dispatcher.utter_message(
                     text="Your birth year doesn't seem to be correct as it makes your age less than 20, the age for eligibility.")
                 return {"dob": None}

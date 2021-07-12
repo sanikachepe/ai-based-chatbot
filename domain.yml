@@ -144,7 +144,6 @@ slots:
   dl_type:
     type: text
 
-
 responses:
   utter_greet:
   - text: "Hey! How can I help you?"
@@ -157,8 +156,6 @@ responses:
   
   utter_default:
     - text: please restate your request
-
-
 
   utter_ask_state:
     - text: What state are you in?
@@ -237,8 +234,6 @@ responses:
   
   utter_ask_landmark:
     - text: Please provide the location and nearest landmark
-    
-
 
   utter_thanks:
     - text: Thanks for providing the values.
@@ -302,7 +297,6 @@ responses:
   utter_what_else:
     - text: "How else can I help you?"
 
- 
   utter_eligibility_for_casetwo:
     - text: "Is your age above 18, are you conversant with traffic rules and have valid age proof and current_address proof?"
 
@@ -316,10 +310,10 @@ responses:
     - text: "Which of the following license are you applying for?\n1. motorcycles without gear, upto 50 cc capacity\n2. motorcycles with gear\n3. commercial heavy vehicles or transport vehicles"
 
   utter_sorry:
-    - text: "Sorry you are not eligible for getting a {driving_license_type} :("
+    - text: "Sorry you are not eligible for getting a this learners license:("
 
   utter_eligible:
-    - text: "Congratulations! You are eligible for getting a {driving_license_type} learners license. Please fill your details to continue."
+    - text: "Congratulations! You are eligible for getting a learners license. Please fill your details to continue."
 
   utter_ask_learners_license_no:
     - text: "Please enter your 9 digit Learner's License number:"
