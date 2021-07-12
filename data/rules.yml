@@ -190,7 +190,6 @@ rules:
   - action: assault_form
   - active_loop: assault_form
 
-
 - rule: Submit form7
   condition:
   # Condition that form is active.
@@ -204,6 +203,7 @@ rules:
   # The actions we want to run when the form is submitted.
   - action: action_dbas    
 #----------------------------------------------------------------------------------------------
+
 - rule: Submit medical facility form
   condition:
     - active_loop: medical_facility_form
@@ -216,27 +216,78 @@ rules:
     - action: utter_what_else
 
 #----------------------------------------------------------------------------------------------
-- rule: Submit driving license form
+
+- rule: Submit driving license form 1
   condition:
-    - active_loop: driving_license_form
+    - active_loop: driving_license_form1
   steps:
-    - action: driving_license_form
+    - action: driving_license_form1
     - active_loop: null
     - slot_was_set:
         - requested_slot: null
-        
+
     - action: utter_submit
-    - action: utter_dl_submit
+    - action: action_dbdlgearless
+    - action: utter_what_else
+
+- rule: Submit driving license form 2
+  condition:
+    - active_loop: driving_license_form2
+  steps:
+    - action: driving_license_form2
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+
+    - action: utter_submit
+    - action: action_dbdlgear
+    - action: utter_what_else
+
+- rule: Submit driving license form 3
+  condition:
+    - active_loop: driving_license_form3
+  steps:
+    - action: driving_license_form3
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+
+    - action: utter_submit
+    - action: action_dbdlchv
     - action: utter_what_else
 #----------------------------------------------------------------------------------------------
-- rule: Submit learners license form
+- rule: Submit learners license form 1
   condition:
-    - active_loop: learners_license_form
+    - active_loop: learners_license_form1
   steps:
-    - action: learners_license_form
+    - action: learners_license_form1
     - active_loop: null
     - slot_was_set:
         - requested_slot: null
     - action: utter_submit
-    - action: utter_ll_submit
+    - action: action_dbllgearless
+    - action: utter_what_else
+
+- rule: Submit learners license form 2
+  condition:
+    - active_loop: learners_license_form2
+  steps:
+    - action: learners_license_form2
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: action_dbllgear
+    - action: utter_what_else
+
+- rule: Submit learners license form 3
+  condition:
+    - active_loop: learners_license_form3
+  steps:
+    - action: learners_license_form3
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: action_dbllchv
     - action: utter_what_else
