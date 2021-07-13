@@ -45,7 +45,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_cg  
+  - action: action_dbcg  
 
 #----------------------------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit
+  - action: action_dbpn
 #----------------------------------------------------------------------------------------------
 
 - rule: Activate form2
@@ -88,7 +88,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir
+  - action: action_checking
 
 #----------------------------------------------------------------------------------------------
 
@@ -110,7 +110,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir3
+  - action: action_databasevt
 
 #----------------------------------------------------------------------------------------------
 
@@ -133,7 +133,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir4
+  - action: action_databasegt
 
 #----------------------------------------------------------------------------------------------
 
@@ -156,7 +156,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir5
+  - action: action_mpdb
 
 #----------------------------------------------------------------------------------------------
 
@@ -179,7 +179,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir6    
+  - action: action_dblf    
 
 #----------------------------------------------------------------------------------------------
 
@@ -189,7 +189,6 @@ rules:
   - intent: assault
   - action: assault_form
   - active_loop: assault_form
-
 
 - rule: Submit form7
   condition:
@@ -202,4 +201,94 @@ rules:
   - slot_was_set:
     - requested_slot: null
   # The actions we want to run when the form is submitted.
-  - action: action_submit_fir7    
+  - action: action_dbas    
+#----------------------------------------------------------------------------------------------
+
+- rule: Submit medical facility form
+  condition:
+    - active_loop: medical_facility_form
+  steps:
+    - action: medical_facility_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_dbmf    
+    - action: utter_submit
+    - action: utter_what_else
+
+#----------------------------------------------------------------------------------------------
+
+- rule: Submit driving license form 1
+  condition:
+    - active_loop: driving_license_form1
+  steps:
+    - action: driving_license_form1
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+
+    - action: utter_submit
+    - action: action_dbdlgearless
+    - action: utter_what_else
+
+- rule: Submit driving license form 2
+  condition:
+    - active_loop: driving_license_form2
+  steps:
+    - action: driving_license_form2
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+
+    - action: utter_submit
+    - action: action_dbdlgear
+    - action: utter_what_else
+
+- rule: Submit driving license form 3
+  condition:
+    - active_loop: driving_license_form3
+  steps:
+    - action: driving_license_form3
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+
+    - action: utter_submit
+    - action: action_dbdlchv
+    - action: utter_what_else
+#----------------------------------------------------------------------------------------------
+- rule: Submit learners license form 1
+  condition:
+    - active_loop: learners_license_form1
+  steps:
+    - action: learners_license_form1
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: action_dbllgearless
+    - action: utter_what_else
+
+- rule: Submit learners license form 2
+  condition:
+    - active_loop: learners_license_form2
+  steps:
+    - action: learners_license_form2
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: action_dbllgear
+    - action: utter_what_else
+
+- rule: Submit learners license form 3
+  condition:
+    - active_loop: learners_license_form3
+  steps:
+    - action: learners_license_form3
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: utter_submit
+    - action: action_dbllchv
+    - action: utter_what_else

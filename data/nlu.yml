@@ -181,45 +181,32 @@ nlu:
     - [ayurveda](medical_facility_type) near me
     - [acupuncturist](medical_facility_type) near me
     - [microbiologist](medical_facility_type) near me
+
 - intent: get_driving_license
   examples: |
-    - I need a [driving licence](driving_license)
-    - I need a [driving license](driving_license)
-    - how to get [driving license](driving_license)?
-    - where can i get a [driving licence](driving_license)?
-    - am I eligible for a [driving license](driving_license)?
-    - [dl](driving_license)
-    - [license](driving_license)
-    - [licence](driving_license)
+    - I need a [driving licence](license_type)
+    - I need a [driving license](license_type)
+    - I need a [dl](license_type)
+    - how to get [dl](license_type)?
+    - where can I get a [dl](license_type)?
+    - how to get [driving license](license_type)?
+    - where can i get a [driving licence](license_type)?
+    - am I eligible for a [driving license](license_type)?
+    - [dl](license_type)
+    - [license](license_type)
+    - [licence](license_type)
 
 - intent: get_learners_license
   examples: |
-    - I need a [learners licence](learners_license)
-    - I need a [learners license](learners_license)
-    - how to get [learners license](learners_license)?
-    - where can i get a [learners licence](learners_license)?
-    - am I eligible for a [learners license](learners_license)?
-    - [ll](learners_license)
-        
-
-# - intent: age_entry
-#   examples: |
-#     - [18](age)
-#     - [15](age)
-#     - [16](age)
-#     - [17](age)
-#     - [19](age)
-#     - [20](age)
-#     - [25](age)
-#     - [30](age)
-#     - [45](age)
-#     - [37](age)
-#     - [10](age)
-#     - [12](age)
-#     - [53](age)
-#     - [67](age)
-#     - [43](age)
-#     - [32](age)
+    - I need a [learners licence](license_type)
+    - I need a [learners license](license_type)
+    - how to get [learners license](license_type)?
+    - where can i get a [learners licence](license_type)?
+    - am I eligible for a [learners license](license_type)?
+    - [ll](license_type)
+    - I need a [ll](license_type)
+    - how to get [ll](license_type)?
+    - where can I get a [ll](license_type)?
 
 - intent: weather
   examples: |
@@ -241,47 +228,25 @@ nlu:
     - temperature in [Goa](location)
     - tell me the temperature at [Ahmedabad](location)
 
-# - intent: police_station
-#   examples: |
-#    - [police station](police_station)
-#    - [police](police_station)
-#    - where is the [police station](police_station)?
-#    - how to visit [police station](police_station)?
-#    - [polis](police_station)
-#   - [police stations](police_station) in [mumbai](location)
- #- local [police station](police_station)
- #  - [delhi](location) [police station](police_station)
-# - intent: my_name
-#   examples: |
-#     - my name is [ashish](name)
-#     - my name is [rahul](name)
-#     - my name is [apneet](name)
-#     - [ashish](name) is my name
-#     - [ashish](name) this side
-#     - people call me [ashish](name)
-#     - [mansvi](name)
-#     - [Mansvi](name)
-#     - [aditya](name)
-#     - [aryan](name)
-#     - [riya](name)
-
-# - intent: mobile_number
-#   examples: |
-#     - my number is [8209829808]{"entity":"number"}
-#     - [8209829808]{"entity":"number"}
-#     - [8209829808]{"entity":"number"} is my number
-#     - my nobile number is [8209829808]{"entity":"number"}
-#     - [1234567890](number)
-#     - [9897687654](number)
-#     - [7689546732](number)
-
-
-- intent: tell_name
+- intent: case1
   examples: |
-    - what is your name?
-    - tell me your name
-    - what others call you
-    - what should i call you?
+    - [motorcycles without gear, upto 50 cc capacity](dl_type)
+    - [without gear](dl_type)
+    - [motorcycles without gear](dl_type)
+
+- intent: case2
+  examples: |
+    - [motorcycles with gear](dl_type)
+    - [with gear](dl_type)
+
+- intent: case3
+  examples: |
+    - [commercial heavy vehicles or transport vehicles](dl_type)
+    - [commercial](dl_type)
+    - [transport](dl_type)
+    - [heavy vehicles](dl_type)
+    - [commercial heavy vehicles](dl_type)
+    - [transport vehicles](dl_type)
 
 - intent: problem_type
   examples: |
@@ -292,15 +257,6 @@ nlu:
     - [women](problem)
     - [child abuse](problem)
 
-- intent: state_name
-  examples: |
-    - [maharashtra](state)
-    - [punjab](state)
-    - [delhi](state)
-    - [west bengal](state)
-    - [haryana](state)  
-      
-
 - intent: police_help
   examples: |
     - [police](police)
@@ -310,20 +266,6 @@ nlu:
     - [report](police)
     - [help](police)      
 
-# - intent: email_address
-#   examples: |
-#     - [mansvi@gmail.com](email)
-#     - [mansvi12@yahoo.com](email)
-#     - [mansvi2001@hotmail.com](email)
-#     - [adityarocks@gmail.in](email)
-#     - [aditya.rocks@yahoo.in](email)
-#     - [rohansharma2000@gmail.com](email)
-
-# - intent: dob
-#   examples: |
-#     - [01/01/2000](dob)
-#     - [12/04/1996](dob)      
-#     - [23/11/2017](dob)
 
 - intent: helpline_numbers
   examples: |
@@ -372,14 +314,14 @@ nlu:
     - [lost found](lost_found)
     - [found](lost_found)        
 
-- intent: missing_mobile
-  examples: |
-    - [missing mobile](missing_mobile)
-    - [mobile](missing_mobile)
-    - [phone](missing_mobile)
-    - [stolen phone](missing_mobile)
-    - [mobile stolen](mobile_missing)
-    - [phone stolen](mobile_missing)
+# - intent: missing_mobile
+#   examples: |
+#     - [missing mobile](missing_mobile)
+#     - [mobile](missing_mobile)
+#     - [phone](missing_mobile)
+#     - [stolen phone](missing_mobile)
+#     - [mobile stolen](mobile_missing)
+#     - [phone stolen](mobile_missing)
 
 - intent: assault
   examples: |         

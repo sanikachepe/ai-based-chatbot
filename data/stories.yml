@@ -1,21 +1,15 @@
 version: "2.0"
 
 stories:
-- story: search hospital + location
+- story: healthcare facility
   steps:
     - intent: greet
-    - action: utter_greet  
+    - action: utter_greet
     - intent: search_provider
       entities:
         - medical_facility_type: "hospital"
-    - action: utter_ask_location
-    - intent: location_entry
-      entities:
-        - location: "delhi"
-    - action: action_facility_search
-    - action: action_restart
-    - intent: goodbye
-    - action: utter_goodbye
+    - action: medical_facility_form
+    - active_loop: medical_facility_form
 
 # - story: get driving license story
 #   steps:
@@ -121,3 +115,243 @@ stories:
     - action: utter_police_report_or_number
     - intent: report FIR
     - action: utter_report_type
+
+- story: corona tracker path
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: corona_state
+      entities:
+      - state: "maharashtra"
+    - action: action_corona_tracker
+    - action: utter_what_else
+
+- story: driving license + holds learners license + caseone
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: affirm
+    - action: utter_ask_driving_license_type
+    - intent: case1
+    - action: driving_license_form1
+    - active_loop: driving_license_form1
+
+- story: driving license + holds learners license + casetwo
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: affirm
+    - action: utter_ask_driving_license_type
+    - intent: case2
+    - action: driving_license_form2
+    - active_loop: driving_license_form2
+
+- story: driving license + holds learners license + casethree
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: affirm
+    - action: utter_ask_driving_license_type
+    - intent: case3
+    - action: driving_license_form3
+    - active_loop: driving_license_form3
+
+- story: driving license + no learners license + caseone + redirect to learners license
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_ask_driving_license_type
+    - intent: case1
+    - action: utter_eligibility_for_caseone
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form1
+    - active_loop: learners_license_form1
+
+- story: driving license + no learners license + caseone + ineligible
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_ask_driving_license_type
+    - intent: case1
+    - action: utter_eligibility_for_caseone
+    - intent: deny
+    - action: utter_sorry
+    - action: utter_what_else
+
+- story: driving license + no learners license + casetwo + redirect to learners license
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_ask_driving_license_type
+    - intent: case2
+    - action: utter_eligibility_for_casetwo
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form2
+    - active_loop: learners_license_form2
+
+- story: driving license + no learners license + casetwo + ineligible
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_ask_driving_license_type
+    - intent: case2
+    - action: utter_eligibility_for_casetwo
+    - intent: deny
+    - action: utter_sorry
+    - action: utter_what_else
+
+- story: driving license + no learners license + casethree + redirect to learners license
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_ask_driving_license_type
+    - intent: case3
+    - action: utter_eligibility_for_casethree
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form3
+    - active_loop: learners_license_form3
+
+- story: driving license + no learners license + casethree + ineligible
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: affirm
+    - action: utter_ask_driving_license_type
+    - intent: case3
+    - action: utter_eligibility_for_casethree
+    - intent: affirm
+    - action: utter_sorry
+    - action: utter_what_else
+
+- story: driving license + no learners license + no redirect
+  steps:
+    - intent: get_driving_license
+      entities:
+      - license_type: "driving license"
+    - action: utter_holds_ll
+    - intent: deny
+    - action: utter_need_ll
+    - action: utter_ask_to_apply_for_ll
+    - intent: deny
+    - action: utter_what_else
+
+- story: learners license + caseone
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_ask_driving_license_type
+    - intent: case1
+    - action: utter_eligibility_for_caseone
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form1
+    - active_loop: learners_license_form1
+
+- story: learners license + caseone + ineligible
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_ask_driving_license_type
+    - intent: case1
+    - action: utter_eligibility_for_caseone
+    - intent: deny
+    - action: utter_sorry
+    - action: utter_what_else
+
+- story: learners license + casetwo
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_ask_driving_license_type
+    - intent: case2
+    - action: utter_eligibility_for_casetwo
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form2
+    - active_loop: learners_license_form2
+
+- story: learners license + casetwo + ineligible
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_ask_driving_license_type
+    - intent: case2
+    - action: utter_eligibility_for_casetwo
+    - intent: affirm
+    - action: utter_eligible
+    - intent: deny
+    - action: utter_sorry
+    - action: utter_what_else
+
+- story: learners license + casethree
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_ask_driving_license_type
+    - intent: case3
+    - action: utter_eligibility_for_casethree
+    - intent: affirm
+    - action: utter_eligible
+    - action: learners_license_form3
+    - active_loop: learners_license_form3
+
+- story: learners license + casethree + ineligible
+  steps:
+    - intent: get_learners_license
+      entities:
+      - license_type: "learners license"
+    - action: utter_ask_driving_license_type
+    - intent: case3
+    - action: utter_eligibility_for_casethree
+    - intent: deny
+    - action: utter_sorry
+    - action: utter_what_else
